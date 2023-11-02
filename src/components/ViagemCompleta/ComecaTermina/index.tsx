@@ -11,6 +11,8 @@ import { globalcss } from "../../../globalStyles/style";
 import { modalcss } from "../../../globalStyles/modal";
 import Input from "../../Input";
 import { useUpdateAnotacaoCompleta } from "./hooks/useUpdateAnotacaoCompleta";
+import useHookForm from "../../../hooks/useHookForm";
+import { propsHookForm } from "../../../types/hookForm";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,9 +26,30 @@ export default function ComecaTermina({
   tipoTermina,
 }: Props) {
   const [showInput, setShowInput] = useState<boolean>(false);
-  const [descricao, setDescricao] = useState<string>("");
 
-  const { addAnotacao } = useUpdateAnotacaoCompleta(setShowModal, setDescricao);
+  const { handleSubmit, control, reset } = useHookForm();
+  const { addAnotacao } = useUpdateAnotacaoCompleta(setShowModal, reset);
+
+  function adicionar(data: propsHookForm) {
+    addAnotacao(data.descricaoExtra, tipoTermina);
+    setShowInput(false);
+  }
+
+  function cancelar() {
+    reset({
+      saindoDe: "",
+      indoPara: "",
+      kmPercorrido: "",
+      veloVia: "",
+      veloMedia: "",
+      consumo: "",
+      ar: "",
+      descricaoExtra: "",
+      pontoReferencia: "",
+    });
+    setShowInput(false);
+    setShowModal(false);
+  }
 
   return (
     <Modal animationType="fade" transparent={true} visible={showModal}>
@@ -48,7 +71,11 @@ export default function ComecaTermina({
                   alignItems: "center",
                 }}
               >
-                <Input label="Descrição extra" setInfo={setDescricao} />
+                <Input
+                  label="Descrição extra"
+                  control={control}
+                  name="descricaoExtra"
+                />
                 <View
                   style={{
                     flexDirection: "row",
@@ -59,23 +86,21 @@ export default function ComecaTermina({
                   <Pressable
                     style={globalcss.conteinerBtnconfirma}
                     android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                    onPress={() => {
-                      addAnotacao(descricao, tipoTermina), setShowInput(false);
-                    }}
+                    onPress={handleSubmit(adicionar)}
                   >
                     <Text style={globalcss.textBtn}>Confirmar</Text>
                   </Pressable>
                   <Pressable
                     style={globalcss.conteinerBtn}
                     android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                    onPress={() => setShowInput(false)}
+                    onPress={cancelar}
                   >
                     <Text style={globalcss.textBtn}>Cancelar</Text>
                   </Pressable>
                   <Pressable
                     style={globalcss.conteinerBtncancel}
                     android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                    onPress={() => setShowModal(false)}
+                    onPress={cancelar}
                   >
                     <Text style={globalcss.textBtn}>Voltar</Text>
                   </Pressable>
@@ -99,7 +124,7 @@ export default function ComecaTermina({
                 <Pressable
                   style={globalcss.conteinerBtn}
                   android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                  onPress={() => addAnotacao(descricao, tipoTermina)}
+                  onPress={handleSubmit(adicionar)}
                 >
                   <Text style={globalcss.textBtn}>Não adicionar</Text>
                 </Pressable>

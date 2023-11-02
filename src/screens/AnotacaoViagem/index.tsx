@@ -2,7 +2,6 @@ import { View, Text, Pressable } from "react-native";
 import React, { useEffect, useState } from "react";
 import { globalcss } from "../../globalStyles/style";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../Router/stackNav";
 import ComecaTermina from "../../components/ViagemCompleta/ComecaTermina";
 import { viagemCompletacss } from "./style";
 import AddAnotacaoCompleta from "../../components/ViagemCompleta/AddAnotacao";
@@ -10,9 +9,10 @@ import { FlatList } from "react-native-gesture-handler";
 import { useDadosStore } from "../../context/dadosStore";
 import { ItemCompleta } from "../../components/ViagemCompleta/ItemAnotacao";
 import { usePegaAnotacao } from "./hooks/usePegaAnotacao";
+import { RootStackParamListStack } from "../../Router/types/stack";
 
 export type PropsNav = NativeStackScreenProps<
-  RootStackParamList,
+  RootStackParamListStack,
   "AnotaçãoViagem"
 >;
 

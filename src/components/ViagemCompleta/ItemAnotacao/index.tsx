@@ -3,9 +3,9 @@ import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { useDadosStore } from "../../../context/dadosStore";
-import { RootStackParamList } from "../../../Router/stackNav";
 import { itemcss } from "../../../globalStyles/item";
 import { shareAnotacaoViagemCompelta } from "../../../utils/Share/shareAnotacaoViagemCompleta";
+import { RootStackParamListStack } from "../../../Router/types/stack";
 
 type item = {
   PontoReferencia: string;
@@ -22,7 +22,7 @@ type Props = {
   itemAnotacaoCompleta?: item;
 };
 
-type Nav = NavigationProp<RootStackParamList>;
+type Nav = NavigationProp<RootStackParamListStack>;
 
 export function ItemCompleta({ itemAnotacaoCompleta }: Props) {
   const navigation = useNavigation<Nav>();

@@ -1,21 +1,31 @@
 import { View, Text, TextInput } from "react-native";
 import React from "react";
 import { inputcss } from "./style";
+import { Control, Controller } from "react-hook-form";
+import { propsHookForm, values } from "../../types/hookForm";
 
 type Props = {
   label: string;
-  setInfo: React.Dispatch<React.SetStateAction<string>>;
+  control: Control<propsHookForm> | any;
   placeholder?: string;
+  name: values;
 };
 
-export default function Input({ label, setInfo, placeholder }: Props) {
+export default function Input({ label, placeholder, name, control }: Props) {
   return (
     <View style={inputcss.boxInput}>
       <Text style={inputcss.label}>{label}</Text>
-      <TextInput
-        style={inputcss.input}
-        onChangeText={setInfo}
-        placeholder={placeholder}
+      <Controller
+        control={control}
+        name={name}
+        render={({ field: { onChange, value } }) => (
+          <TextInput
+            style={inputcss.input}
+            onChangeText={(value) => onChange(value)}
+            placeholder={placeholder}
+            value={value}
+          />
+        )}
       />
     </View>
   );

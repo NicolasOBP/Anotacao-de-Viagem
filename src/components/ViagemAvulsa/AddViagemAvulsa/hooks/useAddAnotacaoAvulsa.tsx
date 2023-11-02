@@ -1,4 +1,6 @@
 import firestore from "@react-native-firebase/firestore";
+import { UseFormReset } from "react-hook-form";
+import { propsHookForm } from "../../../../types/hookForm";
 
 type itemAvulsa = {
   saindo: string;
@@ -12,7 +14,7 @@ type itemAvulsa = {
 };
 export function useAddViagemAvulsa(
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
-  setDescricao: React.Dispatch<React.SetStateAction<string>>
+  reset: UseFormReset<propsHookForm>
 ) {
   function addAnotacao(item: itemAvulsa) {
     let newDate = new Date();
@@ -57,7 +59,17 @@ export function useAddViagemAvulsa(
         .then(() => console.log("Foi"))
         .catch((err) => console.log(err));
 
-      setDescricao("");
+      reset({
+        saindoDe: "",
+        indoPara: "",
+        kmPercorrido: "",
+        veloVia: "",
+        veloMedia: "",
+        consumo: "",
+        ar: "",
+        descricaoExtra: "",
+        pontoReferencia: "",
+      });
       setShowModal(false);
     }
   }

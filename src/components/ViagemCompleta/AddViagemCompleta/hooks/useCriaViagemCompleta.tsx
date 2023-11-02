@@ -1,11 +1,14 @@
 import firestore from "@react-native-firebase/firestore";
+import { UseFormReset } from "react-hook-form";
+import { propsHookForm } from "../../../../types/hookForm";
 
 type itemCompleta = {
   saindo: string;
   indo: string;
 };
 export function useCriaViagemCompleta(
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
+  reset: UseFormReset<propsHookForm>
 ) {
   function addAnotacao(item: itemCompleta) {
     let newDate = new Date();
@@ -24,6 +27,17 @@ export function useCriaViagemCompleta(
         .then(() => console.log("Foi"))
         .catch((err) => console.log(err));
 
+      reset({
+        saindoDe: "",
+        indoPara: "",
+        kmPercorrido: "",
+        veloVia: "",
+        veloMedia: "",
+        consumo: "",
+        ar: "",
+        descricaoExtra: "",
+        pontoReferencia: "",
+      });
       setShowModal(false);
     }
   }

@@ -4,12 +4,12 @@ import { revisaocss } from "./style";
 import { FontAwesome } from "@expo/vector-icons";
 import { globalcss } from "../../globalStyles/style";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../Router/stackNav";
 import { useDadosStore } from "../../context/dadosStore";
 import { shareAnotacaoViagemCompelta } from "../../utils/Share/shareAnotacaoViagemCompleta";
+import { RootStackParamListStack } from "../../Router/types/stack";
 
 export type PropsNav = NativeStackScreenProps<
-  RootStackParamList,
+  RootStackParamListStack,
   "RevisãoAnotação"
 >;
 

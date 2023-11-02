@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Modal,
   Pressable,
@@ -11,6 +11,8 @@ import Input from "../../Input";
 import { modalcss } from "../../../globalStyles/modal";
 import { globalcss } from "../../../globalStyles/style";
 import { useCriaViagemCompleta } from "./hooks/useCriaViagemCompleta";
+import useHookForm from "../../../hooks/useHookForm";
+import { propsHookForm } from "../../../types/hookForm";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,18 +20,31 @@ type Props = {
 };
 
 export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
-  const [sai, setSai] = useState("");
-  const [indo, setIndo] = useState("");
+  const { handleSubmit, control, reset } = useHookForm();
+  const { addAnotacao } = useCriaViagemCompleta(setShowModal, reset);
 
-  const { addAnotacao } = useCriaViagemCompleta(setShowModal);
-
-  function AddAnotacao() {
+  function AddAnotacao(data: propsHookForm) {
     let item = {
-      saindo: sai,
-      indo,
+      saindo: data.saindoDe,
+      indo: data.indoPara,
     };
 
     addAnotacao(item);
+  }
+
+  function cancelar() {
+    reset({
+      saindoDe: "",
+      indoPara: "",
+      kmPercorrido: "",
+      veloVia: "",
+      veloMedia: "",
+      consumo: "",
+      ar: "",
+      descricaoExtra: "",
+      pontoReferencia: "",
+    });
+    setShowModal(false);
   }
 
   return (
@@ -39,8 +54,8 @@ export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
           <View style={modalcss.box}>
             <Text style={modalcss.title}>Adicionar uma nova Anotação</Text>
 
-            <Input label="Saindo de:" setInfo={setSai} />
-            <Input label="Indo para:" setInfo={setIndo} />
+            <Input label="Saindo de:" name="saindoDe" control={control} />
+            <Input label="Indo para:" name="indoPara" control={control} />
 
             <View
               style={{
@@ -53,7 +68,7 @@ export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
               <Pressable
                 style={globalcss.conteinerBtn}
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={AddAnotacao}
+                onPress={handleSubmit(AddAnotacao)}
               >
                 <Text style={globalcss.textBtn}>Adicionar</Text>
               </Pressable>
@@ -61,7 +76,7 @@ export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
               <Pressable
                 style={globalcss.conteinerBtncancel}
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={() => setShowModal(false)}
+                onPress={cancelar}
               >
                 <Text style={globalcss.textBtn}>Cancelar</Text>
               </Pressable>

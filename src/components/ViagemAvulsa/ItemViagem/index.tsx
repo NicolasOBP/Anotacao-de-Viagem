@@ -4,15 +4,15 @@ import { FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { share } from "../../../utils/Share/shareViagemAvulsa";
 import { ViagemAvulsa } from "../../../types/viagemAvulsa";
-import { RootStackParamList } from "../../../Router/stackNav";
 import { itemcss } from "../../../globalStyles/item";
 import ModalConfirmaDeletar from "../../ModalConfirmaDeleta";
+import { RootStackParamListStack } from "../../../Router/types/stack";
 
 type Props = {
   itemAvulsa?: ViagemAvulsa;
 };
 
-type Nav = NavigationProp<RootStackParamList>;
+type Nav = NavigationProp<RootStackParamListStack>;
 
 export function ItemAvulsa({ itemAvulsa }: Props) {
   const navigation = useNavigation<Nav>();

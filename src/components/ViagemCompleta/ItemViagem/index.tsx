@@ -3,16 +3,16 @@ import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { ViagemCompleta } from "../../../types/viagemCompleta";
-import { RootStackParamList } from "../../../Router/stackNav";
 import { itemcss } from "../../../globalStyles/item";
 import { shareViagemCompleta } from "../../../utils/Share/shareViagemCompleta";
 import ModalConfirmaDeletar from "../../ModalConfirmaDeleta";
+import { RootStackParamListStack } from "../../../Router/types/stack";
 
 type Props = {
   itemCompleta?: ViagemCompleta;
 };
 
-type Nav = NavigationProp<RootStackParamList>;
+type Nav = NavigationProp<RootStackParamListStack>;
 
 export function ItemViagemCompleta({ itemCompleta }: Props) {
   const navigation = useNavigation<Nav>();

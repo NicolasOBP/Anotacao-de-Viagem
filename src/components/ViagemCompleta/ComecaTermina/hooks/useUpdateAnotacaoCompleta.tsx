@@ -1,9 +1,11 @@
 import firestore from "@react-native-firebase/firestore";
 import { useDadosStore } from "../../../../context/dadosStore";
+import { propsHookForm } from "../../../../types/hookForm";
+import { UseFormReset } from "react-hook-form";
 
 export function useUpdateAnotacaoCompleta(
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
-  setDescricao: React.Dispatch<React.SetStateAction<string>>
+  reset: UseFormReset<propsHookForm>
 ) {
   const { viagemCompletaStore } = useDadosStore();
 
@@ -33,7 +35,17 @@ export function useUpdateAnotacaoCompleta(
         .then(() => console.log("Foi"))
         .catch((err) => console.log(err));
     }
-    setDescricao("");
+    reset({
+      saindoDe: "",
+      indoPara: "",
+      kmPercorrido: "",
+      veloVia: "",
+      veloMedia: "",
+      consumo: "",
+      ar: "",
+      descricaoExtra: "",
+      pontoReferencia: "",
+    });
     setShowModal(false);
   }
   return { addAnotacao };

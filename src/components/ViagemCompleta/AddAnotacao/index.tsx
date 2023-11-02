@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Modal,
   Pressable,
@@ -13,6 +13,8 @@ import { globalcss } from "../../../globalStyles/style";
 import { modalcss } from "../../../globalStyles/modal";
 import { useDadosStore } from "../../../context/dadosStore";
 import { useAddAnotacaoCompleta } from "./hooks/useAddAnotacaoCompleta";
+import useHookForm from "../../../hooks/useHookForm";
+import { propsHookForm } from "../../../types/hookForm";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,30 +24,38 @@ export default function AddAnotacaoCompleta({
   setShowModal,
   showModal,
 }: Props) {
-  const [referencia, setReferencia] = useState("");
-  const [kmper, setKmper] = useState("");
-  const [veloVia, setVeloVia] = useState("");
-  const [veloFeita, setVeloFeita] = useState("");
-  const [consumo, setConsumo] = useState("");
-  const [ar, setAr] = useState("");
-  const [desc, setDesc] = useState("");
-
-  const { addAnotacao } = useAddAnotacaoCompleta(setShowModal, setDesc);
-
   const { viagemCompletaStore } = useDadosStore();
 
-  function AddAnotacao() {
+  const { handleSubmit, control, reset } = useHookForm();
+  const { addAnotacao } = useAddAnotacaoCompleta(setShowModal, reset);
+
+  function AddAnotacao(data: propsHookForm) {
     let item = {
-      PontoReferencia: referencia,
-      KmPercorrido: kmper,
-      VeloFeita: veloVia,
-      VeloVia: veloFeita,
-      consumo,
-      ar,
-      descricao: desc,
+      PontoReferencia: data.pontoReferencia,
+      KmPercorrido: data.kmPercorrido,
+      VeloFeita: data.veloMedia,
+      VeloVia: data.veloVia,
+      consumo: data.consumo,
+      ar: data.ar,
+      descricao: data.descricaoExtra,
     };
 
     addAnotacao(item);
+  }
+
+  function cancelar() {
+    reset({
+      saindoDe: "",
+      indoPara: "",
+      kmPercorrido: "",
+      veloVia: "",
+      veloMedia: "",
+      consumo: "",
+      ar: "",
+      descricaoExtra: "",
+      pontoReferencia: "",
+    });
+    setShowModal(false);
   }
 
   return (
@@ -61,32 +71,46 @@ export default function AddAnotacaoCompleta({
               {">"} {viagemCompletaStore.indo}
             </Text>
 
-            <Input label="Ponto de referência:" setInfo={setReferencia} />
+            <Input
+              label="Ponto de referência:"
+              control={control}
+              name="pontoReferencia"
+            />
             <Input
               label="Km percorrido:"
-              setInfo={setKmper}
+              control={control}
               placeholder="Só número"
+              name="kmPercorrido"
             />
             <Input
               label="Velocidade na Via:"
-              setInfo={setVeloVia}
+              control={control}
               placeholder="Só número"
+              name="veloVia"
             />
             <Input
               label="Velocidade média:"
-              setInfo={setVeloFeita}
+              control={control}
               placeholder="Só número"
+              name="veloMedia"
             />
             <Input
               label="Consumo (Km/L):"
-              setInfo={setConsumo}
+              control={control}
               placeholder="Só número"
+              name="consumo"
             />
-            <Input label="Ar:" setInfo={setAr} placeholder="Só número" />
+            <Input
+              label="Ar:"
+              control={control}
+              placeholder="Só número"
+              name="ar"
+            />
             <Input
               label="Descrição extra:"
-              setInfo={setDesc}
+              control={control}
               placeholder="Opicional"
+              name="descricaoExtra"
             />
 
             <View
@@ -100,7 +124,7 @@ export default function AddAnotacaoCompleta({
               <Pressable
                 style={globalcss.conteinerBtn}
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={AddAnotacao}
+                onPress={handleSubmit(AddAnotacao)}
               >
                 <Text style={globalcss.textBtn}>Adicionar</Text>
               </Pressable>
@@ -108,7 +132,7 @@ export default function AddAnotacaoCompleta({
               <Pressable
                 style={globalcss.conteinerBtncancel}
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={() => setShowModal(false)}
+                onPress={cancelar}
               >
                 <Text style={globalcss.textBtn}>Cancelar</Text>
               </Pressable>
