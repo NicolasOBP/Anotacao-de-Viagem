@@ -1,22 +1,14 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import RevisaoViagemAvulsa from "../screens/RevisaoViagemAvulsa";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { ViagemAvulsa } from "../types/viagemAvulsa";
 import BottomNav from "./bottonNav";
 import AnotacaoViagem from "../screens/AnotacaoViagem";
-import { AnotacaoCompleta, ViagemCompleta } from "../types/viagemCompleta";
 import RevisaoViagemCompleta from "../screens/RevisaoViagemCompleta";
+import { RootStackParamListStack } from "./types/stack";
 
-export type RootStackParamList = {
-  Tela: undefined;
-  RevisãoAvulsa: { item: ViagemAvulsa };
-  AnotaçãoViagem: { item: ViagemCompleta };
-  RevisãoAnotação: { item: AnotacaoCompleta };
-};
+const Stack = createStackNavigator<RootStackParamListStack>();
 
-const Stack = createStackNavigator<RootStackParamList>();
-
-export type PropsNav = NativeStackScreenProps<RootStackParamList>;
+export type PropsNav = NativeStackScreenProps<RootStackParamListStack>;
 
 export default function MyStack() {
   return (

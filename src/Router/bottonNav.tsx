@@ -3,13 +3,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Viagem from "../screens/Viagens";
+import { RootStackParamListBootom } from "./types/booton";
 
-type RootStackParamList = {
-  TelaInicial: undefined;
-  Viagens: undefined;
-};
-
-const Tab = createBottomTabNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<RootStackParamListBootom>();
 type Icon = "home" | "home-outline" | "airplane" | "airplane-outline";
 export default function BottomNav() {
   return (
