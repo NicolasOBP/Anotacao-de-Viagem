@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "825241591327",
+    "project_id": "appanotacaoviagem",
+    "storage_bucket": "appanotacaoviagem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825241591327:android:e56597a22f044c78707f2a",
+        "android_client_info": {
+          "package_name": "com.appanotacaoviagem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_RH0eIxVsgN-4iwDuUBg-gOMvHpzgRIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
