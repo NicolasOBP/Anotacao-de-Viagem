@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <View style={globalcss.container}>
-      <Text style={globalcss.title}>Anotações de</Text>
+      <Text style={globalcss.title}>Anotações de Viagem</Text>
       <Pressable
         style={globalcss.conteinerBtn}
         android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
