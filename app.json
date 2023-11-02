@@ -16,7 +16,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "runtimeVersion": {
+        "policy": "sdkVersion"
+      }
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -24,7 +27,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0b0ebc"
       },
-      "package": "com.appanotacaoviagem"
+      "package": "com.appanotacaoviagem",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,6 +40,9 @@
       "eas": {
         "projectId": "e9d424b3-b4f8-4970-8066-10ca46abaf2e"
       }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/e9d424b3-b4f8-4970-8066-10ca46abaf2e"
     }
   }
 }
