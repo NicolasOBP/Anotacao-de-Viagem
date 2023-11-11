@@ -9,9 +9,18 @@ type Props = {
   control: Control<propsHookForm> | any;
   placeholder?: string;
   name: values;
+  valor?: string;
+  disable?: boolean;
 };
 
-export default function Input({ label, placeholder, name, control }: Props) {
+export default function Input({
+  label,
+  placeholder,
+  name,
+  control,
+  valor,
+  disable,
+}: Props) {
   return (
     <View style={inputcss.boxInput}>
       <Text style={inputcss.label}>{label}</Text>
@@ -23,7 +32,8 @@ export default function Input({ label, placeholder, name, control }: Props) {
             style={inputcss.input}
             onChangeText={(value) => onChange(value)}
             placeholder={placeholder}
-            value={value}
+            value={valor ? valor : value}
+            editable={disable}
           />
         )}
       />
