@@ -16,7 +16,7 @@ export function useAddAnotacaoCompleta(
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   reset: UseFormReset<propsHookForm>
 ) {
-  const { viagemCompletaStore } = useDadosStore();
+  const { viagemCompletaStore, user } = useDadosStore();
 
   function addAnotacao(item: itemAnotacaoCompleta) {
     let newDate = new Date();
@@ -56,7 +56,7 @@ export function useAddAnotacaoCompleta(
       } else {
         try {
           firestore()
-            .collection("Viagem")
+            .collection(user.id)
             .doc(viagemCompletaStore.id)
             .update({
               anotacao: [
@@ -68,7 +68,7 @@ export function useAddAnotacaoCompleta(
             .catch((err) => console.log(err));
         } catch (err) {
           firestore()
-            .collection("Viagem")
+            .collection(user.id)
             .doc(viagemCompletaStore.id)
             .update({
               anotacao: [

@@ -6,6 +6,9 @@ type DadosStore = {
   user: User | null;
   setUser: (user: User) => void;
 
+  anonymousId: string;
+  setAnonymousId: (anonymousId: string) => void;
+
   viagemCompletaStore: ViagemCompleta;
   setViagemCompleta: (viagemCompletaStore: ViagemCompleta) => void;
 };
@@ -36,4 +39,7 @@ export const useDadosStore = create<DadosStore>((set) => ({
     finalizado: false,
   },
   setViagemCompleta: (viagemCompletaStore) => set({ viagemCompletaStore }),
+
+  anonymousId: "",
+  setAnonymousId: (anonymousId) => set({ anonymousId }),
 }));

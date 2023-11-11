@@ -1,6 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
 import { propsHookForm } from "../../../../types/hookForm";
+import { useDadosStore } from "../../../../context/dadosStore";
 
 type itemCompleta = {
   saindo: string;
@@ -10,6 +11,8 @@ export function useCriaViagemCompleta(
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   reset: UseFormReset<propsHookForm>
 ) {
+  const { user } = useDadosStore();
+
   function addAnotacao(item: itemCompleta) {
     let newDate = new Date();
     let date = newDate.getDate();
@@ -21,10 +24,10 @@ export function useCriaViagemCompleta(
     if (isFieldsEmpty) alert("Preencha todos os campos");
     else {
       firestore()
-        .collection("Viagem")
+        .collection(user.id)
         .doc(item.saindo + "_" + item.indo + Math.random())
         .set({ ...item, dataCriacao, timestamp: new Date().getTime() })
-        .then(() => console.log("Foi"))
+        .then()
         .catch((err) => console.log(err));
 
       reset({

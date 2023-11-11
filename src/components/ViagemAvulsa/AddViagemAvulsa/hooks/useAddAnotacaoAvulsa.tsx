@@ -1,6 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
 import { propsHookForm } from "../../../../types/hookForm";
+import { useDadosStore } from "../../../../context/dadosStore";
 
 type itemAvulsa = {
   saindo: string;
@@ -16,6 +17,7 @@ export function useAddViagemAvulsa(
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   reset: UseFormReset<propsHookForm>
 ) {
+  const { user } = useDadosStore();
   function addAnotacao(item: itemAvulsa) {
     let newDate = new Date();
     let date = newDate.getDate();
@@ -52,11 +54,11 @@ export function useAddViagemAvulsa(
       alert("Detectado letras nos campos impróprio");
     } else {
       firestore()
-        .collection("Viagem")
+        .collection(user.id)
         .doc("Viagem Avulsa")
         .collection("1")
         .add({ ...item, hora, data, timestamp: new Date().getTime() })
-        .then(() => console.log("Foi"))
+        .then()
         .catch((err) => console.log(err));
 
       reset({

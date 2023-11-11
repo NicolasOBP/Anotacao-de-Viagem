@@ -35,7 +35,7 @@ export default function ComecaTermina({
     setShowInput(false);
   }
 
-  function cancelar() {
+  function cancelar(input: boolean) {
     reset({
       saindoDe: "",
       indoPara: "",
@@ -47,8 +47,8 @@ export default function ComecaTermina({
       descricaoExtra: "",
       pontoReferencia: "",
     });
-    setShowInput(false);
-    setShowModal(false);
+    if (input) setShowInput(false);
+    else setShowModal(false);
   }
 
   return (
@@ -93,14 +93,14 @@ export default function ComecaTermina({
                   <Pressable
                     style={globalcss.conteinerBtn}
                     android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                    onPress={cancelar}
+                    onPress={() => cancelar(true)}
                   >
                     <Text style={globalcss.textBtn}>Cancelar</Text>
                   </Pressable>
                   <Pressable
                     style={globalcss.conteinerBtncancel}
                     android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                    onPress={cancelar}
+                    onPress={() => cancelar(false)}
                   >
                     <Text style={globalcss.textBtn}>Voltar</Text>
                   </Pressable>

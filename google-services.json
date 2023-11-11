@@ -12,7 +12,28 @@
           "package_name": "com.appanotacaoviagem"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "825241591327-0f627h57k29pert667usnil5c4r3grkk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appanotacaoviagem",
+            "certificate_hash": "e26113a280a06e8cde67e92f85c23e4ef60fd1b8"
+          }
+        },
+        {
+          "client_id": "825241591327-jetrfb4u76t5j4h07ddtcbihh77iduuu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appanotacaoviagem",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "825241591327-m1eo5jlk77tv1u8n63n0b5pna65biejq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB_RH0eIxVsgN-4iwDuUBg-gOMvHpzgRIA"
@@ -20,7 +41,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825241591327-m1eo5jlk77tv1u8n63n0b5pna65biejq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "825241591327-m5gfnmqtd4ogj5tu223usaggsvh8fscm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.appanotacaoviagem"
+              }
+            }
+          ]
         }
       }
     }

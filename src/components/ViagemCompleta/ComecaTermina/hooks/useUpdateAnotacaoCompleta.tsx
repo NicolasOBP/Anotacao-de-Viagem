@@ -7,7 +7,7 @@ export function useUpdateAnotacaoCompleta(
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   reset: UseFormReset<propsHookForm>
 ) {
-  const { viagemCompletaStore } = useDadosStore();
+  const { viagemCompletaStore, user } = useDadosStore();
 
   function addAnotacao(descricaoExtra: string, tipoTermina: boolean) {
     let newDate = new Date();
@@ -22,17 +22,17 @@ export function useUpdateAnotacaoCompleta(
 
     if (tipoTermina) {
       firestore()
-        .collection("Viagem")
+        .collection(user.id)
         .doc(viagemCompletaStore.id)
         .update({ chegando: { data, hora, descricaoExtra }, finalizado: true })
-        .then(() => console.log("Foi"))
+        .then()
         .catch((err) => console.log(err));
     } else {
       firestore()
-        .collection("Viagem")
+        .collection(user.id)
         .doc(viagemCompletaStore.id)
         .update({ partindo: { data, hora, descricaoExtra } })
-        .then(() => console.log("Foi"))
+        .then()
         .catch((err) => console.log(err));
     }
     reset({

@@ -1,28 +1,34 @@
 import { useEffect, useState } from "react";
 import firestore from "@react-native-firebase/firestore";
 import { ViagemAvulsa } from "../../../types/viagemAvulsa";
+import { useDadosStore } from "../../../context/dadosStore";
 export function usePegaAnotacaoAvulsa() {
   const [viagemAvulsa, setViagemAvulsa] = useState<ViagemAvulsa[]>([]);
+  const { user } = useDadosStore();
 
   useEffect(() => {
     ViagemAvulsa();
-  }, []);
+  }, [user.id]);
 
   function ViagemAvulsa() {
-    firestore()
-      .collection("Viagem")
-      .doc("Viagem Avulsa")
-      .collection("1")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((docSnap) => {
-        const newAnotacoes: ViagemAvulsa[] = [];
-        docSnap.forEach((item) => {
-          const data = { ...(item.data() as ViagemAvulsa), id: item.id };
+    try {
+      firestore()
+        .collection(user!.id)
+        .doc("Viagem Avulsa")
+        .collection("1")
+        .orderBy("timestamp", "desc")
+        .onSnapshot((docSnap) => {
+          const newAnotacoes: ViagemAvulsa[] = [];
+          docSnap.forEach((item) => {
+            const data = { ...(item.data() as ViagemAvulsa), id: item.id };
 
-          newAnotacoes.push(data);
+            newAnotacoes.push(data);
+          });
+          setViagemAvulsa(newAnotacoes);
         });
-        setViagemAvulsa(newAnotacoes);
-      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return { viagemAvulsa };
