@@ -1,4 +1,9 @@
-type Check = { data: string; hora: string; descricaoExtra: string };
+type Check = {
+  data: string;
+  hora: string;
+  descricaoExtra: string;
+  gastos?: string;
+};
 
 export type AnotacaoCompleta = {
   PontoReferencia: string;

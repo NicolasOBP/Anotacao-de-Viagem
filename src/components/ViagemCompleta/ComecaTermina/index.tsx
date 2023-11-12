@@ -18,12 +18,14 @@ type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
   tipoTermina: boolean;
+  gastos?: boolean;
 };
 
 export default function ComecaTermina({
   setShowModal,
   showModal,
   tipoTermina,
+  gastos,
 }: Props) {
   const [showInput, setShowInput] = useState<boolean>(false);
 
@@ -31,7 +33,7 @@ export default function ComecaTermina({
   const { addAnotacao } = useUpdateAnotacaoCompleta(setShowModal, reset);
 
   function adicionar(data: propsHookForm) {
-    addAnotacao(data.descricaoExtra, tipoTermina);
+    addAnotacao(data.descricaoExtra, tipoTermina, data.gastos);
     setShowInput(false);
   }
 
@@ -46,6 +48,7 @@ export default function ComecaTermina({
       ar: "",
       descricaoExtra: "",
       pontoReferencia: "",
+      gastos: "",
     });
     if (input) setShowInput(false);
     else setShowModal(false);
@@ -59,6 +62,18 @@ export default function ComecaTermina({
             <Text style={modalcss.title}>
               Depois que finalizar não poderá voltar.
             </Text>
+
+            {gastos ? (
+              <Input
+                label="Gastos (R$):"
+                control={control}
+                placeholder="Só número, opcional"
+                name="gastos"
+              />
+            ) : (
+              <></>
+            )}
+
             <Text style={modalcss.title}>
               Deseja adicionar uma descricao extra?
             </Text>

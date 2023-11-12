@@ -4,7 +4,6 @@ import { useDadosStore } from "../../../context/dadosStore";
 export default function useAddToGoogleAnota() {
   const { user, anonymousId } = useDadosStore();
 
-  console.log(user.id, " => ", anonymousId);
   const anonymousNotesRef = firestore().collection(anonymousId);
   const anonymousAvulsaRef = firestore()
     .collection(anonymousId)
@@ -31,9 +30,7 @@ export default function useAddToGoogleAnota() {
             userNotesRef
               .doc(noteId)
               .set(noteData)
-              .then(() => {
-                console.log("Anotação movida com sucesso");
-              })
+              .then()
               .catch((error) => {
                 console.error("Erro ao mover anotação", error);
               });
@@ -65,9 +62,7 @@ export default function useAddToGoogleAnota() {
           userAvulsaRef
             .doc(tripId)
             .set(tripData)
-            .then(() => {
-              console.log("Viagem avulsa movida com sucesso");
-            })
+            .then()
             .catch((error) => {
               console.error("Erro ao mover viagem avulsa", error);
             });

@@ -10,4 +10,5 @@ export type ViagemAvulsa = {
   hora: string;
   id: string;
   descricao?: string;
+  gastos?: string;
 };

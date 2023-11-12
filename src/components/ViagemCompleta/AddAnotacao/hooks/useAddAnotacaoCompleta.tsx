@@ -75,7 +75,7 @@ export function useAddAnotacaoCompleta(
                 { ...item, hora, data, timestamp: new Date().getTime() },
               ],
             })
-            .then(() => console.log("Foi"))
+            .then()
             .catch((err) => console.log(err));
         }
 

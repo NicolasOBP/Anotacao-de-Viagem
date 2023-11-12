@@ -33,6 +33,7 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
       VeloVia: data.veloVia,
       consumo: data.consumo,
       ar: data.ar,
+      gastos: data.gastos,
       descricao: data.descricaoExtra,
     };
 
@@ -50,6 +51,7 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
       ar: "",
       descricaoExtra: "",
       pontoReferencia: "",
+      gastos: "",
     });
     setShowModal(false);
   }
@@ -95,6 +97,12 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
               control={control}
               placeholder="Só número"
               name="ar"
+            />
+            <Input
+              label="Gastos (R$):"
+              control={control}
+              placeholder="Só número, opcional"
+              name="gastos"
             />
             <Input
               label="Descrição extra:"

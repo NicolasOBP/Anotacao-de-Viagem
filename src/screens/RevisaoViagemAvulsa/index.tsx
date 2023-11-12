@@ -45,6 +45,14 @@ export default function RevisaoViagemAvulsa({ route }: PropsNav) {
           Ar condicionado:{" "}
           <Text style={{ fontWeight: "normal" }}>{item.ar}</Text>
         </Text>
+        {item.gastos ? (
+          <Text style={revisaocss.textInfo}>
+            Gastos:{" "}
+            <Text style={{ fontWeight: "normal" }}>R${item.gastos}</Text>
+          </Text>
+        ) : (
+          <></>
+        )}
         {item.descricao ? (
           <Text style={revisaocss.textInfo}>
             Descrção extra:{" "}

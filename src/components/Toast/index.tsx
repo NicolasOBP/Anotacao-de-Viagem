@@ -14,8 +14,6 @@ export default function Toast() {
   const [time, setTime] = useState(3000);
 
   function onNewToast(data: data) {
-    console.log(data);
-
     setMessage(data.message);
     setMessageType(data.type);
     if (data.time) setTime(data.time);

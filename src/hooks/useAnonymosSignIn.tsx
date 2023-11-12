@@ -6,8 +6,6 @@ export default function useAnonymosSignIn() {
   const { setUser, setAnonymousId, user, anonymousId } = useDadosStore();
   const [initializing, setInitializing] = useState(true);
 
-  console.log(user.id, " => ", anonymousId);
-
   useEffect(() => {
     try {
       setUser({

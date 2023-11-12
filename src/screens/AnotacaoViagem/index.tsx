@@ -35,6 +35,7 @@ export default function AnotacaoViagem({ route }: PropsNav) {
   const [showModal, setShowModal] = useState(false);
   const [showModalAnota, setShowModalAnota] = useState(false);
   const [tipoTermina, setTipoTermina] = useState(false);
+  const [gastos, setGastos] = useState(false);
 
   const { setViagemCompleta, viagemCompletaStore } = useDadosStore();
 
@@ -53,6 +54,7 @@ export default function AnotacaoViagem({ route }: PropsNav) {
         setShowModal={setShowModal}
         showModal={showModal}
         tipoTermina={tipoTermina}
+        gastos={gastos}
       />
       <AddAnotacaoCompleta
         setShowModal={setShowModalAnota}
@@ -80,7 +82,7 @@ export default function AnotacaoViagem({ route }: PropsNav) {
         <Pressable
           style={globalcss.conteinerBtn}
           onPress={() => {
-            setShowModal(true), setTipoTermina(false);
+            setShowModal(true), setTipoTermina(false), setGastos(false);
           }}
         >
           <Text style={globalcss.textBtn}>Começar viagem</Text>
@@ -119,6 +121,14 @@ export default function AnotacaoViagem({ route }: PropsNav) {
             {anotacaoCompleta.chegando.data}
           </Text>
 
+          {anotacaoCompleta.chegando.gastos ? (
+            <Text style={viagemCompletacss.textInfo}>
+              Gastos: {anotacaoCompleta.chegando.gastos}
+            </Text>
+          ) : (
+            <></>
+          )}
+
           {anotacaoCompleta.chegando.descricaoExtra ? (
             <Text style={viagemCompletacss.textInfo}>
               Descrição extra: {anotacaoCompleta.chegando.descricaoExtra}
@@ -136,7 +146,7 @@ export default function AnotacaoViagem({ route }: PropsNav) {
           <Pressable
             style={globalcss.conteinerBtn}
             onPress={() => {
-              setShowModal(true), setTipoTermina(true);
+              setShowModal(true), setTipoTermina(true), setGastos(true);
             }}
           >
             <Text style={globalcss.textBtn}>Terminar Viagem</Text>

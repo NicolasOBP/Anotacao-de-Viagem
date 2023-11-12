@@ -17,6 +17,7 @@ export default function useHookForm() {
       ar: "",
       descricaoExtra: "",
       pontoReferencia: "",
+      gastos: "",
     },
   });
   return { handleSubmit, control, reset, errors };

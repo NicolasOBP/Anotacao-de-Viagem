@@ -7,7 +7,8 @@ export type values =
   | "consumo"
   | "ar"
   | "descricaoExtra"
-  | "pontoReferencia";
+  | "pontoReferencia"
+  | "gastos";
 
 export type propsHookForm = {
   saindoDe: string;
@@ -19,4 +20,5 @@ export type propsHookForm = {
   ar: string;
   descricaoExtra: string;
   pontoReferencia: string;
+  gastos: string;
 };

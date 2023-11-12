@@ -9,7 +9,11 @@ export function useUpdateAnotacaoCompleta(
 ) {
   const { viagemCompletaStore, user } = useDadosStore();
 
-  function addAnotacao(descricaoExtra: string, tipoTermina: boolean) {
+  function addAnotacao(
+    descricaoExtra: string,
+    tipoTermina: boolean,
+    gastos: string
+  ) {
     let newDate = new Date();
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
@@ -20,13 +24,22 @@ export function useUpdateAnotacaoCompleta(
     let minutes = newDate.getMinutes();
     let hora = hour + ":" + minutes;
 
+    const isValid6 = /^[0-9,.]+$/.test(gastos);
+    const hasNumber = isValid6 == false;
     if (tipoTermina) {
-      firestore()
-        .collection(user.id)
-        .doc(viagemCompletaStore.id)
-        .update({ chegando: { data, hora, descricaoExtra }, finalizado: true })
-        .then()
-        .catch((err) => console.log(err));
+      if (hasNumber) {
+        alert("Detectado letras nos campos impróprio");
+      } else {
+        firestore()
+          .collection(user.id)
+          .doc(viagemCompletaStore.id)
+          .update({
+            chegando: { data, hora, descricaoExtra, gastos },
+            finalizado: true,
+          })
+          .then()
+          .catch((err) => console.log(err));
+      }
     } else {
       firestore()
         .collection(user.id)
