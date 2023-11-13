@@ -37,7 +37,7 @@ export default function AnotacaoViagem({ route }: PropsNav) {
   const [tipoTermina, setTipoTermina] = useState(false);
   const [gastos, setGastos] = useState(false);
 
-  const { setViagemCompleta, viagemCompletaStore } = useDadosStore();
+  const { setViagemCompleta } = useDadosStore();
 
   useEffect(() => {
     if (anotacaoCompleta) setViagemCompleta(anotacaoCompleta);

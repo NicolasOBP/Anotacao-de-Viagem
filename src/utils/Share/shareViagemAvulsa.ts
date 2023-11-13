@@ -1,5 +1,6 @@
 import { ViagemAvulsa } from "../../types/viagemAvulsa";
 import { Share } from "react-native";
+import toast from "../toast/useToast";
 
 export async function share(items?: ViagemAvulsa) {
   try {
@@ -46,7 +47,9 @@ export async function share(items?: ViagemAvulsa) {
     } else if (result.action == Share.dismissedAction) {
       // dismissed
     }
+    toast.succes({ message: "Compartilhado com sucesso" });
   } catch (error: any) {
+    toast.danger({ message: "Erro ao compartilhar" });
     console.log(error.message);
   }
 }

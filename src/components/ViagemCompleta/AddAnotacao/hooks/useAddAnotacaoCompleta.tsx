@@ -64,7 +64,7 @@ export function useAddAnotacaoCompleta(
                 ...viagemCompletaStore.anotacao,
               ],
             })
-            .then(() => console.log("Foi"))
+            .then()
             .catch((err) => console.log(err));
         } catch (err) {
           firestore()

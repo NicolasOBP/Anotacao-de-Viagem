@@ -7,7 +7,6 @@ import useHookForm from "../../hooks/useHookForm";
 import { useDadosStore } from "../../context/dadosStore";
 import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
 import useGoogleSignin from "./hooks/useGoogleSignin";
-import useAddToGoogleAnota from "./hooks/useAddToGoogleAnota";
 import useSignOut from "./hooks/useSignOut";
 
 export default function Perfil() {

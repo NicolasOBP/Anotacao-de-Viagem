@@ -3,7 +3,7 @@ import { useDadosStore } from "../context/dadosStore";
 import auth from "@react-native-firebase/auth";
 
 export default function useAnonymosSignIn() {
-  const { setUser, setAnonymousId, user, anonymousId } = useDadosStore();
+  const { setUser, setAnonymousId } = useDadosStore();
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {

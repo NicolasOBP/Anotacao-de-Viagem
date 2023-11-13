@@ -18,6 +18,7 @@ export default function useSignOut() {
       anonymousSignin();
       toast.succes({ message: "Deslogado com sucesso!" });
     } catch (e) {
+      toast.danger({ message: "Erro ao deslogar" });
       console.log(e);
     }
   }
