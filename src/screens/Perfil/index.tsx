@@ -1,6 +1,11 @@
-import { View, Text, Image, Pressable } from "react-native";
 import React from "react";
-import { globalcss } from "../../globalStyles/style";
+import {
+  Container,
+  ContainerBtn,
+  ContainerBtncancel,
+  TextBtn,
+  Title,
+} from "../../globalStyles/style";
 import { Ionicons } from "@expo/vector-icons";
 import Input from "../../components/Input";
 import useHookForm from "../../hooks/useHookForm";
@@ -8,21 +13,19 @@ import { useDadosStore } from "../../context/dadosStore";
 import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
 import useGoogleSignin from "./hooks/useGoogleSignin";
 import useSignOut from "./hooks/useSignOut";
+import { Image } from "./style";
 
 export default function Perfil() {
   const { control } = useHookForm();
-  const { user } = useDadosStore();
+  const { user, setTheme, theme } = useDadosStore();
   const { onGoogleButtonPress } = useGoogleSignin();
   const { signOut } = useSignOut();
 
   return (
-    <View style={globalcss.container}>
-      <Text style={globalcss.title}>Tela de Perfil</Text>
+    <Container>
+      <Title>Tela de Perfil</Title>
       {user.photo ? (
-        <Image
-          style={{ width: 150, height: 150, borderRadius: 80 }}
-          source={{ uri: user.photo }}
-        />
+        <Image source={{ uri: user.photo }} />
       ) : (
         <Ionicons name="person-circle-outline" size={200} />
       )}
@@ -40,10 +43,21 @@ export default function Perfil() {
         valor={user.email}
         disable={false}
       />
+
+      <ContainerBtn onPress={setTheme}>
+        {theme === "light" ? (
+          <Ionicons name="sunny" color={"white"} size={28} />
+        ) : (
+          <Ionicons name="moon" color={"white"} size={28} />
+        )}
+
+        <TextBtn>Trocar tema</TextBtn>
+      </ContainerBtn>
+
       {user.email ? (
-        <Pressable style={globalcss.conteinerBtncancel} onPress={signOut}>
-          <Text style={globalcss.textBtn}>Deslogar</Text>
-        </Pressable>
+        <ContainerBtncancel onPress={signOut}>
+          <TextBtn>Deslogar</TextBtn>
+        </ContainerBtncancel>
       ) : (
         <GoogleSigninButton
           size={GoogleSigninButton.Size.Wide}
@@ -51,6 +65,6 @@ export default function Perfil() {
           onPress={onGoogleButtonPress}
         />
       )}
-    </View>
+    </Container>
   );
 }

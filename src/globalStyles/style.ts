@@ -1,46 +1,66 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
 
-export const globalcss = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 5,
-    backgroundColor: "rgb(50, 146, 236)",
-    alignItems: "center",
-    flexDirection: "column",
-  },
-  title: {
-    fontSize: 25,
-    marginBottom: 20,
-    fontWeight: "bold",
-  },
+export const Container = styled.View`
+  flex: 1;
+  padding: 5px;
+  align-items: center;
+  flex-direction: column;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
+`;
 
-  textBtn: {
-    fontWeight: "bold",
-    color: "white",
-    fontSize: 16,
-  },
-  conteinerBtn: {
-    backgroundColor: "rgb(11, 68, 121)",
-    padding: 10,
-    borderRadius: 10,
-    borderColor: "rgb(5, 50, 92)",
-    borderWidth: 5,
-    marginBottom: 10,
-  },
-  conteinerBtncancel: {
-    backgroundColor: "red",
-    padding: 10,
-    borderRadius: 10,
-    borderColor: "rgb(5, 50, 92)",
-    borderWidth: 5,
-    marginBottom: 10,
-  },
-  conteinerBtnconfirma: {
-    backgroundColor: "green",
-    padding: 10,
-    borderRadius: 10,
-    borderColor: "rgb(5, 50, 92)",
-    borderWidth: 5,
-    marginBottom: 10,
-  },
-});
+export const Title = styled.Text`
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+  text-align: center;
+`;
+
+export const TextBtn = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+`;
+
+export const ContainerBtn = styled.Pressable`
+  padding: 10px;
+  border: 3px solid ${({ theme }) => theme.COLORS.BORDER_COLOR};
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: ${({ theme }) => theme.COLORS.BTN};
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const ContainerBtncancel = styled.Pressable`
+  padding: 10px;
+  border: 3px solid ${({ theme }) => theme.COLORS.BORDER_COLOR};
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: ${({ theme }) => theme.COLORS.BTN_CANCELA};
+`;
+
+export const ContainerBtnconfirma = styled.Pressable`
+  padding: 10px;
+  border: 3px solid ${({ theme }) => theme.COLORS.BORDER_COLOR};
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: ${({ theme }) => theme.COLORS.BTN_CONFIRMA};
+`;
+
+export const ShareContainer = styled.View`
+  align-self: flex-start;
+  margin-top: 5px;
+`;
+
+export const BoxInfo = styled.View`
+  padding: 15px;
+  border: 5px solid ${({ theme }) => theme.COLORS.BORDER_COLOR2};
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.COLORS.PRIMARY_700};
+  margin-bottom: 10px;
+`;
+
+export const FlatList = styled.FlatList`
+  width: 80%;
+`;

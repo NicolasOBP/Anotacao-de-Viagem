@@ -1,15 +1,21 @@
-import { View, Text, Pressable } from "react-native";
+import { View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { globalcss } from "../../globalStyles/style";
+import {
+  BoxInfo,
+  Container,
+  ContainerBtn,
+  TextBtn,
+  Title,
+  FlatList,
+} from "../../globalStyles/style";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import ComecaTermina from "../../components/ViagemCompleta/ComecaTermina";
-import { viagemCompletacss } from "./style";
 import AddAnotacaoCompleta from "../../components/ViagemCompleta/AddAnotacao";
-import { FlatList } from "react-native-gesture-handler";
 import { useDadosStore } from "../../context/dadosStore";
 import { ItemCompleta } from "../../components/ViagemCompleta/ItemAnotacao";
 import { usePegaAnotacao } from "./hooks/usePegaAnotacao";
 import { RootStackParamListStack } from "../../Router/types/stack";
+import { ItemBox, ItemText, ItemTitle } from "../../globalStyles/item";
 
 export type PropsNav = NativeStackScreenProps<
   RootStackParamListStack,
@@ -44,11 +50,11 @@ export default function AnotacaoViagem({ route }: PropsNav) {
   }, [anotacaoCompleta]);
 
   return (
-    <View style={globalcss.container}>
-      <Text style={globalcss.title}>
+    <Container>
+      <Title>
         Anotação da viagem: {viagemCompleta.item.saindo} ={">"}{" "}
         {viagemCompleta.item.indo}
-      </Text>
+      </Title>
 
       <ComecaTermina
         setShowModal={setShowModal}
@@ -62,40 +68,36 @@ export default function AnotacaoViagem({ route }: PropsNav) {
       />
 
       {anotacaoCompleta?.partindo ? (
-        <View style={viagemCompletacss.boxInfo}>
-          <Text style={viagemCompletacss.itemTitle}>Partida</Text>
+        <BoxInfo>
+          <ItemTitle>Partida</ItemTitle>
 
-          <Text style={viagemCompletacss.textInfo}>
+          <ItemText>
             Hora e data: {anotacaoCompleta.partindo.hora} ={">"}{" "}
             {anotacaoCompleta.partindo.data}
-          </Text>
+          </ItemText>
 
           {anotacaoCompleta.partindo.descricaoExtra ? (
-            <Text style={viagemCompletacss.textInfo}>
+            <ItemText>
               Descrição extra: {anotacaoCompleta.partindo.descricaoExtra}
-            </Text>
+            </ItemText>
           ) : (
             <></>
           )}
-        </View>
+        </BoxInfo>
       ) : (
-        <Pressable
-          style={globalcss.conteinerBtn}
+        <ContainerBtn
           onPress={() => {
             setShowModal(true), setTipoTermina(false), setGastos(false);
           }}
         >
-          <Text style={globalcss.textBtn}>Começar viagem</Text>
-        </Pressable>
+          <TextBtn>Começar viagem</TextBtn>
+        </ContainerBtn>
       )}
 
       {anotacaoCompleta?.partindo && !anotacaoCompleta?.chegando ? (
-        <Pressable
-          style={globalcss.conteinerBtn}
-          onPress={() => setShowModalAnota(true)}
-        >
-          <Text style={globalcss.textBtn}>Adicionar uma anotação</Text>
-        </Pressable>
+        <ContainerBtn onPress={() => setShowModalAnota(true)}>
+          <TextBtn>Adicionar uma anotação</TextBtn>
+        </ContainerBtn>
       ) : (
         <></>
       )}
@@ -113,48 +115,45 @@ export default function AnotacaoViagem({ route }: PropsNav) {
       )}
 
       {anotacaoCompleta?.chegando ? (
-        <View style={viagemCompletacss.boxInfo}>
-          <Text style={viagemCompletacss.itemTitle}>Chegada</Text>
+        <ItemBox>
+          <ItemTitle>Chegada</ItemTitle>
 
-          <Text style={viagemCompletacss.textInfo}>
+          <ItemText>
             Hora e data: {anotacaoCompleta.chegando.hora} ={">"}{" "}
             {anotacaoCompleta.chegando.data}
-          </Text>
+          </ItemText>
 
           {anotacaoCompleta.chegando.gastos ? (
-            <Text style={viagemCompletacss.textInfo}>
-              Gastos: {anotacaoCompleta.chegando.gastos}
-            </Text>
+            <ItemText>Gastos: {anotacaoCompleta.chegando.gastos}</ItemText>
           ) : (
             <></>
           )}
 
           {anotacaoCompleta.chegando.descricaoExtra ? (
-            <Text style={viagemCompletacss.textInfo}>
+            <ItemText>
               Descrição extra: {anotacaoCompleta.chegando.descricaoExtra}
-            </Text>
+            </ItemText>
           ) : (
             <></>
           )}
-        </View>
+        </ItemBox>
       ) : anotacaoCompleta?.partindo ? (
         <View
           style={{
             flexDirection: "column-reverse",
           }}
         >
-          <Pressable
-            style={globalcss.conteinerBtn}
+          <ContainerBtn
             onPress={() => {
               setShowModal(true), setTipoTermina(true), setGastos(true);
             }}
           >
-            <Text style={globalcss.textBtn}>Terminar Viagem</Text>
-          </Pressable>
+            <TextBtn>Terminar Viagem</TextBtn>
+          </ContainerBtn>
         </View>
       ) : (
         <></>
       )}
-    </View>
+    </Container>
   );
 }

@@ -1,12 +1,16 @@
-import { View, Text } from "react-native";
 import React from "react";
-import { revisaocss } from "./style";
 import { FontAwesome } from "@expo/vector-icons";
-import { globalcss } from "../../globalStyles/style";
+import {
+  BoxInfo,
+  Container,
+  ShareContainer,
+  Title,
+} from "../../globalStyles/style";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useDadosStore } from "../../context/dadosStore";
 import { shareAnotacaoViagemCompelta } from "../../utils/Share/shareAnotacaoViagemCompleta";
 import { RootStackParamListStack } from "../../Router/types/stack";
+import ItemRevisao from "../../utils/ItemRevisao";
 
 export type PropsNav = NativeStackScreenProps<
   RootStackParamListStack,
@@ -18,42 +22,31 @@ export default function RevisaoViagemCompleta({ route }: PropsNav) {
   const { viagemCompletaStore } = useDadosStore();
 
   return (
-    <View style={globalcss.container}>
-      <Text style={globalcss.title}>Informações da Viagem</Text>
-      <View style={revisaocss.boxInfo}>
-        <Text style={revisaocss.textInfo}>
-          Ponto de Referência:{" "}
-          <Text style={{ fontWeight: "normal" }}>{item.PontoReferencia}</Text>
-        </Text>
-        <Text style={revisaocss.textInfo}>
-          Km percorrido:{" "}
-          <Text style={{ fontWeight: "normal" }}>{item.KmPercorrido} Km</Text>
-        </Text>
-        <Text style={revisaocss.textInfo}>
-          Velocidade na via:{" "}
-          <Text style={{ fontWeight: "normal" }}>{item.VeloVia} Km/h</Text>
-        </Text>
-        <Text style={revisaocss.textInfo}>
-          Velocidade média:{" "}
-          <Text style={{ fontWeight: "normal" }}>{item.VeloFeita} Km/h</Text>
-        </Text>
-        <Text style={revisaocss.textInfo}>
-          Consumo:{" "}
-          <Text style={{ fontWeight: "normal" }}>{item.consumo} Km/L</Text>
-        </Text>
-        <Text style={revisaocss.textInfo}>
-          Ar condicionado:{" "}
-          <Text style={{ fontWeight: "normal" }}>{item.ar}</Text>
-        </Text>
+    <Container>
+      <Title>Informações da Viagem</Title>
+      <BoxInfo>
+        <ItemRevisao
+          label="Ponto de Referência:"
+          value={item.PontoReferencia}
+        />
+        <ItemRevisao label="Km percorrido:" value={item.KmPercorrido + " Km"} />
+        <ItemRevisao
+          label="Velocidade na via:"
+          value={item.VeloVia + " Km/h"}
+        />
+        <ItemRevisao
+          label="Velocidade média:"
+          value={item.VeloFeita + " Km/h"}
+        />
+        <ItemRevisao label="Consumo:" value={item.consumo + " Km/l"} />
+        <ItemRevisao label="Ar condicionado:" value={item.ar} />
+
         {item.descricao ? (
-          <Text style={revisaocss.textInfo}>
-            Descrção extra:{" "}
-            <Text style={{ fontWeight: "normal" }}>{item.descricao}</Text>
-          </Text>
+          <ItemRevisao label="Descrção extra:" value={item.descricao} />
         ) : (
           <></>
         )}
-        <View
+        <ShareContainer
           style={{
             alignSelf: "flex-start",
           }}
@@ -69,8 +62,8 @@ export default function RevisaoViagemCompleta({ route }: PropsNav) {
             size={24}
             color="black"
           />
-        </View>
-      </View>
-    </View>
+        </ShareContainer>
+      </BoxInfo>
+    </Container>
   );
 }

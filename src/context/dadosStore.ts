@@ -2,18 +2,21 @@ import { create } from "zustand";
 import { User } from "../types/user";
 import { ViagemCompleta } from "../types/viagemCompleta";
 
-type DadosStore = {
+type State = {
   user: User | null;
-  setUser: (user: User) => void;
-
   anonymousId: string;
-  setAnonymousId: (anonymousId: string) => void;
-
   viagemCompletaStore: ViagemCompleta;
-  setViagemCompleta: (viagemCompletaStore: ViagemCompleta) => void;
+  theme: "light" | "dark";
 };
 
-export const useDadosStore = create<DadosStore>((set) => ({
+type Action = {
+  setUser: (user: User) => void;
+  setAnonymousId: (anonymousId: string) => void;
+  setViagemCompleta: (viagemCompletaStore: ViagemCompleta) => void;
+  setTheme: (theme: "light" | "dark") => void;
+};
+
+export const useDadosStore = create<State & Action>((set) => ({
   user: { displayName: "", email: "", photo: "", id: "" },
   setUser: (user) => set({ user }),
 
@@ -42,4 +45,14 @@ export const useDadosStore = create<DadosStore>((set) => ({
 
   anonymousId: "",
   setAnonymousId: (anonymousId) => set({ anonymousId }),
+
+  theme: "light",
+  setTheme: () =>
+    set((state) => {
+      if (state.theme === "light") {
+        return { theme: "dark" };
+      } else {
+        return { theme: "light" };
+      }
+    }),
 }));

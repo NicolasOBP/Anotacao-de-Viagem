@@ -1,16 +1,14 @@
 import React from "react";
+import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import {
-  Modal,
-  Pressable,
-  Text,
-  View,
-  Keyboard,
-  TouchableWithoutFeedback,
-} from "react-native";
-import { modalcss } from "../../globalStyles/modal";
-import { globalcss } from "../../globalStyles/style";
+  ContainerBtn,
+  ContainerBtncancel,
+  TextBtn,
+  Title,
+} from "../../globalStyles/style";
 import { useDeletaViagemCompleta } from "../ViagemCompleta/ItemViagem/hooks/useDeletaViagemCompleta";
 import { useDeletaViagem } from "../ViagemAvulsa/ItemViagem/hooks/useDeletaViagemAvulsa";
+import { Box, Container2, ContainerBtnModal } from "../../globalStyles/modal";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,35 +28,26 @@ export default function ModalConfirmaDeletar({
   return (
     <Modal animationType="fade" transparent={true} visible={showModal}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={modalcss.container2}>
-          <View style={modalcss.box}>
-            <Text style={modalcss.title}>Tem certeza que deseja deletar?</Text>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                width: "100%",
-                padding: 4,
-              }}
-            >
-              <Pressable
-                style={globalcss.conteinerBtn}
+        <Container2>
+          <Box>
+            <Title>Tem certeza que deseja deletar?</Title>
+            <ContainerBtnModal>
+              <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={() => setShowModal(false)}
               >
-                <Text style={globalcss.textBtn}>Cancelar</Text>
-              </Pressable>
+                <TextBtn>Cancelar</TextBtn>
+              </ContainerBtn>
 
-              <Pressable
-                style={globalcss.conteinerBtncancel}
+              <ContainerBtncancel
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={() => (tipoAvulsa ? delAvulsa(id) : delCompleta(id))}
               >
-                <Text style={globalcss.textBtn}>Deletar</Text>
-              </Pressable>
-            </View>
-          </View>
-        </View>
+                <TextBtn>Deletar</TextBtn>
+              </ContainerBtncancel>
+            </ContainerBtnModal>
+          </Box>
+        </Container2>
       </TouchableWithoutFeedback>
     </Modal>
   );

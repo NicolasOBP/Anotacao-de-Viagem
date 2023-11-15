@@ -1,20 +1,17 @@
 import React from "react";
-import {
-  Modal,
-  Pressable,
-  Text,
-  View,
-  ScrollView,
-  Keyboard,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { Modal, View, Keyboard, TouchableWithoutFeedback } from "react-native";
 import Input from "../../Input";
-import { globalcss } from "../../../globalStyles/style";
-import { modalcss } from "../../../globalStyles/modal";
 import { useDadosStore } from "../../../context/dadosStore";
 import { useAddAnotacaoCompleta } from "./hooks/useAddAnotacaoCompleta";
 import useHookForm from "../../../hooks/useHookForm";
 import { propsHookForm } from "../../../types/hookForm";
+import {
+  ContainerBtn,
+  ContainerBtncancel,
+  TextBtn,
+  Title,
+} from "../../../globalStyles/style";
+import { Box, Container } from "../../../globalStyles/modal";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -61,15 +58,12 @@ export default function AddAnotacaoCompleta({
   return (
     <Modal animationType="fade" transparent={true} visible={showModal}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView
-          style={modalcss.container}
-          contentContainerStyle={{ alignItems: "center" }}
-        >
-          <View style={modalcss.box}>
-            <Text style={modalcss.title}>
+        <Container contentContainerStyle={{ alignItems: "center" }}>
+          <Box>
+            <Title>
               Adicionar uma Anotação na viagem {viagemCompletaStore.saindo} =
               {">"} {viagemCompletaStore.indo}
-            </Text>
+            </Title>
 
             <Input
               label="Ponto de referência:"
@@ -121,24 +115,22 @@ export default function AddAnotacaoCompleta({
                 padding: 4,
               }}
             >
-              <Pressable
-                style={globalcss.conteinerBtn}
+              <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={handleSubmit(AddAnotacao)}
               >
-                <Text style={globalcss.textBtn}>Adicionar</Text>
-              </Pressable>
+                <TextBtn>Adicionar</TextBtn>
+              </ContainerBtn>
 
-              <Pressable
-                style={globalcss.conteinerBtncancel}
+              <ContainerBtncancel
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={cancelar}
               >
-                <Text style={globalcss.textBtn}>Cancelar</Text>
-              </Pressable>
+                <TextBtn>Cancelar</TextBtn>
+              </ContainerBtncancel>
             </View>
-          </View>
-        </ScrollView>
+          </Box>
+        </Container>
       </TouchableWithoutFeedback>
     </Modal>
   );

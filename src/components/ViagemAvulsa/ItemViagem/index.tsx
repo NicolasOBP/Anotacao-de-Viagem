@@ -4,9 +4,9 @@ import { FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { share } from "../../../utils/Share/shareViagemAvulsa";
 import { ViagemAvulsa } from "../../../types/viagemAvulsa";
-import { itemcss } from "../../../globalStyles/item";
 import ModalConfirmaDeletar from "../../ModalConfirmaDeleta";
 import { RootStackParamListStack } from "../../../Router/types/stack";
+import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
 
 type Props = {
   itemAvulsa?: ViagemAvulsa;
@@ -19,7 +19,7 @@ export function ItemAvulsa({ itemAvulsa }: Props) {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <View style={itemcss.itemBox}>
+    <ItemBox>
       <Pressable
         style={{ alignItems: "center", width: "100%" }}
         onPress={() =>
@@ -28,13 +28,13 @@ export function ItemAvulsa({ itemAvulsa }: Props) {
         }
         android_ripple={{ color: "darkblue" }}
       >
-        <Text style={itemcss.itemTitle}>
+        <ItemTitle>
           {itemAvulsa?.saindo} ={">"} {itemAvulsa?.indo}
-        </Text>
+        </ItemTitle>
         <View style={{ marginBottom: 10 }}>
-          <Text style={itemcss.itemItem}>
+          <ItemText>
             Data e Hora: {itemAvulsa?.data} - {itemAvulsa?.hora}
-          </Text>
+          </ItemText>
         </View>
 
         <ModalConfirmaDeletar
@@ -77,6 +77,6 @@ export function ItemAvulsa({ itemAvulsa }: Props) {
           </View>
         </View>
       </Pressable>
-    </View>
+    </ItemBox>
   );
 }

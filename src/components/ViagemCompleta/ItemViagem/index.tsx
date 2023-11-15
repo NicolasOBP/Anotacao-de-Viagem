@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { ViagemCompleta } from "../../../types/viagemCompleta";
-import { itemcss } from "../../../globalStyles/item";
 import { shareViagemCompleta } from "../../../utils/Share/shareViagemCompleta";
 import ModalConfirmaDeletar from "../../ModalConfirmaDeleta";
 import { RootStackParamListStack } from "../../../Router/types/stack";
+import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
 
 type Props = {
   itemCompleta?: ViagemCompleta;
@@ -19,7 +19,7 @@ export function ItemViagemCompleta({ itemCompleta }: Props) {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <View style={itemcss.itemBox}>
+    <ItemBox>
       <Pressable
         style={{ alignItems: "center", width: "100%" }}
         onPress={() =>
@@ -28,12 +28,10 @@ export function ItemViagemCompleta({ itemCompleta }: Props) {
         }
         android_ripple={{ color: "darkblue" }}
       >
-        <Text style={itemcss.itemTitle}>
+        <ItemTitle>
           {itemCompleta?.saindo} ={">"} {itemCompleta?.indo}
-        </Text>
-        <Text style={itemcss.itemItem}>
-          Data de Criação: {itemCompleta?.dataCriacao}
-        </Text>
+        </ItemTitle>
+        <ItemText>Data de Criação: {itemCompleta?.dataCriacao}</ItemText>
 
         <ModalConfirmaDeletar
           setShowModal={setShowModal}
@@ -76,6 +74,6 @@ export function ItemViagemCompleta({ itemCompleta }: Props) {
           </View>
         </View>
       </Pressable>
-    </View>
+    </ItemBox>
   );
 }

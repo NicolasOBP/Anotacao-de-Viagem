@@ -32,6 +32,7 @@ export default function BottomNav() {
         },
         tabBarActiveTintColor: "blue",
         tabBarInactiveTintColor: "gray",
+        headerStyle: { backgroundColor: "#26e0fd" },
       })}
     >
       <Tab.Screen

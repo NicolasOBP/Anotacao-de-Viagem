@@ -12,7 +12,9 @@ export type PropsNav = NativeStackScreenProps<RootStackParamListStack>;
 
 export default function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{ headerStyle: { backgroundColor: "#26e0fd" } }}
+    >
       <Stack.Screen
         options={{ headerShown: false }}
         name="Tela"

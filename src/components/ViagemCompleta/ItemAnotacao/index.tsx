@@ -3,9 +3,9 @@ import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { useDadosStore } from "../../../context/dadosStore";
-import { itemcss } from "../../../globalStyles/item";
 import { shareAnotacaoViagemCompelta } from "../../../utils/Share/shareAnotacaoViagemCompleta";
 import { RootStackParamListStack } from "../../../Router/types/stack";
+import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
 
 type item = {
   PontoReferencia: string;
@@ -28,7 +28,7 @@ export function ItemCompleta({ itemAnotacaoCompleta }: Props) {
   const navigation = useNavigation<Nav>();
   const { viagemCompletaStore } = useDadosStore();
   return (
-    <View style={itemcss.itemBox}>
+    <ItemBox>
       <Pressable
         style={{ alignItems: "center", width: "100%" }}
         android_ripple={{ color: "darkblue" }}
@@ -37,14 +37,14 @@ export function ItemCompleta({ itemAnotacaoCompleta }: Props) {
           navigation.navigate("RevisãoAnotação", { item: itemAnotacaoCompleta })
         }
       >
-        <Text style={itemcss.itemTitle}>
+        <ItemTitle>
           Referência: {itemAnotacaoCompleta?.PontoReferencia}
-        </Text>
+        </ItemTitle>
         <View style={{ marginBottom: 10 }}>
-          <Text style={itemcss.itemItem}>
+          <ItemText>
             Data e Hora: {itemAnotacaoCompleta?.data} -{" "}
             {itemAnotacaoCompleta?.hora}
-          </Text>
+          </ItemText>
         </View>
         <View
           style={{
@@ -64,6 +64,6 @@ export function ItemCompleta({ itemAnotacaoCompleta }: Props) {
           />
         </View>
       </Pressable>
-    </View>
+    </ItemBox>
   );
 }

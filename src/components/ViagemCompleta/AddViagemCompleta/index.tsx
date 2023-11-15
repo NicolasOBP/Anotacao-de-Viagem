@@ -1,18 +1,16 @@
 import React from "react";
-import {
-  Modal,
-  Pressable,
-  Text,
-  View,
-  Keyboard,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { Modal, View, Keyboard, TouchableWithoutFeedback } from "react-native";
 import Input from "../../Input";
-import { modalcss } from "../../../globalStyles/modal";
-import { globalcss } from "../../../globalStyles/style";
 import { useCriaViagemCompleta } from "./hooks/useCriaViagemCompleta";
 import useHookForm from "../../../hooks/useHookForm";
 import { propsHookForm } from "../../../types/hookForm";
+import {
+  ContainerBtn,
+  ContainerBtncancel,
+  TextBtn,
+  Title,
+} from "../../../globalStyles/style";
+import { Box, Container2 } from "../../../globalStyles/modal";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -50,9 +48,9 @@ export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
   return (
     <Modal animationType="fade" transparent={true} visible={showModal}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={modalcss.container2}>
-          <View style={modalcss.box}>
-            <Text style={modalcss.title}>Adicionar uma nova Anotação</Text>
+        <Container2>
+          <Box>
+            <Title>Adicionar uma nova Anotação</Title>
 
             <Input label="Saindo de:" name="saindoDe" control={control} />
             <Input label="Indo para:" name="indoPara" control={control} />
@@ -65,24 +63,22 @@ export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
                 padding: 4,
               }}
             >
-              <Pressable
-                style={globalcss.conteinerBtn}
+              <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={handleSubmit(AddAnotacao)}
               >
-                <Text style={globalcss.textBtn}>Adicionar</Text>
-              </Pressable>
+                <TextBtn>Adicionar</TextBtn>
+              </ContainerBtn>
 
-              <Pressable
-                style={globalcss.conteinerBtncancel}
+              <ContainerBtncancel
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={cancelar}
               >
-                <Text style={globalcss.textBtn}>Cancelar</Text>
-              </Pressable>
+                <TextBtn>Cancelar</TextBtn>
+              </ContainerBtncancel>
             </View>
-          </View>
-        </View>
+          </Box>
+        </Container2>
       </TouchableWithoutFeedback>
     </Modal>
   );

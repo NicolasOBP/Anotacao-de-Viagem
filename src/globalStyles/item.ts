@@ -1,24 +1,25 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
 
-export const itemcss = StyleSheet.create({
-  itemBox: {
-    backgroundColor: "blue",
-    padding: 10,
-    marginVertical: 8,
-    alignItems: "center",
-    borderColor: "rgb(14, 7, 157)",
-    borderWidth: 5,
-    borderRadius: 10,
-    width: "100%",
-  },
-  itemTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  itemItem: {
-    color: "white",
-    fontSize: 15,
-    fontWeight: "bold",
-    marginVertical: 2,
-  },
-});
+export const ItemTitle = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+`;
+
+export const ItemText = styled.Text`
+  color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+  font-size: 15px;
+  font-weight: bold;
+`;
+
+export const ItemBox = styled.View`
+  background-color: ${({ theme }) => theme.COLORS.PRIMARY_700};
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+  border: 5px solid ${({ theme }) => theme.COLORS.BORDER_COLOR2};
+  border-radius: 10px;
+  width: 100%;
+`;

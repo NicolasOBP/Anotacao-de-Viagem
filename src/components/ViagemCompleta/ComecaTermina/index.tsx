@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import {
-  Modal,
-  Keyboard,
-  View,
-  TouchableWithoutFeedback,
-  Pressable,
-  Text,
-} from "react-native";
-import { globalcss } from "../../../globalStyles/style";
-import { modalcss } from "../../../globalStyles/modal";
+import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import Input from "../../Input";
 import { useUpdateAnotacaoCompleta } from "./hooks/useUpdateAnotacaoCompleta";
 import useHookForm from "../../../hooks/useHookForm";
 import { propsHookForm } from "../../../types/hookForm";
+import {
+  ContainerBtn,
+  ContainerBtncancel,
+  ContainerBtnconfirma,
+  TextBtn,
+  Title,
+} from "../../../globalStyles/style";
+import { Box, Container2 } from "../../../globalStyles/modal";
+import { ContainerBtn1, ContainerBtn2 } from "./style";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -57,11 +57,9 @@ export default function ComecaTermina({
   return (
     <Modal animationType="fade" transparent={true} visible={showModal}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={modalcss.container2}>
-          <View style={modalcss.box}>
-            <Text style={modalcss.title}>
-              Depois que finalizar não poderá voltar.
-            </Text>
+        <Container2>
+          <Box>
+            <Title>Depois que finalizar não poderá voltar.</Title>
 
             {gastos ? (
               <Input
@@ -74,86 +72,60 @@ export default function ComecaTermina({
               <></>
             )}
 
-            <Text style={modalcss.title}>
-              Deseja adicionar uma descricao extra?
-            </Text>
+            <Title>Deseja adicionar uma descricao extra?</Title>
 
             {showInput ? (
-              <View
-                style={{
-                  width: "100%",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
+              <ContainerBtn1>
                 <Input
                   label="Descrição extra"
                   control={control}
                   name="descricaoExtra"
                 />
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-evenly",
-                    width: "100%",
-                  }}
-                >
-                  <Pressable
-                    style={globalcss.conteinerBtnconfirma}
+                <ContainerBtn2>
+                  <ContainerBtnconfirma
                     android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                     onPress={handleSubmit(adicionar)}
                   >
-                    <Text style={globalcss.textBtn}>Confirmar</Text>
-                  </Pressable>
-                  <Pressable
-                    style={globalcss.conteinerBtn}
+                    <TextBtn>Confirmar</TextBtn>
+                  </ContainerBtnconfirma>
+                  <ContainerBtn
                     android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                     onPress={() => cancelar(true)}
                   >
-                    <Text style={globalcss.textBtn}>Cancelar</Text>
-                  </Pressable>
-                  <Pressable
-                    style={globalcss.conteinerBtncancel}
+                    <TextBtn>Cancelar</TextBtn>
+                  </ContainerBtn>
+                  <ContainerBtncancel
                     android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                     onPress={() => cancelar(false)}
                   >
-                    <Text style={globalcss.textBtn}>Voltar</Text>
-                  </Pressable>
-                </View>
-              </View>
+                    <TextBtn>Voltar</TextBtn>
+                  </ContainerBtncancel>
+                </ContainerBtn2>
+              </ContainerBtn1>
             ) : (
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                  width: "100%",
-                }}
-              >
-                <Pressable
-                  style={globalcss.conteinerBtnconfirma}
+              <ContainerBtn2>
+                <ContainerBtnconfirma
                   android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                   onPress={() => setShowInput(true)}
                 >
-                  <Text style={globalcss.textBtn}>Adicionar</Text>
-                </Pressable>
-                <Pressable
-                  style={globalcss.conteinerBtn}
+                  <TextBtn>Adicionar</TextBtn>
+                </ContainerBtnconfirma>
+                <ContainerBtn
                   android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                   onPress={handleSubmit(adicionar)}
                 >
-                  <Text style={globalcss.textBtn}>Não adicionar</Text>
-                </Pressable>
-                <Pressable
-                  style={globalcss.conteinerBtncancel}
+                  <TextBtn>Não adicionar</TextBtn>
+                </ContainerBtn>
+                <ContainerBtncancel
                   android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                   onPress={() => setShowModal(false)}
                 >
-                  <Text style={globalcss.textBtn}>Voltar</Text>
-                </Pressable>
-              </View>
+                  <TextBtn>Voltar</TextBtn>
+                </ContainerBtncancel>
+              </ContainerBtn2>
             )}
-          </View>
-        </View>
+          </Box>
+        </Container2>
       </TouchableWithoutFeedback>
     </Modal>
   );
