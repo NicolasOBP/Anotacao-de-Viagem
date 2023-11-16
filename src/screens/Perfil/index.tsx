@@ -14,12 +14,14 @@ import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
 import useGoogleSignin from "./hooks/useGoogleSignin";
 import useSignOut from "./hooks/useSignOut";
 import { Image } from "./style";
+import useMmkvStorage from "./hooks/useMmkvStorage";
 
 export default function Perfil() {
   const { control } = useHookForm();
-  const { user, setTheme, theme } = useDadosStore();
+  const { user, theme } = useDadosStore();
   const { onGoogleButtonPress } = useGoogleSignin();
   const { signOut } = useSignOut();
+  const { changeTheme } = useMmkvStorage();
 
   return (
     <Container>
@@ -44,7 +46,7 @@ export default function Perfil() {
         disable={false}
       />
 
-      <ContainerBtn onPress={setTheme}>
+      <ContainerBtn onPress={changeTheme}>
         {theme === "light" ? (
           <Ionicons name="sunny" color={"white"} size={28} />
         ) : (

@@ -8,10 +8,17 @@ import { ThemeProvider } from "styled-components/native";
 import light from "./src/theme/light";
 import dark from "./src/theme/dark";
 import { useDadosStore } from "./src/context/dadosStore";
+import { useEffect } from "react";
+import { storage } from "./src/context/mmkv";
 
 export default function App() {
   const { initializing } = useAnonymosSignIn();
-  const { theme } = useDadosStore();
+  const { theme, setTheme } = useDadosStore();
+
+  useEffect(() => {
+    const storageTheme = storage.getString("theme.type") as "light" | "dark";
+    setTheme(storageTheme);
+  }, []);
 
   if (initializing) return null;
 
