@@ -35,7 +35,6 @@ export function useAddViagemAvulsa(
     const isValid3 = /^[0-9,.]+$/.test(item.VeloFeita);
     const isValid4 = /^[0-9,.]+$/.test(item.consumo);
     const isValid5 = /^[0-9,.]+$/.test(item.ar);
-    const isValid6 = /^[0-9,.]+$/.test(item.gastos);
 
     const isEmpyt =
       item.saindo == "" ||
@@ -50,8 +49,7 @@ export function useAddViagemAvulsa(
       isValid2 == false ||
       isValid3 == false ||
       isValid4 == false ||
-      isValid5 == false ||
-      isValid6 == false;
+      isValid5 == false;
     if (isEmpyt) alert("Preencha todos os campos");
     else if (hasNumber) {
       alert("Detectado letras nos campos impróprio");

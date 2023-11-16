@@ -75,30 +75,35 @@ export default function AddAnotacaoCompleta({
               control={control}
               placeholder="Só número"
               name="kmPercorrido"
+              keyboardType="numeric"
             />
             <Input
               label="Velocidade na Via:"
               control={control}
               placeholder="Só número"
               name="veloVia"
+              keyboardType="numeric"
             />
             <Input
               label="Velocidade média:"
               control={control}
               placeholder="Só número"
               name="veloMedia"
+              keyboardType="numeric"
             />
             <Input
               label="Consumo (Km/L):"
               control={control}
               placeholder="Só número"
               name="consumo"
+              keyboardType="numeric"
             />
             <Input
               label="Ar:"
               control={control}
               placeholder="Só número"
               name="ar"
+              keyboardType="numeric"
             />
             <Input
               label="Descrição extra:"

@@ -30,7 +30,7 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
       VeloVia: data.veloVia,
       consumo: data.consumo,
       ar: data.ar,
-      gastos: data.gastos,
+      gastos: data?.gastos,
       descricao: data.descricaoExtra,
     };
 
@@ -67,36 +67,42 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
               control={control}
               placeholder="Só número"
               name="kmPercorrido"
+              keyboardType="numeric"
             />
             <Input
               label="Velocidade na Via:"
               control={control}
               placeholder="Só número"
               name="veloVia"
+              keyboardType="numeric"
             />
             <Input
               label="Velocidade média:"
               control={control}
               placeholder="Só número"
               name="veloMedia"
+              keyboardType="numeric"
             />
             <Input
               label="Consumo (Km/L):"
               control={control}
               placeholder="Só número"
               name="consumo"
+              keyboardType="numeric"
             />
             <Input
               label="Ar:"
               control={control}
               placeholder="Só número"
               name="ar"
+              keyboardType="numeric"
             />
             <Input
               label="Gastos (R$):"
               control={control}
               placeholder="Só número, opcional"
               name="gastos"
+              keyboardType="numeric"
             />
             <Input
               label="Descrição extra:"

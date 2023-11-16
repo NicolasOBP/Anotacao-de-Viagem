@@ -33,7 +33,11 @@ export default function ComecaTermina({
   const { addAnotacao } = useUpdateAnotacaoCompleta(setShowModal, reset);
 
   function adicionar(data: propsHookForm) {
-    addAnotacao(data.descricaoExtra, tipoTermina, data.gastos);
+    addAnotacao(
+      data.descricaoExtra,
+      tipoTermina,
+      data.gastos ? data.gastos : ""
+    );
     setShowInput(false);
   }
 
@@ -67,6 +71,7 @@ export default function ComecaTermina({
                 control={control}
                 placeholder="Só número, opcional"
                 name="gastos"
+                keyboardType="numeric"
               />
             ) : (
               <></>

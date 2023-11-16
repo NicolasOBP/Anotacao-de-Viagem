@@ -24,22 +24,16 @@ export function useUpdateAnotacaoCompleta(
     let minutes = newDate.getMinutes();
     let hora = hour + ":" + minutes;
 
-    const isValid6 = /^[0-9,.]+$/.test(gastos);
-    const hasNumber = isValid6 == false;
     if (tipoTermina) {
-      if (hasNumber) {
-        alert("Detectado letras nos campos impróprio");
-      } else {
-        firestore()
-          .collection(user.id)
-          .doc(viagemCompletaStore.id)
-          .update({
-            chegando: { data, hora, descricaoExtra, gastos },
-            finalizado: true,
-          })
-          .then()
-          .catch((err) => console.log(err));
-      }
+      firestore()
+        .collection(user.id)
+        .doc(viagemCompletaStore.id)
+        .update({
+          chegando: { data, hora, descricaoExtra, gastos },
+          finalizado: true,
+        })
+        .then()
+        .catch((err) => console.log(err));
     } else {
       firestore()
         .collection(user.id)

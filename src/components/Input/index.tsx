@@ -10,6 +10,7 @@ type Props = {
   name: values;
   valor?: string;
   disable?: boolean;
+  keyboardType?: string;
 };
 
 export default function Input({
@@ -19,6 +20,7 @@ export default function Input({
   control,
   valor,
   disable,
+  keyboardType,
 }: Props) {
   return (
     <BoxInput>
@@ -32,6 +34,7 @@ export default function Input({
             placeholder={placeholder}
             value={valor ? valor : value}
             editable={disable}
+            keyboardType={keyboardType}
           />
         )}
       />
