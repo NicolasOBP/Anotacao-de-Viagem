@@ -14,14 +14,14 @@ import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
 import useGoogleSignin from "./hooks/useGoogleSignin";
 import useSignOut from "./hooks/useSignOut";
 import { Image } from "./style";
-import useMmkvStorage from "./hooks/useMmkvStorage";
+import useChangeTheme from "./hooks/useChangeTheme";
 
 export default function Perfil() {
   const { control } = useHookForm();
   const { user, theme } = useDadosStore();
   const { onGoogleButtonPress } = useGoogleSignin();
   const { signOut } = useSignOut();
-  const { changeTheme } = useMmkvStorage();
+  const { changeTheme } = useChangeTheme();
 
   return (
     <Container>

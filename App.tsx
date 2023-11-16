@@ -16,14 +16,13 @@ export default function App() {
   const { theme, setTheme } = useDadosStore();
 
   useEffect(() => {
-    const storageTheme = storage.getString("theme.type") as "light" | "dark";
-    setTheme(storageTheme);
+    setTheme(storage.getString("theme.type") as "light" | "dark");
   }, []);
 
   if (initializing) return null;
 
   return (
-    <ThemeProvider theme={theme === "light" ? light : dark}>
+    <ThemeProvider theme={theme == "light" ? light : dark}>
       <Toast />
       <NavigationContainer>
         <StatusBar translucent={true} style="dark" />

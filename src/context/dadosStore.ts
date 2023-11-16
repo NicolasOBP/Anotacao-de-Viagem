@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { User } from "../types/user";
 import { ViagemCompleta } from "../types/viagemCompleta";
+import { storage } from "./mmkv";
 
 type State = {
   user: User | null;
@@ -47,12 +48,14 @@ export const useDadosStore = create<State & Action>((set) => ({
   setAnonymousId: (anonymousId) => set({ anonymousId }),
 
   theme: "light",
-  setTheme: () =>
-    set((state) => {
-      if (state.theme === "light") {
+  setTheme: (theme) => set({ theme }),
+  /*set((state) => {
+      if (state.theme == "light") {
+        storage.set("theme.type", "dark");
         return { theme: "dark" };
       } else {
+        storage.set("theme.type", "light");
         return { theme: "light" };
       }
-    }),
+    }),*/
 }));
