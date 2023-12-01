@@ -1,4 +1,4 @@
-type Check = {
+export type Check = {
   data: string;
   hora: string;
   descricaoExtra: string;
