@@ -1,22 +1,12 @@
 import React from "react";
-import { FontAwesome } from "@expo/vector-icons";
-import {
-  BoxInfo,
-  Container,
-  ShareContainer,
-  Title,
-} from "../../globalStyles/style";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { share } from "../../utils/Share/shareViagemAvulsa";
-import { RootStackParamListStack } from "../../Router/types/stack";
+import { BoxInfo, Container, Title } from "../../globalStyles/style";
 import ItemRevisao from "../../utils/ItemRevisao";
+import { PropsNav } from "../../Router/types/screenProps";
+import Share from "./components/Share";
 
-export type PropsNav = NativeStackScreenProps<
-  RootStackParamListStack,
-  "RevisãoAvulsa"
->;
-
-export default function RevisaoViagemAvulsa({ route }: PropsNav) {
+export default function RevisaoViagemAvulsa({
+  route,
+}: PropsNav<"RevisãoAvulsa">) {
   const item = route.params.item;
 
   return (
@@ -39,24 +29,15 @@ export default function RevisaoViagemAvulsa({ route }: PropsNav) {
         />
         <ItemRevisao label="Consumo: " value={item.consumo + " Kl/l"} />
         <ItemRevisao label="Ar condicionado: " value={item.ar} />
-        {item.gastos ? (
+        {item.gastos && (
           <ItemRevisao label="Gastos: " value={"R$" + item.gastos} />
-        ) : (
-          <></>
         )}
-        {item.descricao ? (
+
+        {item.descricao && (
           <ItemRevisao label="Descrção extra: " value={item.descricao} />
-        ) : (
-          <></>
         )}
-        <ShareContainer>
-          <FontAwesome
-            onPress={async () => await share(item)}
-            name="share-square-o"
-            size={24}
-            color="black"
-          />
-        </ShareContainer>
+
+        <Share item={item} />
       </BoxInfo>
     </Container>
   );
