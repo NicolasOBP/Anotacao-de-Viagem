@@ -12,9 +12,7 @@ export default function Viagem() {
 
       <FlatList
         data={viagemCompleta}
-        renderItem={({ item }: { item: ViagemCompleta }) => (
-          <ItemViagemCompleta itemCompleta={item} />
-        )}
+        renderItem={({ item }) => <ItemViagemCompleta itemCompleta={item} />}
         keyExtractor={(item: ViagemCompleta) => item.id}
       />
     </Container>
