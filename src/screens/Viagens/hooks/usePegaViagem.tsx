@@ -17,15 +17,17 @@ export function usePegaAnotacaoCompleta() {
         .collection(user.id)
         .orderBy("timestamp", "desc")
         .onSnapshot((docSnap) => {
-          const newAnotacoes: ViagemCompleta[] = [];
-          docSnap.forEach((item) => {
-            const viagem = item.data() as ViagemCompleta;
+          try {
+            const newAnotacoes: ViagemCompleta[] = [];
+            docSnap.forEach((item) => {
+              const viagem = item.data() as ViagemCompleta;
 
-            const data = { ...viagem, id: item.id };
+              const data = { ...viagem, id: item.id };
 
-            newAnotacoes.push(data);
-          });
-          setViagemCompleta(newAnotacoes);
+              newAnotacoes.push(data);
+            });
+            setViagemCompleta(newAnotacoes);
+          } catch (err) {}
         });
     } catch (e) {
       console.log(e);
