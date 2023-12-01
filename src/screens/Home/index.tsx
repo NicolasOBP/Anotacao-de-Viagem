@@ -43,9 +43,7 @@ export default function Home() {
 
       <FlatList
         data={viagemAvulsa}
-        renderItem={({ item }: { item: ViagemAvulsa }) => (
-          <ItemAvulsa itemAvulsa={item} />
-        )}
+        renderItem={({ item }) => <ItemAvulsa itemAvulsa={item} />}
         keyExtractor={(item: ViagemAvulsa) => item.id}
       />
     </Container>
