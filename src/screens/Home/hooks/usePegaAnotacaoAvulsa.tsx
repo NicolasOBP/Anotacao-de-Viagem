@@ -18,13 +18,15 @@ export function usePegaAnotacaoAvulsa() {
         .collection("1")
         .orderBy("timestamp", "desc")
         .onSnapshot((docSnap) => {
-          const newAnotacoes: ViagemAvulsa[] = [];
-          docSnap.forEach((item) => {
-            const data = { ...(item.data() as ViagemAvulsa), id: item.id };
+          try {
+            const newAnotacoes: ViagemAvulsa[] = [];
+            docSnap.forEach((item) => {
+              const data = { ...(item.data() as ViagemAvulsa), id: item.id };
 
-            newAnotacoes.push(data);
-          });
-          setViagemAvulsa(newAnotacoes);
+              newAnotacoes.push(data);
+            });
+            setViagemAvulsa(newAnotacoes);
+          } catch (err) {}
         });
     } catch (e) {
       console.log(e);
