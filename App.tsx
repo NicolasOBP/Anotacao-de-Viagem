@@ -5,19 +5,13 @@ import MyStack from "./src/Router/stackNav";
 import useAnonymosSignIn from "./src/hooks/useAnonymosSignIn";
 import Toast from "./src/components/Toast/index";
 import { ThemeProvider } from "styled-components/native";
-import light from "./src/theme/light";
-import dark from "./src/theme/dark";
-import { useDadosStore } from "./src/context/dadosStore";
-import { useEffect } from "react";
-import { storage } from "./src/context/mmkv";
+import { light } from "./src/theme/light";
+import { dark } from "./src/theme/dark";
+import useInitializeTheme from "./src/hooks/useInitializeTheme";
 
 export default function App() {
   const { initializing } = useAnonymosSignIn();
-  const { theme, setTheme } = useDadosStore();
-
-  useEffect(() => {
-    setTheme(storage.getString("theme.type") as "light" | "dark");
-  }, []);
+  const { theme } = useInitializeTheme();
 
   if (initializing) return null;
 
