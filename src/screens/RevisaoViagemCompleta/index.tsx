@@ -1,23 +1,13 @@
 import React from "react";
-import { FontAwesome } from "@expo/vector-icons";
-import {
-  BoxInfo,
-  Container,
-  ShareContainer,
-  Title,
-} from "../../globalStyles/style";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { BoxInfo, Container, Title } from "../../globalStyles/style";
 import { useDadosStore } from "../../context/dadosStore";
-import { shareAnotacaoViagemCompelta } from "../../utils/Share/shareAnotacaoViagemCompleta";
-import { RootStackParamListStack } from "../../Router/types/stack";
 import ItemRevisao from "../../utils/ItemRevisao";
+import { PropsNav } from "../../Router/types/screenProps";
+import Share from "./components/Share";
 
-export type PropsNav = NativeStackScreenProps<
-  RootStackParamListStack,
-  "RevisãoAnotação"
->;
-
-export default function RevisaoViagemCompleta({ route }: PropsNav) {
+export default function RevisaoViagemCompleta({
+  route,
+}: PropsNav<"RevisãoAnotação">) {
   const item = route.params.item;
   const { viagemCompletaStore } = useDadosStore();
 
@@ -41,28 +31,15 @@ export default function RevisaoViagemCompleta({ route }: PropsNav) {
         <ItemRevisao label="Consumo:" value={item.consumo + " Km/l"} />
         <ItemRevisao label="Ar condicionado:" value={item.ar} />
 
-        {item.descricao ? (
+        {item.descricao && (
           <ItemRevisao label="Descrção extra:" value={item.descricao} />
-        ) : (
-          <></>
         )}
-        <ShareContainer
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
-          <FontAwesome
-            onPress={async () =>
-              await shareAnotacaoViagemCompelta(
-                item,
-                viagemCompletaStore.saindo + " para " + viagemCompletaStore.indo
-              )
-            }
-            name="share-square-o"
-            size={24}
-            color="black"
-          />
-        </ShareContainer>
+
+        <Share
+          indo={viagemCompletaStore.indo}
+          item={item}
+          saindo={viagemCompletaStore.saindo}
+        />
       </BoxInfo>
     </Container>
   );
