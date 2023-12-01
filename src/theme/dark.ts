@@ -1,4 +1,4 @@
-export default {
+export const dark = {
   COLORS: {
     BACKGROUND: "#09099f",
 
