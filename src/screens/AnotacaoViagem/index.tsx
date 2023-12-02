@@ -29,17 +29,17 @@ export default function AnotacaoViagem({ route }: PropsNav) {
         {viagemCompleta.item.indo}
       </Title>
 
-      <Partindo partindo={anotacaoCompleta.partindo} />
+      <Partindo partindo={anotacaoCompleta?.partindo} />
 
       <Anotacao
-        anotacao={anotacaoCompleta.anotacao}
-        chegando={anotacaoCompleta.chegando}
-        partindo={anotacaoCompleta.partindo}
+        anotacao={anotacaoCompleta?.anotacao}
+        chegando={anotacaoCompleta?.chegando}
+        partindo={anotacaoCompleta?.partindo}
       />
 
       <Chegando
-        chegando={anotacaoCompleta.chegando}
-        partindo={anotacaoCompleta.partindo}
+        chegando={anotacaoCompleta?.chegando}
+        partindo={anotacaoCompleta?.partindo}
       />
     </Container>
   );

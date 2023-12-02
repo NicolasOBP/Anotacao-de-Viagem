@@ -18,7 +18,7 @@ export default function Anotacao({ anotacao, chegando, partindo }: Props) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      {partindo && chegando && (
+      {partindo && !chegando && (
         <ContainerBtn onPress={() => setShowModal(true)}>
           <TextBtn>Adicionar uma anotação</TextBtn>
         </ContainerBtn>

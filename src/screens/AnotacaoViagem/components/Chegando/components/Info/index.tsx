@@ -1,10 +1,7 @@
 import React from "react";
-import {
-  ItemBox,
-  ItemText,
-  ItemTitle,
-} from "../../../../../../globalStyles/item";
+import { ItemText, ItemTitle } from "../../../../../../globalStyles/item";
 import { Check } from "../../../../../../types/viagemCompleta";
+import { BoxInfo } from "../../../../../../globalStyles/style";
 
 type Props = {
   chegando: Check;
@@ -12,7 +9,7 @@ type Props = {
 
 export default function Info({ chegando }: Props) {
   return (
-    <ItemBox>
+    <BoxInfo>
       <ItemTitle>Chegada</ItemTitle>
 
       <ItemText>
@@ -24,6 +21,6 @@ export default function Info({ chegando }: Props) {
       {chegando.descricaoExtra && (
         <ItemText>Descrição extra: {chegando.descricaoExtra}</ItemText>
       )}
-    </ItemBox>
+    </BoxInfo>
   );
 }
