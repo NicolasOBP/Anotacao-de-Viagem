@@ -1,12 +1,10 @@
-import { View, Text, Pressable } from "react-native";
-import React, { useState } from "react";
-import { FontAwesome } from "@expo/vector-icons";
+import { View, Pressable } from "react-native";
+import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { share } from "../../../utils/Share/shareViagemAvulsa";
 import { ViagemAvulsa } from "../../../types/viagemAvulsa";
-import ModalConfirmaDeletar from "../../ModalConfirmaDeleta";
 import { RootStackParamListStack } from "../../../Router/types/stack";
 import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
+import Share_Trash from "./components/Share&Trash";
 
 type Props = {
   itemAvulsa?: ViagemAvulsa;
@@ -16,7 +14,6 @@ type Nav = NavigationProp<RootStackParamListStack>;
 
 export function ItemAvulsa({ itemAvulsa }: Props) {
   const navigation = useNavigation<Nav>();
-  const [showModal, setShowModal] = useState(false);
 
   return (
     <ItemBox>
@@ -37,45 +34,7 @@ export function ItemAvulsa({ itemAvulsa }: Props) {
           </ItemText>
         </View>
 
-        <ModalConfirmaDeletar
-          setShowModal={setShowModal}
-          showModal={showModal}
-          id={itemAvulsa!.id}
-          tipoAvulsa={true}
-        />
-
-        <View
-          style={{
-            flexDirection: "row",
-            width: "100%",
-          }}
-        >
-          <View
-            style={{
-              alignSelf: "flex-start",
-            }}
-          >
-            <FontAwesome
-              onPress={async () => await share(itemAvulsa)}
-              name="share-square-o"
-              size={24}
-              color="black"
-            />
-          </View>
-          <View
-            style={{
-              width: "90%",
-              alignItems: "flex-end",
-            }}
-          >
-            <FontAwesome
-              onPress={() => setShowModal(true)}
-              name="trash"
-              size={24}
-              color="red"
-            />
-          </View>
-        </View>
+        <Share_Trash itemAvulsa={itemAvulsa} />
       </Pressable>
     </ItemBox>
   );

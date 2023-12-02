@@ -16,6 +16,7 @@ type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
 };
+
 export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
   const { handleSubmit, control, reset } = useHookForm();
 
