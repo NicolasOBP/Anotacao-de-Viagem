@@ -10,13 +10,13 @@ export default function useHookFormAnotacaoCompleta() {
     useForm<AnotacaoCompletaSchema>({
       resolver: zodResolver(anotacaoCompletaSchemachema),
       defaultValues: {
-        pontoReferencia: "",
-        kmPercorrido: 0,
-        veloMedia: 0,
-        veloVia: 0,
+        PontoReferencia: "",
+        KmPercorrido: 0,
+        VeloFeita: 0,
+        VeloVia: 0,
         consumo: 0,
         ar: 0,
-        descricaoExtra: "",
+        descricao: "",
       },
       mode: "onChange",
     });

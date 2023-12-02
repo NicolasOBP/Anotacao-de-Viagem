@@ -19,16 +19,16 @@ type Props = {
 export default function AddViaCompleta({ setShowModal, showModal }: Props) {
   const { handleSubmit, control, reset, formState } =
     useHookFormViagemCompleta();
-  const { addAnotacao } = useCriaViagemCompleta(setShowModal, reset);
+  const { criaViagem } = useCriaViagemCompleta(setShowModal, reset);
 
   function AddAnotacao(data) {
-    addAnotacao(data);
+    criaViagem(data);
   }
 
   function cancelar() {
     reset({
-      saindoDe: "",
-      indoPara: "",
+      saindo: "",
+      indo: "",
     });
     setShowModal(false);
   }
@@ -40,8 +40,8 @@ export default function AddViaCompleta({ setShowModal, showModal }: Props) {
           <Box>
             <Title>Adicionar uma nova Viagem</Title>
 
-            <Input label="Saindo de:" name="saindoDe" control={control} />
-            <Input label="Indo para:" name="indoPara" control={control} />
+            <Input label="Saindo de:" name="saindo" control={control} />
+            <Input label="Indo para:" name="indo" control={control} />
 
             <View
               style={{

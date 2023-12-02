@@ -1,23 +1,30 @@
 import React from "react";
 import { BoxInput, ErrorMessage, Label, TextInput } from "./style";
-import { Control, Controller } from "react-hook-form";
-import { propsHookForm } from "../../types/hookForm";
+import { Controller, FieldValues, UseControllerProps } from "react-hook-form";
 import { TextInputProps } from "react-native";
 
-type Props = TextInputProps & {
+type Props = {
   label: string;
-  control: Control<propsHookForm> | any;
-  name: string;
   valor?: string;
 };
+export type FormTextInputProps<T extends FieldValues> = TextInputProps &
+  UseControllerProps<T>;
 
-export default function Input({ label, name, control, valor, ...rest }: Props) {
+export default function Input<FormType extends FieldValues>({
+  label,
+  name,
+  control,
+  valor,
+  rules,
+  ...rest
+}: FormTextInputProps<FormType> & Props) {
   return (
     <BoxInput>
       <Label>{label}</Label>
       <Controller
         control={control}
         name={name}
+        rules={rules}
         render={({ field, fieldState }) => (
           <>
             <TextInput
@@ -25,7 +32,9 @@ export default function Input({ label, name, control, valor, ...rest }: Props) {
               value={valor ? valor : field.value}
               {...rest}
             />
-            <ErrorMessage>{fieldState.error?.message}</ErrorMessage>
+            {fieldState.error?.message && (
+              <ErrorMessage>{fieldState.error?.message}</ErrorMessage>
+            )}
           </>
         )}
       />

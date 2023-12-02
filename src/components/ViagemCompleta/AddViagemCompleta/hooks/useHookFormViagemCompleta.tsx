@@ -10,8 +10,8 @@ export default function useHookFormViagemCompleta() {
     useForm<ViagmeCompletaSchema>({
       resolver: zodResolver(viagemComepltaSchemachema),
       defaultValues: {
-        saindoDe: "",
-        indoPara: "",
+        saindo: "",
+        indo: "",
       },
       mode: "onChange",
     });

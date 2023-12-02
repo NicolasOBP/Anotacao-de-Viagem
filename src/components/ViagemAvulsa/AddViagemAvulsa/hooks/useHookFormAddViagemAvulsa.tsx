@@ -10,15 +10,15 @@ export default function useHookFormAddViagemAvulsa() {
     useForm<ViagemAvulsaSchema>({
       resolver: zodResolver(viagemAvulsaSchemachema),
       defaultValues: {
-        saindoDe: "",
-        indoPara: "",
-        kmPercorrido: 0,
-        veloVia: 0,
-        veloMedia: 0,
+        saindo: "",
+        indo: "",
+        KmPercorrido: 0,
+        VeloVia: 0,
+        VeloFeita: 0,
         consumo: 0,
         ar: 0,
-        gasto: 0,
-        descricaoExtra: "",
+        gastos: 0,
+        descricao: "",
       },
       mode: "onChange",
     });

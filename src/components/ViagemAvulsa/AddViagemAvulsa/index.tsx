@@ -28,15 +28,15 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
 
   function cancelar() {
     reset({
-      saindoDe: "",
-      indoPara: "",
-      kmPercorrido: 0,
-      veloVia: 0,
-      veloMedia: 0,
+      saindo: "",
+      indo: "",
+      KmPercorrido: 0,
+      VeloVia: 0,
+      VeloFeita: 0,
       consumo: 0,
       ar: 0,
-      descricaoExtra: "",
-      gasto: 0,
+      descricao: "",
+      gastos: 0,
     });
     setShowModal(false);
   }
@@ -48,27 +48,27 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
           <Box>
             <Title>Adicionar uma nova Anotação</Title>
 
-            <Input label="Saindo de:" control={control} name="saindoDe" />
-            <Input label="Indo para:" control={control} name="indoPara" />
+            <Input label="Saindo de:" control={control} name="saindo" />
+            <Input label="Indo para:" control={control} name="indo" />
             <Input
               label="Km percorrido:"
               control={control}
               placeholder="Só número"
-              name="kmPercorrido"
+              name="KmPercorrido"
               keyboardType="numeric"
             />
             <Input
               label="Velocidade na Via:"
               control={control}
               placeholder="Só número"
-              name="veloVia"
+              name="VeloVia"
               keyboardType="numeric"
             />
             <Input
               label="Velocidade média:"
               control={control}
               placeholder="Só número"
-              name="veloMedia"
+              name="VeloFeita"
               keyboardType="numeric"
             />
             <Input
@@ -89,14 +89,14 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
               label="Gastos (R$):"
               control={control}
               placeholder="Só número, opcional"
-              name="gasto"
+              name="gastos"
               keyboardType="numeric"
             />
             <Input
               label="Descrição extra:"
               control={control}
               placeholder="Opicional"
-              name="descricaoExtra"
+              name="descricao"
             />
 
             <View

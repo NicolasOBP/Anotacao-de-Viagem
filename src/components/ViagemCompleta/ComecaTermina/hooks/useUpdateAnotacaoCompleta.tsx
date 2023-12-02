@@ -3,7 +3,7 @@ import { useDadosStore } from "../../../../context/dadosStore";
 import { UseFormReset } from "react-hook-form";
 
 type reset = {
-  gasto: number;
+  gastos: number;
   descricaoExtra: string;
 };
 export function useUpdateAnotacaoCompleta(
@@ -47,7 +47,7 @@ export function useUpdateAnotacaoCompleta(
     }
     reset({
       descricaoExtra: "",
-      gasto: 0,
+      gastos: 0,
     });
     setShowModal(false);
   }

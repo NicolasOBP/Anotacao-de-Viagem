@@ -2,18 +2,19 @@ import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
 import { useDadosStore } from "../../../../context/dadosStore";
 
-type reset = { saindoDe?: string; indoPara?: string };
 type itemCompleta = {
   saindo: string;
   indo: string;
 };
 export function useCriaViagemCompleta(
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
-  reset: UseFormReset<reset>
+  reset: UseFormReset<itemCompleta>
 ) {
   const { user } = useDadosStore();
 
-  function addAnotacao(item: itemCompleta) {
+  function criaViagem(item: itemCompleta) {
+    console.log(item);
+
     let newDate = new Date();
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
@@ -28,10 +29,10 @@ export function useCriaViagemCompleta(
       .catch((err) => console.log(err));
 
     reset({
-      saindoDe: "",
-      indoPara: "",
+      saindo: "",
+      indo: "",
     });
     setShowModal(false);
   }
-  return { addAnotacao };
+  return { criaViagem };
 }

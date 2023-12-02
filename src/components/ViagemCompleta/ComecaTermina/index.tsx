@@ -34,7 +34,7 @@ export default function ComecaTermina({
                 label="Gastos (R$):"
                 control={control}
                 placeholder="Só número, opcional"
-                name="gasto"
+                name="gastos"
                 keyboardType="numeric"
               />
             )}

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const comecaTerminaSchemachema = z.object({
-  gasto: z.number().optional(),
+  gastos: z.number().optional(),
   descricaoExtra: z.string().trim().optional(),
 });
 

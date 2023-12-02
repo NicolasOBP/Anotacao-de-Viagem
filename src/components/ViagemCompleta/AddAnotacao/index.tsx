@@ -32,13 +32,13 @@ export default function AddAnotacaoCompleta({
 
   function cancelar() {
     reset({
-      kmPercorrido: 0,
-      veloVia: 0,
-      veloMedia: 0,
+      KmPercorrido: 0,
+      VeloVia: 0,
+      VeloFeita: 0,
       consumo: 0,
       ar: 0,
-      descricaoExtra: "",
-      pontoReferencia: "",
+      descricao: "",
+      PontoReferencia: "",
     });
     setShowModal(false);
   }
@@ -56,27 +56,27 @@ export default function AddAnotacaoCompleta({
             <Input
               label="Ponto de referência:"
               control={control}
-              name="pontoReferencia"
+              name="PontoReferencia"
             />
             <Input
               label="Km percorrido:"
               control={control}
               placeholder="Só número"
-              name="kmPercorrido"
+              name="KmPercorrido"
               keyboardType="numeric"
             />
             <Input
               label="Velocidade na Via:"
               control={control}
               placeholder="Só número"
-              name="veloVia"
+              name="VeloVia"
               keyboardType="numeric"
             />
             <Input
               label="Velocidade média:"
               control={control}
               placeholder="Só número"
-              name="veloMedia"
+              name="VeloFeita"
               keyboardType="numeric"
             />
             <Input
@@ -97,7 +97,7 @@ export default function AddAnotacaoCompleta({
               label="Descrição extra:"
               control={control}
               placeholder="Opicional"
-              name="descricaoExtra"
+              name="descricao"
             />
 
             <View
