@@ -24,8 +24,7 @@ export default function Input<FormType extends FieldValues>({
       <Controller
         control={control}
         name={name}
-        rules={rules}
-        render={({ field, fieldState }) => (
+        render={({ field, fieldState, formState }) => (
           <>
             <TextInput
               onChangeText={(value: string) => field.onChange(value)}

@@ -5,12 +5,12 @@ import { useDadosStore } from "../../../../context/dadosStore";
 type reset = {
   saindoDe?: string;
   indoPara?: string;
-  kmPercorrido?: number;
-  veloVia?: number;
-  veloMedia?: number;
-  consumo?: number;
-  ar?: number;
-  gasto?: number;
+  kmPercorrido?: string;
+  veloVia?: string;
+  veloMedia?: string;
+  consumo?: string;
+  ar?: string;
+  gasto?: string;
   descricaoExtra?: string;
 };
 type itemAvulsa = {
@@ -51,12 +51,12 @@ export function useAddViagemAvulsa(
     reset({
       saindoDe: "",
       indoPara: "",
-      kmPercorrido: 0,
-      veloVia: 0,
-      veloMedia: 0,
-      consumo: 0,
-      ar: 0,
-      gasto: 0,
+      kmPercorrido: "",
+      veloVia: "",
+      veloMedia: "",
+      consumo: "",
+      ar: "",
+      gasto: "",
       descricaoExtra: "",
     });
     setShowModal(false);

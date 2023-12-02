@@ -9,7 +9,7 @@ export default function useHookFormComecaTermina() {
   const { control, handleSubmit, formState, reset } =
     useForm<ComecaTerminaSchema>({
       defaultValues: {
-        gastos: 0,
+        gastos: "",
         descricaoExtra: "",
       },
       resolver: zodResolver(comecaTerminaSchemachema),

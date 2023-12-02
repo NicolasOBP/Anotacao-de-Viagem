@@ -30,13 +30,13 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
     reset({
       saindo: "",
       indo: "",
-      KmPercorrido: 0,
-      VeloVia: 0,
-      VeloFeita: 0,
-      consumo: 0,
-      ar: 0,
+      KmPercorrido: "",
+      VeloVia: "",
+      VeloFeita: "",
+      consumo: "",
+      ar: "",
       descricao: "",
-      gastos: 0,
+      gastos: "",
     });
     setShowModal(false);
   }

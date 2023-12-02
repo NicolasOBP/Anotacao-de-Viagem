@@ -4,11 +4,11 @@ import { UseFormReset } from "react-hook-form";
 
 type reset = {
   pontoReferencia: string;
-  kmPercorrido: number;
-  veloMedia: number;
-  veloVia: number;
-  consumo: number;
-  ar: number;
+  kmPercorrido: string;
+  veloMedia: string;
+  veloVia: string;
+  consumo: string;
+  ar: string;
   descricaoExtra: string;
 };
 type itemAnotacaoCompleta = {
@@ -62,11 +62,11 @@ export function useAddAnotacaoCompleta(
 
     reset({
       pontoReferencia: "",
-      kmPercorrido: 0,
-      veloVia: 0,
-      veloMedia: 0,
-      consumo: 0,
-      ar: 0,
+      kmPercorrido: "",
+      veloVia: "",
+      veloMedia: "",
+      consumo: "",
+      ar: "",
       descricaoExtra: "",
     });
     setShowModal(false);

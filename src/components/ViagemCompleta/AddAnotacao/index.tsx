@@ -32,11 +32,11 @@ export default function AddAnotacaoCompleta({
 
   function cancelar() {
     reset({
-      KmPercorrido: 0,
-      VeloVia: 0,
-      VeloFeita: 0,
-      consumo: 0,
-      ar: 0,
+      KmPercorrido: "",
+      VeloVia: "",
+      VeloFeita: "",
+      consumo: "",
+      ar: "",
       descricao: "",
       PontoReferencia: "",
     });

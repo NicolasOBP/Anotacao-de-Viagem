@@ -17,19 +17,19 @@ import { useUpdateAnotacaoCompleta } from "../../hooks/useUpdateAnotacaoCompleta
 
 type Props = {
   control: Control<{
-    gastos?: number;
+    gastos?: string;
     descricaoExtra?: string;
   }>;
   handleSubmit: UseFormHandleSubmit<{
-    gastos?: number;
+    gastos?: string;
     descricaoExtra?: string;
   }>;
   reset: UseFormReset<{
-    gastos?: number;
+    gastos?: string;
     descricaoExtra?: string;
   }>;
   formState: FormState<{
-    gastos?: number;
+    gastos?: string;
     descricaoExtra?: string;
   }>;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -55,7 +55,7 @@ export default function AddAnotacaoExtra({
   function cancelar(input: boolean) {
     reset({
       descricaoExtra: "",
-      gastos: 0,
+      gastos: "",
     });
     if (input) setShowInput(false);
     else setShowModal(false);
