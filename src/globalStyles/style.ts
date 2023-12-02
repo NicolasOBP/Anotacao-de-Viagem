@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { FlatList as RNFlatList } from "react-native";
 
 export const Container = styled.View`
   flex: 1;
@@ -63,4 +64,4 @@ export const BoxInfo = styled.View`
 
 export const FlatList = styled.FlatList`
   width: 80%;
-`;
+` as typeof RNFlatList;
