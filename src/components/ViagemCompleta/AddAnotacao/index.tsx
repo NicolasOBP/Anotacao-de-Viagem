@@ -3,8 +3,6 @@ import { Modal, View, Keyboard, TouchableWithoutFeedback } from "react-native";
 import Input from "../../Input";
 import { useDadosStore } from "../../../context/dadosStore";
 import { useAddAnotacaoCompleta } from "./hooks/useAddAnotacaoCompleta";
-import useHookForm from "../../../hooks/useHookForm";
-import { propsHookForm } from "../../../types/hookForm";
 import {
   ContainerBtn,
   ContainerBtncancel,
@@ -12,6 +10,7 @@ import {
   Title,
 } from "../../../globalStyles/style";
 import { Box, Container } from "../../../globalStyles/modal";
+import useHookFormAnotacaoCompleta from "./hooks/useHookFormAnotacaoCompleta";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,32 +22,21 @@ export default function AddAnotacaoCompleta({
 }: Props) {
   const { viagemCompletaStore } = useDadosStore();
 
-  const { handleSubmit, control, reset } = useHookForm();
+  const { handleSubmit, control, reset, formState } =
+    useHookFormAnotacaoCompleta();
   const { addAnotacao } = useAddAnotacaoCompleta(setShowModal, reset);
 
-  function AddAnotacao(data: propsHookForm) {
-    let item = {
-      PontoReferencia: data.pontoReferencia,
-      KmPercorrido: data.kmPercorrido,
-      VeloFeita: data.veloMedia,
-      VeloVia: data.veloVia,
-      consumo: data.consumo,
-      ar: data.ar,
-      descricao: data.descricaoExtra,
-    };
-
-    addAnotacao(item);
+  function AddAnotacao(data) {
+    addAnotacao(data);
   }
 
   function cancelar() {
     reset({
-      saindoDe: "",
-      indoPara: "",
-      kmPercorrido: "",
-      veloVia: "",
-      veloMedia: "",
-      consumo: "",
-      ar: "",
+      kmPercorrido: 0,
+      veloVia: 0,
+      veloMedia: 0,
+      consumo: 0,
+      ar: 0,
       descricaoExtra: "",
       pontoReferencia: "",
     });
@@ -123,6 +111,7 @@ export default function AddAnotacaoCompleta({
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={handleSubmit(AddAnotacao)}
+                disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>
               </ContainerBtn>

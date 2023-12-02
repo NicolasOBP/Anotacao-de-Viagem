@@ -1,8 +1,18 @@
 import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
-import { propsHookForm } from "../../../../types/hookForm";
 import { useDadosStore } from "../../../../context/dadosStore";
 
+type reset = {
+  saindoDe?: string;
+  indoPara?: string;
+  kmPercorrido?: number;
+  veloVia?: number;
+  veloMedia?: number;
+  consumo?: number;
+  ar?: number;
+  gasto?: number;
+  descricaoExtra?: string;
+};
 type itemAvulsa = {
   saindo: string;
   indo: string;
@@ -16,7 +26,7 @@ type itemAvulsa = {
 };
 export function useAddViagemAvulsa(
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
-  reset: UseFormReset<propsHookForm>
+  reset: UseFormReset<reset>
 ) {
   const { user } = useDadosStore();
   function addAnotacao(item: itemAvulsa) {
@@ -30,52 +40,26 @@ export function useAddViagemAvulsa(
     let minutes = newDate.getMinutes();
     let hora = hour + ":" + minutes;
 
-    const isValid1 = /^[0-9,.]+$/.test(item.KmPercorrido);
-    const isValid2 = /^[0-9,.]+$/.test(item.VeloVia);
-    const isValid3 = /^[0-9,.]+$/.test(item.VeloFeita);
-    const isValid4 = /^[0-9,.]+$/.test(item.consumo);
-    const isValid5 = /^[0-9,.]+$/.test(item.ar);
+    firestore()
+      .collection(user.id)
+      .doc("Viagem Avulsa")
+      .collection("1")
+      .add({ ...item, hora, data, timestamp: new Date().getTime() })
+      .then()
+      .catch((err) => console.log(err));
 
-    const isEmpyt =
-      item.saindo == "" ||
-      item.indo == "" ||
-      item.KmPercorrido == "" ||
-      item.VeloVia == "" ||
-      item.VeloFeita == "" ||
-      item.consumo == "" ||
-      item.ar == "";
-    const hasNumber =
-      isValid1 == false ||
-      isValid2 == false ||
-      isValid3 == false ||
-      isValid4 == false ||
-      isValid5 == false;
-    if (isEmpyt) alert("Preencha todos os campos");
-    else if (hasNumber) {
-      alert("Detectado letras nos campos impróprio");
-    } else {
-      firestore()
-        .collection(user.id)
-        .doc("Viagem Avulsa")
-        .collection("1")
-        .add({ ...item, hora, data, timestamp: new Date().getTime() })
-        .then()
-        .catch((err) => console.log(err));
-
-      reset({
-        saindoDe: "",
-        indoPara: "",
-        kmPercorrido: "",
-        veloVia: "",
-        veloMedia: "",
-        consumo: "",
-        ar: "",
-        descricaoExtra: "",
-        pontoReferencia: "",
-        gastos: "",
-      });
-      setShowModal(false);
-    }
+    reset({
+      saindoDe: "",
+      indoPara: "",
+      kmPercorrido: 0,
+      veloVia: 0,
+      veloMedia: 0,
+      consumo: 0,
+      ar: 0,
+      gasto: 0,
+      descricaoExtra: "",
+    });
+    setShowModal(false);
   }
   return { addAnotacao };
 }

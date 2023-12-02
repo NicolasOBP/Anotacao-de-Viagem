@@ -8,9 +8,8 @@ import {
   Title,
 } from "../../../globalStyles/style";
 import { useAddViagemAvulsa } from "./hooks/useAddAnotacaoAvulsa";
-import useHookForm from "../../../hooks/useHookForm";
-import { propsHookForm } from "../../../types/hookForm";
 import { Box, Container } from "../../../globalStyles/modal";
+import useHookFormAddViagemAvulsa from "./hooks/useHookFormAddViagemAvulsa";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,38 +17,26 @@ type Props = {
 };
 
 export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
-  const { handleSubmit, control, reset } = useHookForm();
+  const { handleSubmit, control, reset, formState } =
+    useHookFormAddViagemAvulsa();
 
   const { addAnotacao } = useAddViagemAvulsa(setShowModal, reset);
 
-  function AddAnotacao(data: propsHookForm) {
-    let item = {
-      saindo: data.saindoDe,
-      indo: data.indoPara,
-      KmPercorrido: data.kmPercorrido,
-      VeloFeita: data.veloMedia,
-      VeloVia: data.veloVia,
-      consumo: data.consumo,
-      ar: data.ar,
-      gastos: data?.gastos,
-      descricao: data.descricaoExtra,
-    };
-
-    addAnotacao(item);
+  function AddAnotacao(data) {
+    addAnotacao(data);
   }
 
   function cancelar() {
     reset({
       saindoDe: "",
       indoPara: "",
-      kmPercorrido: "",
-      veloVia: "",
-      veloMedia: "",
-      consumo: "",
-      ar: "",
+      kmPercorrido: 0,
+      veloVia: 0,
+      veloMedia: 0,
+      consumo: 0,
+      ar: 0,
       descricaoExtra: "",
-      pontoReferencia: "",
-      gastos: "",
+      gasto: 0,
     });
     setShowModal(false);
   }
@@ -102,7 +89,7 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
               label="Gastos (R$):"
               control={control}
               placeholder="Só número, opcional"
-              name="gastos"
+              name="gasto"
               keyboardType="numeric"
             />
             <Input
@@ -123,6 +110,7 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={handleSubmit(AddAnotacao)}
+                disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>
               </ContainerBtn>

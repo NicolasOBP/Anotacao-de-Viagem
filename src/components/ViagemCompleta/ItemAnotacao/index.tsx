@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Pressable } from "react-native";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";

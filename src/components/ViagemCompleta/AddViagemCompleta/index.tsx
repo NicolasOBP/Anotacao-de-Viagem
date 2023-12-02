@@ -2,8 +2,6 @@ import React from "react";
 import { Modal, View, Keyboard, TouchableWithoutFeedback } from "react-native";
 import Input from "../../Input";
 import { useCriaViagemCompleta } from "./hooks/useCriaViagemCompleta";
-import useHookForm from "../../../hooks/useHookForm";
-import { propsHookForm } from "../../../types/hookForm";
 import {
   ContainerBtn,
   ContainerBtncancel,
@@ -11,36 +9,26 @@ import {
   Title,
 } from "../../../globalStyles/style";
 import { Box, Container2 } from "../../../globalStyles/modal";
+import useHookFormViagemCompleta from "./hooks/useHookFormViagemCompleta";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
 };
 
-export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
-  const { handleSubmit, control, reset } = useHookForm();
+export default function AddViaCompleta({ setShowModal, showModal }: Props) {
+  const { handleSubmit, control, reset, formState } =
+    useHookFormViagemCompleta();
   const { addAnotacao } = useCriaViagemCompleta(setShowModal, reset);
 
-  function AddAnotacao(data: propsHookForm) {
-    let item = {
-      saindo: data.saindoDe,
-      indo: data.indoPara,
-    };
-
-    addAnotacao(item);
+  function AddAnotacao(data) {
+    addAnotacao(data);
   }
 
   function cancelar() {
     reset({
       saindoDe: "",
       indoPara: "",
-      kmPercorrido: "",
-      veloVia: "",
-      veloMedia: "",
-      consumo: "",
-      ar: "",
-      descricaoExtra: "",
-      pontoReferencia: "",
     });
     setShowModal(false);
   }
@@ -50,7 +38,7 @@ export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container2>
           <Box>
-            <Title>Adicionar uma nova Anotação</Title>
+            <Title>Adicionar uma nova Viagem</Title>
 
             <Input label="Saindo de:" name="saindoDe" control={control} />
             <Input label="Indo para:" name="indoPara" control={control} />
@@ -66,6 +54,7 @@ export default function AddViaCompletaa({ setShowModal, showModal }: Props) {
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={handleSubmit(AddAnotacao)}
+                disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>
               </ContainerBtn>

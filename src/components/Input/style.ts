@@ -10,10 +10,14 @@ export const Label = styled.Text`
   font-weight: bold;
 `;
 
-export const TextInput = (styled.TextInput`
+export const TextInput = styled.TextInput`
   border: 2px solid ${({ theme }) => theme.COLORS.BORDER_COLOR};
   padding: 2px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.COLORS.PRIMARY_300};
   color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-`) as typeof RNTextInput
+` as typeof RNTextInput;
+
+export const ErrorMessage = styled.Text`
+  color: red;
+`;
