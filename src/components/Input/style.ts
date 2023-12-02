@@ -1,5 +1,5 @@
-import styled, { DefaultTheme } from "styled-components/native";
-
+import styled from "styled-components/native";
+import { TextInput as RNTextInput } from "react-native";
 export const BoxInput = styled.View`
   width: 80%;
   margin-bottom: 4px;
@@ -10,10 +10,10 @@ export const Label = styled.Text`
   font-weight: bold;
 `;
 
-export const TextInput = styled.TextInput`
+export const TextInput = (styled.TextInput`
   border: 2px solid ${({ theme }) => theme.COLORS.BORDER_COLOR};
   padding: 2px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.COLORS.PRIMARY_300};
   color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
-`;
+`) as typeof RNTextInput

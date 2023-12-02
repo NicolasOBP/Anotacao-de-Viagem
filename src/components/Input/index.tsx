@@ -2,25 +2,21 @@ import React from "react";
 import { BoxInput, Label, TextInput } from "./style";
 import { Control, Controller } from "react-hook-form";
 import { propsHookForm, values } from "../../types/hookForm";
+import { TextInputProps } from "react-native";
 
-type Props = {
+type Props = TextInputProps & {
   label: string;
   control: Control<propsHookForm> | any;
-  placeholder?: string;
   name: values;
   valor?: string;
-  disable?: boolean;
-  keyboardType?: string;
 };
 
 export default function Input({
   label,
-  placeholder,
   name,
   control,
   valor,
-  disable,
-  keyboardType,
+  ...rest
 }: Props) {
   return (
     <BoxInput>
@@ -31,10 +27,8 @@ export default function Input({
         render={({ field: { onChange, value } }) => (
           <TextInput
             onChangeText={(value: string) => onChange(value)}
-            placeholder={placeholder}
             value={valor ? valor : value}
-            editable={disable}
-            keyboardType={keyboardType}
+            {...rest}
           />
         )}
       />
