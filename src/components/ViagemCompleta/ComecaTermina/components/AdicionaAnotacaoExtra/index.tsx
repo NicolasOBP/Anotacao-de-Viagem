@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { ContainerBtn1, ContainerBtn2 } from "../../style";
 import Input from "../../../../Input";
 import {
-  ContainerBtn,
   ContainerBtncancel,
   ContainerBtnconfirma,
   TextBtn,
@@ -44,80 +43,44 @@ export default function AddAnotacaoExtra({
   tipoTermina,
   formState,
 }: Props) {
-  const [showInput, setShowInput] = useState(false);
-
   const { addAnotacao } = useUpdateAnotacaoCompleta(setShowModal, reset);
 
   function adicionar(data) {
     addAnotacao(data.descricaoExtra, tipoTermina, data.gastos);
-    setShowInput(false);
   }
-  function cancelar(input: boolean) {
+  function cancelar() {
     reset({
       descricaoExtra: "",
       gastos: "",
     });
-    if (input) setShowInput(false);
-    else setShowModal(false);
+    setShowModal(false);
   }
-
   return (
     <>
-      {showInput ? (
-        <ContainerBtn1>
-          <Input
-            label="Descrição extra"
-            control={control}
-            name="descricaoExtra"
-          />
+      <ContainerBtn1>
+        <Input
+          label="Descrição extra"
+          control={control}
+          name="descricaoExtra"
+        />
 
-          <ContainerBtn2>
-            <ContainerBtnconfirma
-              android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-              onPress={handleSubmit(adicionar)}
-              disabled={!formState.isValid}
-            >
-              <TextBtn>Confirmar</TextBtn>
-            </ContainerBtnconfirma>
-
-            <ContainerBtn
-              android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-              onPress={() => cancelar(true)}
-            >
-              <TextBtn>Cancelar</TextBtn>
-            </ContainerBtn>
-
-            <ContainerBtncancel
-              android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-              onPress={() => cancelar(false)}
-            >
-              <TextBtn>Voltar</TextBtn>
-            </ContainerBtncancel>
-          </ContainerBtn2>
-        </ContainerBtn1>
-      ) : (
         <ContainerBtn2>
           <ContainerBtnconfirma
-            android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-            onPress={() => setShowInput(true)}
-          >
-            <TextBtn>Adicionar</TextBtn>
-          </ContainerBtnconfirma>
-          <ContainerBtn
             android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
             onPress={handleSubmit(adicionar)}
             disabled={!formState.isValid}
           >
-            <TextBtn>Não adicionar</TextBtn>
-          </ContainerBtn>
+            <TextBtn>Confirmar</TextBtn>
+          </ContainerBtnconfirma>
+
           <ContainerBtncancel
             android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-            onPress={() => setShowModal(false)}
+            onPress={cancelar}
           >
             <TextBtn>Voltar</TextBtn>
           </ContainerBtncancel>
         </ContainerBtn2>
-      )}
+      </ContainerBtn1>
     </>
   );
 }

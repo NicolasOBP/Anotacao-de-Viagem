@@ -17,7 +17,7 @@ export default function Chegando({ chegando, partindo }: Props) {
   return (
     <>
       {chegando ? (
-        <Info chegando={partindo} />
+        <Info chegando={chegando} />
       ) : (
         partindo && (
           <ContainerBtn

@@ -7,9 +7,7 @@ export function usePegaAnotacaoCompleta() {
   const [viagemCompleta, setViagemCompleta] = useState<ViagemCompleta[]>([]);
   const { user } = useDadosStore();
 
-  useEffect(() => {
-    ViagemCompleta();
-  }, [user.id]);
+  useEffect(() => ViagemCompleta(), [user.id]);
 
   function ViagemCompleta() {
     try {

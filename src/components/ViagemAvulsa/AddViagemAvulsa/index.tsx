@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View, Keyboard, TouchableWithoutFeedback } from "react-native";
+import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import Input from "../../Input";
 import {
   ContainerBtn,
@@ -10,6 +10,7 @@ import {
 import { useAddViagemAvulsa } from "./hooks/useAddAnotacaoAvulsa";
 import { Box, Container } from "../../../globalStyles/modal";
 import useHookFormAddViagemAvulsa from "./hooks/useHookFormAddViagemAvulsa";
+import { BoxBtns } from "./style";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -99,14 +100,7 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
               name="descricao"
             />
 
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                width: "100%",
-                padding: 4,
-              }}
-            >
+            <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={handleSubmit(AddAnotacao)}
@@ -121,7 +115,7 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
               >
                 <TextBtn>Cancelar</TextBtn>
               </ContainerBtncancel>
-            </View>
+            </BoxBtns>
           </Box>
         </Container>
       </TouchableWithoutFeedback>

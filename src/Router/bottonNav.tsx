@@ -6,6 +6,7 @@ import Viagem from "../screens/Viagens";
 import { Icon, RootStackParamListBootom } from "./types/booton";
 import Perfil from "../screens/Perfil";
 import { mapIcons } from "./hooks/useMapIcons";
+import AnotacaoAvulsa from "../screens/AnotacaoAvulsa";
 
 const Tab = createBottomTabNavigator<RootStackParamListBootom>();
 
@@ -30,7 +31,11 @@ export default function BottomNav() {
         component={Home}
         options={{ tabBarHideOnKeyboard: true }}
       />
+
       <Tab.Screen name="Viagens" component={Viagem} />
+
+      <Tab.Screen name="AnotacaoAvulsa" component={AnotacaoAvulsa} />
+
       <Tab.Screen name="Perfil" component={Perfil} />
     </Tab.Navigator>
   );

@@ -3,7 +3,7 @@ import { z } from "zod";
 const numberRegex = /^[0-9,.]+$/;
 
 export const anotacaoCompletaSchemachema = z.object({
-  PontoReferencia: z.string({ required_error: "Campo obrigatório" }).trim(),
+  PontoReferencia: z.string().min(1, "Campo obrigatório").trim(),
   KmPercorrido: z
     .string()
     .min(1, "Campo obrigatório")

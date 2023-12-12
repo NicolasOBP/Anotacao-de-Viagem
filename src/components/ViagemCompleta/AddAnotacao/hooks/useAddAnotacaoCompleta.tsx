@@ -1,6 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
 import { useDadosStore } from "../../../../context/dadosStore";
 import { UseFormReset } from "react-hook-form";
+import useHoraData from "../../../../hooks/useHoraData";
 
 type reset = {
   pontoReferencia: string;
@@ -27,15 +28,7 @@ export function useAddAnotacaoCompleta(
   const { viagemCompletaStore, user } = useDadosStore();
 
   function addAnotacao(item: itemAnotacaoCompleta) {
-    let newDate = new Date();
-    let date = newDate.getDate();
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
-    let data = date + "/" + month + "/" + year;
-
-    let hour = newDate.getHours();
-    let minutes = newDate.getMinutes();
-    let hora = hour + ":" + minutes;
+    const { Data, Hora } = useHoraData();
 
     try {
       firestore()
@@ -43,7 +36,12 @@ export function useAddAnotacaoCompleta(
         .doc(viagemCompletaStore.id)
         .update({
           anotacao: [
-            { ...item, hora, data, timestamp: new Date().getTime() },
+            {
+              ...item,
+              hora: Hora(),
+              data: Data(),
+              timestamp: new Date().getTime(),
+            },
             ...viagemCompletaStore.anotacao,
           ],
         })
@@ -54,7 +52,14 @@ export function useAddAnotacaoCompleta(
         .collection(user.id)
         .doc(viagemCompletaStore.id)
         .update({
-          anotacao: [{ ...item, hora, data, timestamp: new Date().getTime() }],
+          anotacao: [
+            {
+              ...item,
+              hora: Hora(),
+              data: Data(),
+              timestamp: new Date().getTime(),
+            },
+          ],
         })
         .then()
         .catch((err) => console.log(err));

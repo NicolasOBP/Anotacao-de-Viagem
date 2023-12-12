@@ -1,6 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
 import { useDadosStore } from "../../../../context/dadosStore";
 import { UseFormReset } from "react-hook-form";
+import useHoraData from "../../../../hooks/useHoraData";
 
 type reset = {
   gastos: string;
@@ -17,22 +18,14 @@ export function useUpdateAnotacaoCompleta(
     tipoTermina: boolean,
     gastos: string
   ) {
-    let newDate = new Date();
-    let date = newDate.getDate();
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
-    let data = date + "/" + month + "/" + year;
-
-    let hour = newDate.getHours();
-    let minutes = newDate.getMinutes();
-    let hora = hour + ":" + minutes;
+    const { Data, Hora } = useHoraData();
 
     if (tipoTermina) {
       firestore()
         .collection(user.id)
         .doc(viagemCompletaStore.id)
         .update({
-          chegando: { data, hora, descricaoExtra, gastos },
+          chegando: { data: Data(), hora: Hora(), descricaoExtra, gastos },
           finalizado: true,
         })
         .then()
@@ -41,7 +34,7 @@ export function useUpdateAnotacaoCompleta(
       firestore()
         .collection(user.id)
         .doc(viagemCompletaStore.id)
-        .update({ partindo: { data, hora, descricaoExtra } })
+        .update({ partindo: { data: Data(), hora: Hora(), descricaoExtra } })
         .then()
         .catch((err) => console.log(err));
     }

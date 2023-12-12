@@ -1,12 +1,15 @@
 import { create } from "zustand";
 import { User } from "../types/user";
 import { ViagemCompleta } from "../types/viagemCompleta";
+import { NovaViagem, Status } from "../types/colecaoViagem";
 
 type State = {
   user: User | null;
   anonymousId: string;
   viagemCompletaStore: ViagemCompleta;
   theme: "light" | "dark";
+  colecaoStatusStore: Status;
+  dadosColecaoViagemStore: NovaViagem;
 };
 
 type Action = {
@@ -14,6 +17,8 @@ type Action = {
   setAnonymousId: (anonymousId: string) => void;
   setViagemCompleta: (viagemCompletaStore: ViagemCompleta) => void;
   setTheme: (theme: "light" | "dark") => void;
+  setColecoStatusStore: (colecaoStatusStore: Status) => void;
+  setDadosColecaoViagem: (dadosColecaoViagemStore: NovaViagem) => void;
 };
 
 export const useDadosStore = create<State & Action>((set) => ({
@@ -48,4 +53,52 @@ export const useDadosStore = create<State & Action>((set) => ({
 
   theme: "light",
   setTheme: (theme) => set({ theme }),
+
+  colecaoStatusStore: "Não iniciado",
+  setColecoStatusStore: (colecaoStatusStore) => set({ colecaoStatusStore }),
+
+  dadosColecaoViagemStore: {
+    dataCriacao: "",
+    status: "Não iniciado",
+    id: "",
+    idPai: "",
+    ida: {
+      data: "",
+      hora: "",
+      anotacao: [
+        {
+          ar: "",
+          consumo: "",
+          data: "",
+          hora: "",
+          KmPercorrido: "",
+          PontoReferencia: "",
+          VeloFeita: "",
+          VeloVia: "",
+          descricao: "",
+        },
+      ],
+      horaChegada: "",
+    },
+    volta: {
+      hora: "",
+      data: "",
+      horaChegada: "",
+      anotacao: [
+        {
+          ar: "",
+          consumo: "",
+          data: "",
+          hora: "",
+          KmPercorrido: "",
+          PontoReferencia: "",
+          VeloFeita: "",
+          VeloVia: "",
+          descricao: "",
+        },
+      ],
+    },
+  },
+  setDadosColecaoViagem: (dadosColecaoViagemStore) =>
+    set({ dadosColecaoViagemStore }),
 }));

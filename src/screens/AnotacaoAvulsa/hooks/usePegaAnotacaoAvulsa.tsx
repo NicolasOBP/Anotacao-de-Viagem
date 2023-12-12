@@ -6,9 +6,7 @@ export function usePegaAnotacaoAvulsa() {
   const [viagemAvulsa, setViagemAvulsa] = useState<ViagemAvulsa[]>([]);
   const { user } = useDadosStore();
 
-  useEffect(() => {
-    ViagemAvulsa();
-  }, [user.id]);
+  useEffect(() => ViagemAvulsa(), [user.id]);
 
   function ViagemAvulsa() {
     try {

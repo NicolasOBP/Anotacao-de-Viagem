@@ -1,9 +1,7 @@
 import { z } from "zod";
 
-const numberRegex = /^[0-9,.]+$/;
-
 export const comecaTerminaSchemachema = z.object({
-  gastos: z.string().regex(numberRegex, "Apenas números").optional(),
+  gastos: z.string().trim().optional(),
   descricaoExtra: z.string().trim().optional(),
 });
 

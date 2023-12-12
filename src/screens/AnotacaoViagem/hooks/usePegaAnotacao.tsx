@@ -4,12 +4,10 @@ import { ViagemCompleta } from "../../../types/viagemCompleta";
 import { useDadosStore } from "../../../context/dadosStore";
 
 export function usePegaAnotacao(viagem: ViagemCompleta) {
-  const [anotacaoCompleta, setAnotacaoCompleta] = useState<ViagemCompleta>();
-  const { user } = useDadosStore();
+  const { user, setViagemCompleta } = useDadosStore();
+  const [dadosViagem, setDadosViagem] = useState<ViagemCompleta>();
 
-  useEffect(() => {
-    ViagemCompleta();
-  }, []);
+  useEffect(() => ViagemCompleta(), []);
 
   function ViagemCompleta() {
     firestore()
@@ -18,8 +16,9 @@ export function usePegaAnotacao(viagem: ViagemCompleta) {
       .onSnapshot((docSnap) => {
         const viagem = docSnap.data() as ViagemCompleta;
 
-        setAnotacaoCompleta({ ...viagem, id: docSnap.id });
+        setDadosViagem({ ...viagem, id: docSnap.id });
+        setViagemCompleta({ ...viagem, id: docSnap.id });
       });
   }
-  return { anotacaoCompleta };
+  return { dadosViagem };
 }

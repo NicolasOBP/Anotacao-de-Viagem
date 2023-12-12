@@ -8,6 +8,7 @@ type Props = {
 };
 
 export default function Info({ chegando }: Props) {
+  console.log(chegando);
   return (
     <BoxInfo>
       <ItemTitle>Chegada</ItemTitle>
@@ -16,7 +17,7 @@ export default function Info({ chegando }: Props) {
         Hora e data: {chegando.hora} ={">"} {chegando.data}
       </ItemText>
 
-      {chegando.gastos && <ItemText>Gastos: {chegando.gastos}</ItemText>}
+      {chegando.gastos && <ItemText>Gastos: R${chegando.gastos}</ItemText>}
 
       {chegando.descricaoExtra && (
         <ItemText>Descrição extra: {chegando.descricaoExtra}</ItemText>

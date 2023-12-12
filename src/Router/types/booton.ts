@@ -2,6 +2,7 @@ export type RootStackParamListBootom = {
   TelaInicial: undefined;
   Viagens: undefined;
   Perfil: undefined;
+  AnotacaoAvulsa: undefined;
 };
 
 export type Icon =
@@ -10,7 +11,9 @@ export type Icon =
   | "airplane"
   | "airplane-outline"
   | "person-circle"
-  | "person-circle-outline";
+  | "person-circle-outline"
+  | "md-bookmark-outline"
+  | "md-bookmark-sharp";
 
 export type MapIcon = {
   focus: Icon;

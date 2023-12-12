@@ -1,11 +1,9 @@
 import { View, Pressable } from "react-native";
 import React from "react";
-import { FontAwesome } from "@expo/vector-icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { useDadosStore } from "../../../context/dadosStore";
-import { shareAnotacaoViagemCompelta } from "../../../utils/Share/shareAnotacaoViagemCompleta";
 import { RootStackParamListStack } from "../../../Router/types/stack";
 import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
+import ShareComponent from "./components/Share";
 
 type item = {
   PontoReferencia: string;
@@ -26,7 +24,7 @@ type Nav = NavigationProp<RootStackParamListStack>;
 
 export function ItemCompleta({ itemAnotacaoCompleta }: Props) {
   const navigation = useNavigation<Nav>();
-  const { viagemCompletaStore } = useDadosStore();
+
   return (
     <ItemBox>
       <Pressable
@@ -46,23 +44,8 @@ export function ItemCompleta({ itemAnotacaoCompleta }: Props) {
             {itemAnotacaoCompleta?.hora}
           </ItemText>
         </View>
-        <View
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
-          <FontAwesome
-            onPress={async () =>
-              await shareAnotacaoViagemCompelta(
-                itemAnotacaoCompleta,
-                viagemCompletaStore.saindo + " para " + viagemCompletaStore.indo
-              )
-            }
-            name="share-square-o"
-            size={24}
-            color="black"
-          />
-        </View>
+
+        <ShareComponent itemAnotacaoCompleta={itemAnotacaoCompleta} />
       </Pressable>
     </ItemBox>
   );

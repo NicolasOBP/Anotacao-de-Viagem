@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View, Keyboard, TouchableWithoutFeedback } from "react-native";
+import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import Input from "../../Input";
 import { useCriaViagemCompleta } from "./hooks/useCriaViagemCompleta";
 import {
@@ -10,6 +10,7 @@ import {
 } from "../../../globalStyles/style";
 import { Box, Container2 } from "../../../globalStyles/modal";
 import useHookFormViagemCompleta from "./hooks/useHookFormViagemCompleta";
+import { BoxBtns } from "./style";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -43,14 +44,7 @@ export default function AddViaCompleta({ setShowModal, showModal }: Props) {
             <Input label="Saindo de:" name="saindo" control={control} />
             <Input label="Indo para:" name="indo" control={control} />
 
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                width: "100%",
-                padding: 4,
-              }}
-            >
+            <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={handleSubmit(AddAnotacao)}
@@ -65,7 +59,7 @@ export default function AddViaCompleta({ setShowModal, showModal }: Props) {
               >
                 <TextBtn>Cancelar</TextBtn>
               </ContainerBtncancel>
-            </View>
+            </BoxBtns>
           </Box>
         </Container2>
       </TouchableWithoutFeedback>

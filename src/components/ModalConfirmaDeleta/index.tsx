@@ -9,22 +9,39 @@ import {
 import { useDeletaViagemCompleta } from "../ViagemCompleta/ItemViagem/hooks/useDeletaViagemCompleta";
 import { useDeletaViagem } from "../ViagemAvulsa/ItemViagem/hooks/useDeletaViagemAvulsa";
 import { Box, Container2, ContainerBtnModal } from "../../globalStyles/modal";
+import useDeletaColecao from "../ColecaoViagem/ItemInicial/hooks/useDeletaColecao";
+import useDeletaViagemColecao from "../ColecaoViagem/ItemViagem/hooks/useDeletaViagemColecao";
+import { Status } from "../../types/colecaoViagem";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
-  tipoAvulsa: boolean;
+  tipoDel: "Colecao" | "Viagem" | "Anotacao" | "ColecaoViagem";
   id: string;
+  idPai?: string;
+  statusViagem?: Status;
 };
 
 export default function ModalConfirmaDeletar({
   setShowModal,
   showModal,
-  tipoAvulsa,
+  tipoDel,
   id,
+  idPai,
+  statusViagem,
 }: Props) {
   const { delAvulsa } = useDeletaViagem();
   const { delCompleta } = useDeletaViagemCompleta();
+  const { delColecao } = useDeletaColecao();
+  const { delViagemColecao } = useDeletaViagemColecao();
+
+  function del() {
+    if (tipoDel === "Anotacao") delAvulsa(id);
+    if (tipoDel === "Viagem") delCompleta(id);
+    if (tipoDel === "Colecao") delColecao(id);
+    if (tipoDel === "ColecaoViagem") delViagemColecao(id, idPai, statusViagem);
+  }
+
   return (
     <Modal animationType="fade" transparent={true} visible={showModal}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -41,7 +58,7 @@ export default function ModalConfirmaDeletar({
 
               <ContainerBtncancel
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={() => (tipoAvulsa ? delAvulsa(id) : delCompleta(id))}
+                onPress={del}
               >
                 <TextBtn>Deletar</TextBtn>
               </ContainerBtncancel>

@@ -1,25 +1,24 @@
 import React from "react";
-import { ViagemAvulsa } from "../../types/viagemAvulsa";
 import { Container, FlatList, Title } from "../../globalStyles/style";
-import { ItemAvulsa } from "../../components/ViagemAvulsa/ItemViagem";
-import { usePegaAnotacaoAvulsa } from "./hooks/usePegaAnotacaoAvulsa";
-import NovaAnotacao from "./components/NovaAnotacao";
-import NovaViagem from "./components/NovaViagem";
+import { usePegaColecaoViagem } from "./hooks/usePegaColecaoViagem";
+import NovaColecao from "./components/NovaColeção";
+import { ItemInicial } from "../../components/ColecaoViagem/ItemInicial";
+import { ColecaoViagem } from "../../types/colecaoViagem";
 
 export default function Home() {
-  const { viagemAvulsa } = usePegaAnotacaoAvulsa();
+  const { colecaoViagem } = usePegaColecaoViagem();
 
   return (
     <Container>
       <Title>Anotações de Viagem</Title>
+      <Title>Coleção de Viagens</Title>
 
-      <NovaViagem />
-      <NovaAnotacao />
+      <NovaColecao />
 
       <FlatList
-        data={viagemAvulsa}
-        renderItem={({ item }) => <ItemAvulsa itemAvulsa={item} />}
-        keyExtractor={(item: ViagemAvulsa) => item.id}
+        data={colecaoViagem}
+        renderItem={({ item }) => <ItemInicial itemColecao={item} />}
+        keyExtractor={(item: ColecaoViagem) => item.id}
       />
     </Container>
   );

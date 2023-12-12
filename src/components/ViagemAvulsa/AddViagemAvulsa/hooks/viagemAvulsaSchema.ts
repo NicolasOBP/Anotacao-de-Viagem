@@ -25,7 +25,7 @@ export const viagemAvulsaSchemachema = z.object({
     .string()
     .min(1, "Campo obrigatório")
     .regex(numberRegex, "Apenas números"),
-  gastos: z.string().regex(numberRegex, "Apenas números").optional(),
+  gastos: z.string().trim().optional(),
   descricao: z.string().trim().optional(),
 });
 

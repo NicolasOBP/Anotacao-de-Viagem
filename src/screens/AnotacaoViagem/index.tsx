@@ -1,45 +1,34 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Title } from "../../globalStyles/style";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useDadosStore } from "../../context/dadosStore";
 import { usePegaAnotacao } from "./hooks/usePegaAnotacao";
-import { RootStackParamListStack } from "../../Router/types/stack";
 import Partindo from "./components/Partindo";
 import Anotacao from "./components/Anotacao";
 import Chegando from "./components/Chegando";
+import { PropsNav } from "../../Router/types/screenProps";
 
-export type PropsNav = NativeStackScreenProps<
-  RootStackParamListStack,
-  "AnotaçãoViagem"
->;
+export default function AnotacaoViagem({ route }: PropsNav<"AnotaçãoViagem">) {
+  const viagemCompleta = route.params.item;
+  const { dadosViagem } = usePegaAnotacao(viagemCompleta);
 
-export default function AnotacaoViagem({ route }: PropsNav) {
-  const viagemCompleta = route.params;
-  const { anotacaoCompleta } = usePegaAnotacao(viagemCompleta.item);
-  const { setViagemCompleta } = useDadosStore();
-
-  useEffect(() => {
-    if (anotacaoCompleta) setViagemCompleta(anotacaoCompleta);
-  }, [anotacaoCompleta]);
+  if (!dadosViagem) return <Container></Container>;
 
   return (
     <Container>
       <Title>
-        Anotação da viagem: {viagemCompleta.item.saindo} ={">"}{" "}
-        {viagemCompleta.item.indo}
+        Anotação da viagem: {viagemCompleta.saindo} ={">"} {viagemCompleta.indo}
       </Title>
 
-      <Partindo partindo={anotacaoCompleta?.partindo} />
+      <Partindo partindo={dadosViagem.partindo} />
 
       <Anotacao
-        anotacao={anotacaoCompleta?.anotacao}
-        chegando={anotacaoCompleta?.chegando}
-        partindo={anotacaoCompleta?.partindo}
+        anotacao={dadosViagem.anotacao}
+        chegando={dadosViagem.chegando}
+        partindo={dadosViagem.partindo}
       />
 
       <Chegando
-        chegando={anotacaoCompleta?.chegando}
-        partindo={anotacaoCompleta?.partindo}
+        chegando={dadosViagem.chegando}
+        partindo={dadosViagem.partindo}
       />
     </Container>
   );

@@ -2,41 +2,41 @@ import { ViagemAvulsa } from "../../types/viagemAvulsa";
 import { Share } from "react-native";
 import toast from "../toast/useToast";
 
-export async function share(items?: ViagemAvulsa) {
+export async function share(items: ViagemAvulsa) {
   try {
     const result = await Share.share({
       message:
         "*Saindo de*: " +
-        items?.saindo +
+        items.saindo +
         "\n" +
         "*Indo para*: " +
-        items?.indo +
+        items.indo +
         "\n" +
         "*Km percorrido*: " +
-        items?.KmPercorrido +
+        items.KmPercorrido +
         "km" +
         "\n" +
         "*Velocidade na Via*: " +
-        items?.VeloVia +
+        items.VeloVia +
         "Km/h" +
         "\n" +
         "*Velocidade Média*: " +
-        items?.VeloFeita +
+        items.VeloFeita +
         "Km/h" +
         "\n" +
         "*Consumo*: " +
-        items?.consumo +
+        items.consumo +
         "Km/L" +
         "\n" +
         "*Ar*: " +
-        items?.ar +
+        items.ar +
         "\n" +
         "*Gastos*: " +
         "R$" +
-        items?.gastos +
+        items.gastos +
         "\n" +
         "*Descrição extra*: " +
-        items?.descricao,
+        items.descricao,
     });
     if (result.action == Share.sharedAction) {
       if (result.activityType) {

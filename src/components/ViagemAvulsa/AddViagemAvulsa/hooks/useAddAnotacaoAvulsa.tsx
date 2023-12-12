@@ -1,6 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
 import { useDadosStore } from "../../../../context/dadosStore";
+import useHoraData from "../../../../hooks/useHoraData";
 
 type reset = {
   saindoDe?: string;
@@ -30,21 +31,18 @@ export function useAddViagemAvulsa(
 ) {
   const { user } = useDadosStore();
   function addAnotacao(item: itemAvulsa) {
-    let newDate = new Date();
-    let date = newDate.getDate();
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
-    let data = date + "/" + month + "/" + year;
-
-    let hour = newDate.getHours();
-    let minutes = newDate.getMinutes();
-    let hora = hour + ":" + minutes;
+    const { Data, Hora } = useHoraData();
 
     firestore()
       .collection(user.id)
       .doc("Viagem Avulsa")
       .collection("1")
-      .add({ ...item, hora, data, timestamp: new Date().getTime() })
+      .add({
+        ...item,
+        hora: Hora(),
+        data: Data(),
+        timestamp: new Date().getTime(),
+      })
       .then()
       .catch((err) => console.log(err));
 

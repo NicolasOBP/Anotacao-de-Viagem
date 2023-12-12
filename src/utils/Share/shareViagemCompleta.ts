@@ -2,43 +2,36 @@ import { ViagemCompleta } from "../../types/viagemCompleta";
 import { Share } from "react-native";
 import toast from "../toast/useToast";
 
-export async function shareViagemCompleta(items?: ViagemCompleta) {
+export async function shareViagemCompleta(items: ViagemCompleta) {
   try {
     let title: string =
-      "*Viagem de " +
-      items?.saindo.trim() +
-      " para " +
-      items?.indo.trim() +
-      "*\n";
+      "*Viagem de " + items.saindo + " para " + items.indo + "*\n";
 
     let partida: string =
       "*Partida*: " +
       "\n-Data: " +
-      items?.partindo?.data.trim() +
+      items.partindo.data +
       "\n-Hora: " +
-      items?.partindo?.hora.trim() +
+      items.partindo.hora +
       "\n";
-    if (items?.partindo?.descricaoExtra) {
-      partida +=
-        "-Descrição: " + items?.partindo?.descricaoExtra.trim() + "\n\n";
+    if (items.partindo.descricaoExtra) {
+      partida += "-Descrição: " + items.partindo.descricaoExtra + "\n\n";
     }
 
     let anotacões: string;
-    if (items?.anotacao) {
+    if (items.anotacao) {
       anotacões = "*Anotações da Viagem*\n";
-      items?.anotacao.forEach((anota) => {
-        let item =
-          "*Ponto de Referência: " + anota.PontoReferencia.trim() + "*\n";
-        item += "Hora: " + anota.hora.trim() + "\n";
-        item += "Km percorridos: " + anota.KmPercorrido.trim() + " Km\n";
-        item += "Valocidade na via: " + anota.VeloVia.trim() + " Km/h\n";
-        item += "Valocidade média: " + anota.VeloFeita.trim() + " Km/h\n";
-        item += "Consumo: " + anota.consumo.trim() + " Km/L\n";
-        if (!anota.descricao)
-          item += "Ar condicionado: " + anota.ar.trim() + "\n\n";
+      items.anotacao.forEach((anota) => {
+        let item = "*Ponto de Referência: " + anota.PontoReferencia + "*\n";
+        item += "Hora: " + anota.hora + "\n";
+        item += "Km percorridos: " + anota.KmPercorrido + " Km\n";
+        item += "Valocidade na via: " + anota.VeloVia + " Km/h\n";
+        item += "Valocidade média: " + anota.VeloFeita + " Km/h\n";
+        item += "Consumo: " + anota.consumo + " Km/L\n";
+        if (!anota.descricao) item += "Ar condicionado: " + anota.ar + "\n\n";
         else {
-          item += "Ar condicionado: " + anota.ar.trim() + "\n";
-          item += "Descrição: " + anota.descricao.trim() + "\n\n";
+          item += "Ar condicionado: " + anota.ar + "\n";
+          item += "Descrição: " + anota.descricao + "\n\n";
         }
         anotacões += item;
       });
@@ -49,15 +42,15 @@ export async function shareViagemCompleta(items?: ViagemCompleta) {
     let chegada: string =
       "*Chegada*: " +
       "\n-Data: " +
-      items?.chegando?.data.trim() +
+      items.chegando.data +
       "\n-Hora: " +
-      items?.chegando?.hora.trim() +
+      items.chegando.hora +
       "\n";
-    if (items?.chegando?.gastos) {
-      chegada += "-Gastos: " + "R$" + items?.chegando?.gastos.trim();
+    if (items.chegando.gastos) {
+      chegada += "-Gastos: " + "R$" + items.chegando.gastos;
     }
-    if (items?.chegando?.descricaoExtra) {
-      chegada += "-Descrição: " + items?.chegando?.descricaoExtra.trim();
+    if (items.chegando.descricaoExtra) {
+      chegada += "-Descrição: " + items.chegando.descricaoExtra;
     }
 
     const result = await Share.share({

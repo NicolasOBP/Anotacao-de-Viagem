@@ -50,7 +50,7 @@ export default function Share_Trash({ itemAvulsa }: Props) {
         setShowModal={setShowModal}
         showModal={showModal}
         id={itemAvulsa!.id}
-        tipoAvulsa={true}
+        tipoDel="Anotacao"
       />
     </>
   );

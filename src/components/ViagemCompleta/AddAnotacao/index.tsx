@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View, Keyboard, TouchableWithoutFeedback } from "react-native";
+import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import Input from "../../Input";
 import { useDadosStore } from "../../../context/dadosStore";
 import { useAddAnotacaoCompleta } from "./hooks/useAddAnotacaoCompleta";
@@ -11,6 +11,7 @@ import {
 } from "../../../globalStyles/style";
 import { Box, Container } from "../../../globalStyles/modal";
 import useHookFormAnotacaoCompleta from "./hooks/useHookFormAnotacaoCompleta";
+import { BoxBtns } from "./style";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -100,14 +101,7 @@ export default function AddAnotacaoCompleta({
               name="descricao"
             />
 
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                width: "100%",
-                padding: 4,
-              }}
-            >
+            <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
                 onPress={handleSubmit(AddAnotacao)}
@@ -122,7 +116,7 @@ export default function AddAnotacaoCompleta({
               >
                 <TextBtn>Cancelar</TextBtn>
               </ContainerBtncancel>
-            </View>
+            </BoxBtns>
           </Box>
         </Container>
       </TouchableWithoutFeedback>
