@@ -79,6 +79,8 @@ export const useDadosStore = create<State & Action>((set) => ({
         },
       ],
       horaChegada: "",
+      descricaoChegada: "",
+      gastos: "",
     },
     volta: {
       hora: "",
@@ -97,6 +99,8 @@ export const useDadosStore = create<State & Action>((set) => ({
           descricao: "",
         },
       ],
+      descricaoChegada: "",
+      gastos: "",
     },
   },
   setDadosColecaoViagem: (dadosColecaoViagemStore) =>

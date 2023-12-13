@@ -6,6 +6,7 @@ import { useDadosStore } from "../../../../context/dadosStore";
 import ItemAnotacaoColecao from "../../../../components/ColecaoViagem/ItemAnotacao";
 import Finalizar from "../Chegada";
 import useAtualizaDadosIdaVolta from "../../hooks/useAtualizaDadosIdaVolta";
+import ItemChegadaIda from "../ItemChegadaIda";
 
 type Props = {
   colecao: ColecaoViagem;
@@ -31,11 +32,9 @@ export default function Ida({ colecao }: Props) {
         )}
       />
 
-      {colecaoStatusStore === "Iniciado, ida" && (
-        <Finalizar tipo="Botao" tipoEstado="Ida" />
-      )}
+      {colecaoStatusStore === "Iniciado, ida" && <Finalizar tipoEstado="Ida" />}
 
-      {colecaoStatusStore !== "Iniciado, ida" && <Finalizar tipo="Item" />}
+      {colecaoStatusStore !== "Iniciado, ida" && <ItemChegadaIda />}
     </>
   );
 }

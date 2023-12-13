@@ -8,7 +8,6 @@ type Props = {
 };
 
 export default function Info({ chegando }: Props) {
-  console.log(chegando);
   return (
     <BoxInfo>
       <ItemTitle>Chegada</ItemTitle>

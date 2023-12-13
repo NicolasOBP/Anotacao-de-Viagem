@@ -13,12 +13,16 @@ export type NovaViagem = {
     data: string;
     anotacao: [Anotacao];
     horaChegada: string;
+    descricaoChegada: string;
+    gastos: string;
   };
   volta: {
     hora: string;
     data: string;
     anotacao: [Anotacao];
     horaChegada: string;
+    descricaoChegada: string;
+    gastos: string;
   };
   status: Status;
 };

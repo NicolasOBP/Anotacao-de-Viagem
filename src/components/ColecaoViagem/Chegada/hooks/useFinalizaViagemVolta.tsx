@@ -1,13 +1,19 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../../../context/dadosStore";
-import useHoraData from "../../../../../hooks/useHoraData";
+import { useDadosStore } from "../../../../context/dadosStore";
+import useHoraData from "../../../../hooks/useHoraData";
+import { UseFormReset } from "react-hook-form";
 
-export default function useFinalizaViagemVolta() {
+type item = {
+  descricaoChegada: string;
+  gastos: string;
+};
+
+export default function useFinalizaViagemVolta(reset: UseFormReset<item>) {
   const { user, dadosColecaoViagemStore, setColecoStatusStore } =
     useDadosStore();
   const { Hora } = useHoraData();
 
-  function finalizaViagemVolta() {
+  function finalizaViagemVolta(item: item) {
     setColecoStatusStore("Finalizado");
 
     try {
@@ -25,6 +31,8 @@ export default function useFinalizaViagemVolta() {
             data: dadosColecaoViagemStore.volta.data,
             hora: dadosColecaoViagemStore.volta.hora,
             horaChegada: Hora(),
+            descricaoChegada: item.descricaoChegada,
+            gastos: item.gastos,
           },
         });
     } catch (e) {
@@ -41,6 +49,8 @@ export default function useFinalizaViagemVolta() {
             data: dadosColecaoViagemStore.volta.data,
             hora: dadosColecaoViagemStore.volta.hora,
             horaChegada: Hora(),
+            descricaoChegada: item.descricaoChegada,
+            gastos: item.gastos,
           },
         });
     }
@@ -51,6 +61,11 @@ export default function useFinalizaViagemVolta() {
       .collection("1")
       .doc(dadosColecaoViagemStore.idPai)
       .update({ acontecendo: false });
+
+    reset({
+      descricaoChegada: "",
+      gastos: "",
+    });
   }
   return { finalizaViagemVolta };
 }
