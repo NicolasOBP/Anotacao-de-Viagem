@@ -1,14 +1,14 @@
 import { useDadosStore } from "../../../context/dadosStore";
-import { storage } from "../../../context/mmkv";
+import { storage, themeStorage } from "../../../context/mmkv";
 
 export default function useChangeTheme() {
   const { theme, setTheme } = useDadosStore();
   function changeTheme() {
     if (theme == "light") {
-      storage.set("theme.type", "dark");
+      storage.set(themeStorage, "dark");
       setTheme("dark");
     } else {
-      storage.set("theme.type", "light");
+      storage.set(themeStorage, "light");
       setTheme("light");
     }
   }
