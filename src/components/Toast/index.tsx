@@ -1,62 +1,119 @@
-import { View, Text, DeviceEventEmitter, StyleSheet } from "react-native";
-import React, { useEffect, useState } from "react";
-import { SHOW_TOAST_MESSAGE } from "../../utils/toast/toastMessage";
-import { data } from "../../types/toast";
+import { StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSequence,
+  withDelay,
+  withTiming,
+  runOnJS,
+} from "react-native-reanimated";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useToastConfig } from "../../context/Toast/useToastConfig";
+import { useToastDispatch } from "../../context/Toast/useToastDispatch";
+import { ToastText } from "./style";
 
-const colors = {
-  danger: "#e11919",
-  succes: "#109b08",
+const DEFAULT_DORATION = 1500;
+
+type Icon = {
+  Error: {
+    iconName: "error-outline";
+    iconColor: "#770404";
+  };
+
+  Success: {
+    iconName: "done-outline";
+    iconColor: "green";
+  };
+
+  Warning: {
+    iconName: "warning-amber";
+    iconColor: "yellow";
+  };
 };
 
-export default function Toast() {
-  const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState("");
-  const [time, setTime] = useState(3000);
+const toastMap: Icon = {
+  Error: { iconColor: "#770404", iconName: "error-outline" },
+  Success: {
+    iconName: "done-outline",
+    iconColor: "green",
+  },
 
-  function onNewToast(data: data) {
-    setMessage(data.message);
-    setMessageType(data.type);
-    if (data.time) setTime(data.time);
+  Warning: {
+    iconName: "warning-amber",
+    iconColor: "yellow",
+  },
+};
 
-    setTimeout(() => {
-      setMessage("");
-    }, time);
-  }
+export const Toast: React.FC = () => {
+  const { hideToast } = useToastDispatch();
+  const { message, show, type, duration } = useToastConfig();
+  const { iconColor, iconName } = toastMap[type];
+  const translationY = useSharedValue(0);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translationY.value }],
+  }));
 
   useEffect(() => {
-    DeviceEventEmitter.addListener(SHOW_TOAST_MESSAGE, onNewToast);
+    if (!show) return;
 
-    return () => {
-      DeviceEventEmitter.removeAllListeners();
-    };
-  }, []);
+    const topValue = 60;
 
-  if (!message) return null;
+    translationY.value = withSequence(
+      withTiming(topValue, { duration: 1000 }),
+      withDelay(
+        duration ? duration : DEFAULT_DORATION,
+        withTiming(topValue * -1, { duration: 1000 }, () => {
+          runOnJS(hideToast)();
+        })
+      )
+    );
+  }, [show]);
+
+  if (!show) return;
 
   return (
-    <View style={toastcss.container}>
-      <View style={{ ...toastcss.box, backgroundColor: colors[messageType] }}>
-        <Text style={toastcss.text}>{message}</Text>
-      </View>
-    </View>
+    <Animated.View
+      style={[
+        styles.toastContainer,
+        animatedStyle,
+        type === "Error"
+          ? styles.error
+          : type === "Success"
+          ? styles.success
+          : styles.warning,
+      ]}
+    >
+      <MaterialIcons name={iconName} size={30} color={iconColor} />
+      <ToastText>{message}</ToastText>
+    </Animated.View>
   );
-}
+};
 
-const toastcss = StyleSheet.create({
-  container: {
+const styles = StyleSheet.create({
+  toastContainer: {
     position: "absolute",
+    top: 0,
+    width: "90%",
+    padding: 10,
+    borderRadius: 18,
+    borderWidth: 2,
+    flexDirection: "row",
     alignItems: "center",
-    width: "100%",
-    elevation: 1,
-    paddingTop: 100,
+    alignSelf: "center",
   },
-  box: {
-    padding: 5,
-    borderRadius: 10,
+
+  success: {
+    backgroundColor: "#4cde4aca",
+    borderColor: "green",
   },
-  text: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 20,
+  error: {
+    backgroundColor: "#e93a3ad6",
+    borderColor: "red",
+  },
+  warning: {
+    backgroundColor: "#ebb2248a",
+    borderColor: "orange",
   },
 });

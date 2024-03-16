@@ -5,7 +5,7 @@ import {
 import auth from "@react-native-firebase/auth";
 import { useDadosStore } from "../../../context/dadosStore";
 import useAddToGoogleAnota from "./useAddToGoogleAnota";
-import toast from "../../../utils/toast/useToast";
+import { useToastDispatch } from "../../../context/Toast/useToastDispatch";
 
 GoogleSignin.configure({
   webClientId:
@@ -15,6 +15,7 @@ GoogleSignin.configure({
 export default function useGoogleSignin() {
   const { setUser } = useDadosStore();
   const { addToGoogleAnotacao } = useAddToGoogleAnota();
+  const { showToast } = useToastDispatch();
 
   async function onGoogleButtonPress() {
     try {
@@ -36,7 +37,7 @@ export default function useGoogleSignin() {
       };
       setUser(userSign);
 
-      toast.succes({ message: "Logado com sucesso!" });
+      showToast({ message: "Logado com sucesso!", type: "Success" });
       return auth().signInWithCredential(googleCredential);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -52,7 +53,7 @@ export default function useGoogleSignin() {
         // some other error happened
         console.log(error);
       }
-      toast.danger({ message: "Erro ao fazer login." });
+      showToast({ message: "Erro ao fazer login.", type: "Error" });
     }
   }
 

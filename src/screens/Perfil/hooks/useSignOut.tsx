@@ -1,12 +1,13 @@
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { useDadosStore } from "../../../context/dadosStore";
-import toast from "../../../utils/toast/useToast";
 import auth from "@react-native-firebase/auth";
 import useAnonymosSignIn from "../../../hooks/useAnonymosSignIn";
+import { useToastDispatch } from "../../../context/Toast/useToastDispatch";
 
 export default function useSignOut() {
   const { setUser } = useDadosStore();
   const { anonymousSignin } = useAnonymosSignIn();
+  const { showToast } = useToastDispatch();
 
   async function signOut() {
     try {
@@ -16,9 +17,9 @@ export default function useSignOut() {
       setUser({ displayName: "", email: "", id: "", photo: "" });
 
       anonymousSignin();
-      toast.succes({ message: "Deslogado com sucesso!" });
+      showToast({ message: "Deslogado com sucesso!", type: "Success" });
     } catch (e) {
-      toast.danger({ message: "Erro ao deslogar" });
+      showToast({ message: "Erro ao deslogar", type: "Error" });
       console.log(e);
     }
   }

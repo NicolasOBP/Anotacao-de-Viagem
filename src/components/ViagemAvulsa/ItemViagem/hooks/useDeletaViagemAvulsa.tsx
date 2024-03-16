@@ -1,9 +1,10 @@
 import firestore from "@react-native-firebase/firestore";
 import { useDadosStore } from "../../../../context/dadosStore";
-import toast from "../../../../utils/toast/useToast";
+import { useToastDispatch } from "../../../../context/Toast/useToastDispatch";
 
 export function useDeletaViagem() {
   const { user } = useDadosStore();
+  const { showToast } = useToastDispatch();
   function delAvulsa(id: string) {
     firestore()
       .collection(user.id)
@@ -11,7 +12,8 @@ export function useDeletaViagem() {
       .collection("1")
       .doc(id)
       .delete();
-    toast.succes({ message: "Deletado com sucesso" });
+
+    showToast({ message: "Deletado com sucesso", type: "Success" });
   }
 
   return { delAvulsa };

@@ -1,8 +1,9 @@
 import { ViagemAvulsa } from "../../types/viagemAvulsa";
 import { Share } from "react-native";
-import toast from "../toast/useToast";
+import { useToastDispatch } from "../../context/Toast/useToastDispatch";
 
 export async function share(items: ViagemAvulsa) {
+  const { showToast } = useToastDispatch();
   try {
     const result = await Share.share({
       message:
@@ -47,9 +48,9 @@ export async function share(items: ViagemAvulsa) {
     } else if (result.action == Share.dismissedAction) {
       // dismissed
     }
-    toast.succes({ message: "Compartilhado com sucesso" });
+    showToast({ message: "Compartilhado com sucesso", type: "Success" });
   } catch (error: any) {
-    toast.danger({ message: "Erro ao compartilhar" });
+    showToast({ message: "Erro ao compartilhar", type: "Error" });
     console.log(error.message);
   }
 }

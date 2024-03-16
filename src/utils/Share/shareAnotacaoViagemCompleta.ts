@@ -1,11 +1,12 @@
 import { Share } from "react-native";
 import { AnotacaoCompleta } from "../../types/viagemCompleta";
-import toast from "../toast/useToast";
+import { useToastDispatch } from "../../context/Toast/useToastDispatch";
 
 export async function shareAnotacaoViagemCompelta(
   items: AnotacaoCompleta,
   viagem: string
 ) {
+  const { showToast } = useToastDispatch();
   try {
     const result = await Share.share({
       message:
@@ -46,9 +47,9 @@ export async function shareAnotacaoViagemCompelta(
     } else if (result.action == Share.dismissedAction) {
       // dismissed
     }
-    toast.succes({ message: "Compartilhado com sucesso" });
+    showToast({ message: "Compartilhado com sucesso", type: "Success" });
   } catch (error: any) {
-    toast.danger({ message: "Erro ao compartilhar" });
+    showToast({ message: "Erro ao compartilhar", type: "Error" });
     console.log(error.message);
   }
 }

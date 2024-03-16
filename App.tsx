@@ -3,11 +3,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import MyStack from "./src/Router/stackNav";
 import useAnonymosSignIn from "./src/hooks/useAnonymosSignIn";
-import Toast from "./src/components/Toast/index";
 import { ThemeProvider } from "styled-components/native";
 import { light } from "./src/theme/light";
 import { dark } from "./src/theme/dark";
 import useInitializeTheme from "./src/hooks/useInitializeTheme";
+import { Toast } from "./src/components/Toast";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {
   const { initializing } = useAnonymosSignIn();
@@ -16,12 +17,14 @@ export default function App() {
   if (initializing) return null;
 
   return (
-    <ThemeProvider theme={theme == "light" ? light : dark}>
-      <Toast />
-      <NavigationContainer>
-        <StatusBar translucent={true} style="dark" />
-        <MyStack />
-      </NavigationContainer>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider theme={theme == "light" ? light : dark}>
+        <NavigationContainer>
+          <StatusBar translucent={true} style="dark" />
+          <MyStack />
+        </NavigationContainer>
+        <Toast />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }

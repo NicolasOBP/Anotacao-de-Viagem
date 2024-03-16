@@ -1,9 +1,10 @@
 import firestore from "@react-native-firebase/firestore";
 import { useDadosStore } from "../../../../context/dadosStore";
-import toast from "../../../../utils/toast/useToast";
+import { useToastDispatch } from "../../../../context/Toast/useToastDispatch";
 
 export default function useDeletaColecao() {
   const { user } = useDadosStore();
+  const { showToast } = useToastDispatch();
   function delColecao(id: string) {
     firestore()
       .collection(user.id)
@@ -12,7 +13,7 @@ export default function useDeletaColecao() {
       .doc(id)
       .delete();
 
-    toast.succes({ message: "Deletado com sucesso" });
+    showToast({ message: "Coleção deletado com sucesso", type: "Success" });
   }
 
   return { delColecao };
