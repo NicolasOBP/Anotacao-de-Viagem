@@ -1,6 +1,6 @@
 import React from "react";
 import { ContainerBtn1, ContainerBtn2 } from "../../style";
-import Input from "../../../../Input";
+import { Input } from "@/components";
 import {
   ContainerBtncancel,
   ContainerBtnconfirma,
@@ -12,7 +12,7 @@ import {
   UseFormHandleSubmit,
   UseFormReset,
 } from "react-hook-form/dist/types";
-import { useUpdateAnotacaoCompleta } from "../../hooks/useUpdateAnotacaoCompleta";
+import { useUpdateAnotacaoCompleta } from "../../hooks";
 
 type Props = {
   control: Control<{
@@ -35,14 +35,14 @@ type Props = {
   tipoTermina: boolean;
 };
 
-export default function AddAnotacaoExtra({
+export const AddAnotacaoExtra: React.FC<Props> = ({
   control,
   handleSubmit,
   reset,
   setShowModal,
   tipoTermina,
   formState,
-}: Props) {
+}) => {
   const { addAnotacao } = useUpdateAnotacaoCompleta(setShowModal, reset);
 
   function adicionar(data) {
@@ -83,4 +83,4 @@ export default function AddAnotacaoExtra({
       </ContainerBtn1>
     </>
   );
-}
+};

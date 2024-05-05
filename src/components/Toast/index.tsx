@@ -9,41 +9,11 @@ import Animated, {
   runOnJS,
 } from "react-native-reanimated";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useToastConfig } from "../../context/Toast/useToastConfig";
-import { useToastDispatch } from "../../context/Toast/useToastDispatch";
 import { ToastText } from "./style";
+import { useToastConfig, useToastDispatch } from "@/context";
+import { toastMap } from "./hook/useToastMap";
 
 const DEFAULT_DORATION = 1500;
-
-type Icon = {
-  Error: {
-    iconName: "error-outline";
-    iconColor: "#770404";
-  };
-
-  Success: {
-    iconName: "done-outline";
-    iconColor: "green";
-  };
-
-  Warning: {
-    iconName: "warning-amber";
-    iconColor: "yellow";
-  };
-};
-
-const toastMap: Icon = {
-  Error: { iconColor: "#770404", iconName: "error-outline" },
-  Success: {
-    iconName: "done-outline",
-    iconColor: "green",
-  },
-
-  Warning: {
-    iconName: "warning-amber",
-    iconColor: "yellow",
-  },
-};
 
 export const Toast: React.FC = () => {
   const { hideToast } = useToastDispatch();

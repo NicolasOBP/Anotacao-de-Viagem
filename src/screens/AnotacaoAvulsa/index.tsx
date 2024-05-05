@@ -1,12 +1,12 @@
 import React from "react";
-import NovaAnotacao from "./components/NovaAnotacao";
+import { NovaAnotacao } from "./components/NovaAnotacao";
 import { Container, Title } from "../../globalStyles/style";
 import { FlatList } from "react-native-gesture-handler";
-import { ItemAvulsa } from "../../components/ViagemAvulsa/ItemViagem";
-import { ViagemAvulsa } from "../../types/viagemAvulsa";
+import { ItemAvulsa } from "@/components";
+import { ViagemAvulsa } from "@/types";
 import { usePegaAnotacaoAvulsa } from "./hooks/usePegaAnotacaoAvulsa";
 
-export default function AnotacaoAvulsa() {
+export const AnotacaoAvulsa: React.FC = () => {
   const { viagemAvulsa } = usePegaAnotacaoAvulsa();
 
   return (
@@ -22,4 +22,4 @@ export default function AnotacaoAvulsa() {
       />
     </Container>
   );
-}
+};

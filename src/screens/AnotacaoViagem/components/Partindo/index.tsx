@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Check } from "../../../../types/viagemCompleta";
+import { Check } from "@/types";
 import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
-import Info from "./components/Info";
-import ComecaTermina from "../../../../components/ViagemCompleta/ComecaTermina";
+import { Info } from "./components/Info";
+import { ComecaTermina } from "@/components";
 
 type Props = {
   partindo: Check;
 };
 
-export default function Partindo({ partindo }: Props) {
+export const Partindo: React.FC<Props> = ({ partindo }) => {
   const [showModal, setShowModal] = useState(false);
   const [tipoTermina, setTipoTermina] = useState(false);
   const [gastos, setGastos] = useState(false);
@@ -34,4 +34,4 @@ export default function Partindo({ partindo }: Props) {
       />
     </>
   );
-}
+};

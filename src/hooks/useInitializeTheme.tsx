@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { useDadosStore } from "../context/dadosStore";
-import { storage, themeStorage } from "../context/mmkv";
+import { useDadosStore, storage, themeStorage } from "@/context";
 
-export default function useInitializeTheme() {
+export const useInitializeTheme = () => {
   const { theme, setTheme } = useDadosStore();
 
   useEffect(() => {
@@ -10,4 +9,4 @@ export default function useInitializeTheme() {
   }, []);
 
   return { theme };
-}
+};

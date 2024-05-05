@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-export default function useHookFormPerfil() {
+export const useHookFormPerfil = () => {
   const { control } = useForm({
     defaultValues: {
       email: "",
@@ -8,4 +8,4 @@ export default function useHookFormPerfil() {
     },
   });
   return { control };
-}
+};

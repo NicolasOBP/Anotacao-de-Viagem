@@ -1,6 +1,6 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../context/dadosStore";
-import { ColecaoViagem } from "../../../types/colecaoViagem";
+import { useDadosStore } from "@/context";
+import { ColecaoViagem } from "@/types";
 import { useEffect, useState } from "react";
 
 export default function useAtualizaColecao(item: ColecaoViagem) {

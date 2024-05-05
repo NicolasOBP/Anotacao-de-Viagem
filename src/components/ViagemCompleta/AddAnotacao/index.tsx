@@ -1,8 +1,6 @@
 import React from "react";
 import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
-import Input from "../../Input";
-import { useDadosStore } from "../../../context/dadosStore";
-import { useAddAnotacaoCompleta } from "./hooks/useAddAnotacaoCompleta";
+import { Input } from "@/components";
 import {
   ContainerBtn,
   ContainerBtncancel,
@@ -10,17 +8,18 @@ import {
   Title,
 } from "../../../globalStyles/style";
 import { Box, Container } from "../../../globalStyles/modal";
-import useHookFormAnotacaoCompleta from "./hooks/useHookFormAnotacaoCompleta";
 import { BoxBtns } from "./style";
+import { useAddAnotacaoCompleta, useHookFormAnotacaoCompleta } from "./hooks";
+import { useDadosStore } from "@/context";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
 };
-export default function AddAnotacaoCompleta({
+export const AddAnotacaoCompleta: React.FC<Props> = ({
   setShowModal,
   showModal,
-}: Props) {
+}) => {
   const { viagemCompletaStore } = useDadosStore();
 
   const { handleSubmit, control, reset, formState } =
@@ -122,4 +121,4 @@ export default function AddAnotacaoCompleta({
       </TouchableWithoutFeedback>
     </Modal>
   );
-}
+};

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import firestore from "@react-native-firebase/firestore";
-import { ViagemCompleta } from "../../../types/viagemCompleta";
-import { useDadosStore } from "../../../context/dadosStore";
+import { ViagemCompleta } from "@/types";
+import { useDadosStore } from "@/context";
 
-export function usePegaAnotacao(viagem: ViagemCompleta) {
+export const usePegaAnotacao = (viagem: ViagemCompleta) => {
   const { user, setViagemCompleta } = useDadosStore();
   const [dadosViagem, setDadosViagem] = useState<ViagemCompleta>();
 
@@ -21,4 +21,4 @@ export function usePegaAnotacao(viagem: ViagemCompleta) {
       });
   }
   return { dadosViagem };
-}
+};

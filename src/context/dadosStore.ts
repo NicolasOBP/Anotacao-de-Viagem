@@ -1,7 +1,5 @@
 import { create } from "zustand";
-import { User } from "../types/user";
-import { ViagemCompleta } from "../types/viagemCompleta";
-import { NovaViagem, Status } from "../types/colecaoViagem";
+import { User, ViagemCompleta, Status, NovaViagem } from "@/types";
 
 type State = {
   user: User | null;

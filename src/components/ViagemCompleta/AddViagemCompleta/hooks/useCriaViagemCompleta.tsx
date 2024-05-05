@@ -1,16 +1,16 @@
 import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
-import { useDadosStore } from "../../../../context/dadosStore";
-import useHoraData from "../../../../hooks/useHoraData";
+import { useHoraData } from "@/hooks";
+import { useDadosStore } from "@/context";
 
 type itemCompleta = {
   saindo: string;
   indo: string;
 };
-export function useCriaViagemCompleta(
+export const useCriaViagemCompleta = (
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   reset: UseFormReset<itemCompleta>
-) {
+) => {
   const { user } = useDadosStore();
 
   function criaViagem(item: itemCompleta) {
@@ -30,4 +30,4 @@ export function useCriaViagemCompleta(
     setShowModal(false);
   }
   return { criaViagem };
-}
+};

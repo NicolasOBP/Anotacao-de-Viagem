@@ -1,10 +1,10 @@
 import React from "react";
 import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
-import Input from "../../Input";
+import { Input } from "@/components";
 import { Title } from "../../../globalStyles/style";
 import { Box, Container2 } from "../../../globalStyles/modal";
-import useHookFormComecaTermina from "./hooks/useHookFormComecaTermina";
-import AddAnotacaoExtra from "./components/AdicionaAnotacaoExtra";
+import { useHookFormComecaTermina } from "./hooks/";
+import { AddAnotacaoExtra } from "./components/AdicionaAnotacaoExtra";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,12 +13,12 @@ type Props = {
   gastos?: boolean;
 };
 
-export default function ComecaTermina({
+export const ComecaTermina: React.FC<Props> = ({
   setShowModal,
   showModal,
   tipoTermina,
   gastos,
-}: Props) {
+}) => {
   const { handleSubmit, control, reset, formState } =
     useHookFormComecaTermina();
 
@@ -54,4 +54,4 @@ export default function ComecaTermina({
       </TouchableWithoutFeedback>
     </Modal>
   );
-}
+};

@@ -1,8 +1,8 @@
 import { View, Pressable } from "react-native";
 import React from "react";
 import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootStackParamListStack } from "../../../Router/types/stack";
+import { useNavigation } from "@react-navigation/native";
+import { Nav } from "@/Router";
 
 type item = {
   PontoReferencia: string;
@@ -19,9 +19,9 @@ type Props = {
   itemAnotacaoColecao?: item;
 };
 
-type Nav = NavigationProp<RootStackParamListStack>;
-
-export default function ItemAnotacaoColecao({ itemAnotacaoColecao }: Props) {
+export const ItemAnotacaoColecao: React.FC<Props> = ({
+  itemAnotacaoColecao,
+}) => {
   const navigation = useNavigation<Nav>();
 
   return (
@@ -46,4 +46,4 @@ export default function ItemAnotacaoColecao({ itemAnotacaoColecao }: Props) {
       </Pressable>
     </ItemBox>
   );
-}
+};

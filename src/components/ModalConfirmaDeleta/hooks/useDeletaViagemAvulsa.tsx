@@ -1,6 +1,5 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../../context/dadosStore";
-import { useToastDispatch } from "../../../../context/Toast/useToastDispatch";
+import { useDadosStore, useToastDispatch } from "@/context";
 
 export function useDeletaViagem() {
   const { user } = useDadosStore();

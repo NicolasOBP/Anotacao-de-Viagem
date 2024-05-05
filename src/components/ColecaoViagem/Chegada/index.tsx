@@ -7,13 +7,12 @@ import {
   TextBtn,
   Title,
 } from "../../../globalStyles/style";
-import Input from "../../Input";
-import useHookFormChegada from "./hooks/useHookFormChegada";
+import { Input } from "@/components";
 import {
   ContainerBtn1,
   ContainerBtn2,
 } from "../../ViagemCompleta/ComecaTermina/style";
-import useFinalizaViagem from "./hooks/useFinalizaViagem";
+import { useFinalizaViagem, useHookFormChegada } from "./hooks";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,11 +20,11 @@ type Props = {
   tipoEstado: "Ida" | "Volta";
 };
 
-export default function Chegada({
+export const Chegada: React.FC<Props> = ({
   setShowModal,
   showModal,
   tipoEstado,
-}: Props) {
+}) => {
   const { control, formState, handleSubmit, reset } = useHookFormChegada();
   const { finalizaViagem } = useFinalizaViagem(tipoEstado, reset);
 
@@ -86,4 +85,4 @@ export default function Chegada({
       </TouchableWithoutFeedback>
     </Modal>
   );
-}
+};

@@ -1,6 +1,6 @@
 import { Share } from "react-native";
-import { AnotacaoCompleta } from "../../types/viagemCompleta";
-import { useToastDispatch } from "../../context/Toast/useToastDispatch";
+import { AnotacaoCompleta } from "@/types";
+import { useToastDispatch } from "@/context";
 
 export async function shareAnotacaoViagemCompelta(
   items: AnotacaoCompleta,

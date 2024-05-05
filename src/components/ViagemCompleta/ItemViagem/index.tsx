@@ -1,18 +1,16 @@
 import { Pressable } from "react-native";
 import React from "react";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { ViagemCompleta } from "../../../types/viagemCompleta";
-import { RootStackParamListStack } from "../../../Router/types/stack";
+import { useNavigation } from "@react-navigation/native";
+import { ViagemCompleta } from "@/types";
+import { Nav } from "@/Router";
 import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
-import Share_Deleta from "./components/Share_Deleta";
+import { Share_Deleta } from "./components/Share_Deleta";
 
 type Props = {
   itemCompleta: ViagemCompleta;
 };
 
-type Nav = NavigationProp<RootStackParamListStack>;
-
-export function ItemViagemCompleta({ itemCompleta }: Props) {
+export const ItemViagemCompleta: React.FC<Props> = ({ itemCompleta }) => {
   const navigation = useNavigation<Nav>();
 
   return (
@@ -34,4 +32,4 @@ export function ItemViagemCompleta({ itemCompleta }: Props) {
       </Pressable>
     </ItemBox>
   );
-}
+};

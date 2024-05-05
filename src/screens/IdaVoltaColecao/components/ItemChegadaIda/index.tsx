@@ -1,9 +1,9 @@
 import React from "react";
 import { BoxInfo } from "../../../../globalStyles/style";
 import { ItemText, ItemTitle } from "../../../../globalStyles/item";
-import { useDadosStore } from "../../../../context/dadosStore";
+import { useDadosStore } from "@/context";
 
-export default function ItemChegadaIda() {
+export const ItemChegadaIda: React.FC = () => {
   const { dadosColecaoViagemStore } = useDadosStore();
 
   return (
@@ -20,4 +20,4 @@ export default function ItemChegadaIda() {
       )}
     </BoxInfo>
   );
-}
+};

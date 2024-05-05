@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import firestore from "@react-native-firebase/firestore";
-import { ViagemAvulsa } from "../../../types/viagemAvulsa";
-import { useDadosStore } from "../../../context/dadosStore";
-export function usePegaAnotacaoAvulsa() {
+import { ViagemAvulsa } from "@/types";
+import { useDadosStore } from "@/context";
+
+export const usePegaAnotacaoAvulsa = () => {
   const [viagemAvulsa, setViagemAvulsa] = useState<ViagemAvulsa[]>([]);
   const { user } = useDadosStore();
 
@@ -32,4 +33,4 @@ export function usePegaAnotacaoAvulsa() {
   }
 
   return { viagemAvulsa };
-}
+};

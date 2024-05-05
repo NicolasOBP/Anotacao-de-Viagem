@@ -1,12 +1,11 @@
 import React from "react";
 import { Container } from "../../globalStyles/style";
 import { PropsNav } from "../../Router/types/screenProps";
-import Ida from "./components/Ida";
-import Volta from "./components/Volta";
+import { Ida, Volta } from "./components/index";
 
-export default function IdaVoltaColecao({
+export const IdaVoltaColecao: React.FC<PropsNav<"IdaVoltaColecao">> = ({
   route,
-}: PropsNav<"IdaVoltaColecao">) {
+}) => {
   const tipo = route.params.tipo;
   const colecao = route.params.colecao;
 
@@ -16,4 +15,4 @@ export default function IdaVoltaColecao({
       {tipo === "Volta" && <Volta colecao={colecao} />}
     </Container>
   );
-}
+};

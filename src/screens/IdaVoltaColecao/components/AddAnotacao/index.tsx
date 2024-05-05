@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
-import AddAnotacaoColecao from "../../../../components/ColecaoViagem/AddAnotacao";
+import { AddAnotacaoColecao } from "@/components";
 
 type Props = {
   tipo: "Ida" | "Volta";
 };
 
-export default function AddAnotacao({ tipo }: Props) {
+export const AddAnotacao: React.FC<Props> = ({ tipo }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
@@ -21,4 +21,4 @@ export default function AddAnotacao({ tipo }: Props) {
       />
     </>
   );
-}
+};

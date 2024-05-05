@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, FlatList, Title } from "../../globalStyles/style";
-import { ViagemCompleta } from "../../types/viagemCompleta";
-import { ItemViagemCompleta } from "../../components/ViagemCompleta/ItemViagem";
+import { ViagemCompleta } from "@/types";
+import { ItemViagemCompleta } from "@/components";
 import { usePegaAnotacaoCompleta } from "./hooks/usePegaViagem";
-import NovaViagem from "./components/NovaViagem";
+import { NovaViagem } from "./components/NovaViagem";
 
-export default function Viagem() {
+export const Viagem: React.FC = () => {
   const { viagemCompleta } = usePegaAnotacaoCompleta();
   return (
     <Container>
@@ -20,4 +20,4 @@ export default function Viagem() {
       />
     </Container>
   );
-}
+};

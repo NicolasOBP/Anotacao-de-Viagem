@@ -1,7 +1,6 @@
 import React from "react";
 import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
-import Input from "../../Input";
-import { useCriaViagemCompleta } from "./hooks/useCriaViagemCompleta";
+import { Input } from "@/components";
 import {
   ContainerBtn,
   ContainerBtncancel,
@@ -9,15 +8,18 @@ import {
   Title,
 } from "../../../globalStyles/style";
 import { Box, Container2 } from "../../../globalStyles/modal";
-import useHookFormViagemCompleta from "./hooks/useHookFormViagemCompleta";
 import { BoxBtns } from "./style";
+import { useHookFormViagemCompleta, useCriaViagemCompleta } from "./hooks";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
 };
 
-export default function AddViaCompleta({ setShowModal, showModal }: Props) {
+export const AddViaCompleta: React.FC<Props> = ({
+  setShowModal,
+  showModal,
+}) => {
   const { handleSubmit, control, reset, formState } =
     useHookFormViagemCompleta();
   const { criaViagem } = useCriaViagemCompleta(setShowModal, reset);
@@ -65,4 +67,4 @@ export default function AddViaCompleta({ setShowModal, showModal }: Props) {
       </TouchableWithoutFeedback>
     </Modal>
   );
-}
+};

@@ -1,18 +1,16 @@
 import { Pressable } from "react-native";
 import React from "react";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootStackParamListStack } from "../../../Router/types/stack";
+import { useNavigation } from "@react-navigation/native";
+import { Nav } from "@/Router";
 import { ItemBox, ItemTitle } from "../../../globalStyles/item";
-import { ColecaoViagem } from "../../../types/colecaoViagem";
-import DeletaColecao from "./components/Deletar";
+import { ColecaoViagem } from "@/types";
+import { DeletaColecao } from "./components/Deletar";
 
 type Props = {
   itemColecao: ColecaoViagem;
 };
 
-type Nav = NavigationProp<RootStackParamListStack>;
-
-export function ItemInicial({ itemColecao }: Props) {
+export const ItemInicial: React.FC<Props> = ({ itemColecao }) => {
   const navigation = useNavigation<Nav>();
 
   return (
@@ -33,4 +31,4 @@ export function ItemInicial({ itemColecao }: Props) {
       </Pressable>
     </ItemBox>
   );
-}
+};

@@ -1,12 +1,12 @@
 import React from "react";
 import { BoxInfo, Container, Title } from "../../globalStyles/style";
-import ItemRevisao from "../../utils/ItemRevisao";
+import { ItemRevisao } from "@/utils";
 import { PropsNav } from "../../Router/types/screenProps";
-import Share from "./components/Share";
+import { Share } from "./components/Share";
 
-export default function RevisaoViagemAvulsa({
+export const RevisaoViagemAvulsa: React.FC<PropsNav<"RevisãoAvulsa">> = ({
   route,
-}: PropsNav<"RevisãoAvulsa">) {
+}) => {
   const item = route.params.item;
 
   return (
@@ -41,4 +41,4 @@ export default function RevisaoViagemAvulsa({
       </BoxInfo>
     </Container>
   );
-}
+};

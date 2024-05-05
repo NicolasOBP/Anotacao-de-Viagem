@@ -2,19 +2,17 @@ import { Pressable } from "react-native";
 import React from "react";
 import { ItemText, ItemTitle } from "../../../../globalStyles/item";
 import { BoxInfo } from "../../../../globalStyles/style";
-import { ColecaoViagem, NovaViagem } from "../../../../types/colecaoViagem";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootStackParamListStack } from "../../../../Router/types/stack";
-import useAtualizaDadosViagem from "../../hooks/useAtualizaDadosViagem";
+import { ColecaoViagem, NovaViagem } from "@/types";
+import { useNavigation } from "@react-navigation/native";
+import { Nav } from "@/Router";
+import { useAtualizaDadosViagem } from "@/hooks";
 
 type Props = {
   colecao: ColecaoViagem;
   item: NovaViagem;
 };
 
-type Nav = NavigationProp<RootStackParamListStack>;
-
-export default function Volta({ colecao, item }: Props) {
+export const Volta: React.FC<Props> = ({ colecao, item }) => {
   const navigation = useNavigation<Nav>();
   const { dadosAtualizados } = useAtualizaDadosViagem(item);
 
@@ -40,4 +38,4 @@ export default function Volta({ colecao, item }: Props) {
       </Pressable>
     </BoxInfo>
   );
-}
+};

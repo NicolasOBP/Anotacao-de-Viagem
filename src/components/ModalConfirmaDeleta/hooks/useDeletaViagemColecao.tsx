@@ -1,9 +1,8 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../../context/dadosStore";
-import { Status } from "../../../../types/colecaoViagem";
-import { useToastDispatch } from "../../../../context/Toast/useToastDispatch";
+import { Status } from "@/types";
+import { useDadosStore, useToastDispatch } from "@/context";
 
-export default function useDeletaViagemColecao() {
+export const useDeletaViagemColecao = () => {
   const { user } = useDadosStore();
   const { showToast } = useToastDispatch();
 
@@ -29,4 +28,4 @@ export default function useDeletaViagemColecao() {
   }
 
   return { delViagemColecao };
-}
+};

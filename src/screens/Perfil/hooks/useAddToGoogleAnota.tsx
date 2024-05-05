@@ -1,7 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../context/dadosStore";
+import { useDadosStore } from "@/context";
 
-export default function useAddToGoogleAnota() {
+export const useAddToGoogleAnota = () => {
   const { user, anonymousId } = useDadosStore();
 
   const anonymousNotesRef = firestore().collection(anonymousId);
@@ -77,4 +77,4 @@ export default function useAddToGoogleAnota() {
   }
 
   return { addToGoogleAnotacao };
-}
+};

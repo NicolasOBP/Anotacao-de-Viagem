@@ -1,6 +1,6 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../context/dadosStore";
-import { NovaViagem } from "../../../types/colecaoViagem";
+import { useDadosStore } from "@/context";
+import { NovaViagem } from "@/types";
 import { useEffect, useState } from "react";
 
 export default function useAtualizaDadosIdaVolta() {

@@ -1,9 +1,9 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../context/dadosStore";
-import { NovaViagem } from "../../../types/colecaoViagem";
-import useHoraData from "../../../hooks/useHoraData";
+import { useDadosStore } from "@/context";
+import { NovaViagem } from "@/types";
+import { useHoraData } from "@/hooks";
 
-export default function useIniciaVolta(item: NovaViagem) {
+export const useIniciaVolta = (item: NovaViagem) => {
   const { user, setColecoStatusStore } = useDadosStore();
   const { Data, Hora } = useHoraData();
 
@@ -26,4 +26,4 @@ export default function useIniciaVolta(item: NovaViagem) {
       });
   }
   return { iniciaVolta };
-}
+};

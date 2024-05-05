@@ -1,9 +1,9 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../context/dadosStore";
-import { NovaViagem } from "../../../types/colecaoViagem";
+import { useDadosStore } from "@/context";
+import { NovaViagem } from "@/types";
 import { useEffect, useState } from "react";
 
-export default function useAtualizaDadosViagem(item: NovaViagem) {
+export const useAtualizaDadosViagem = (item: NovaViagem) => {
   const { user, setDadosColecaoViagem, setColecoStatusStore } = useDadosStore();
   const [dadosAtualizados, setDadosAtualizados] = useState<NovaViagem>();
 
@@ -26,4 +26,4 @@ export default function useAtualizaDadosViagem(item: NovaViagem) {
     setColecoStatusStore(dados.data().status);
   }
   return { dadosAtualizados, atualizaDados };
-}
+};

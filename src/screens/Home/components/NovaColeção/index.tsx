@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
-import CriaColecaoViagem from "../../../../components/ColecaoViagem/CriaColecao";
+import { CriaColecaoViagem } from "@/components";
 
-export default function NovaColecao() {
+export const NovaColecao: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -16,4 +16,4 @@ export default function NovaColecao() {
       <CriaColecaoViagem setShowModal={setShowModal} showModal={showModal} />
     </>
   );
-}
+};

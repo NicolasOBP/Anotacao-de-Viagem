@@ -10,14 +10,14 @@ type Props = {
 export type FormTextInputProps<T extends FieldValues> = TextInputProps &
   UseControllerProps<T>;
 
-export default function Input<FormType extends FieldValues>({
+export const Input: React.FC<FormTextInputProps<FieldValues> & Props> = ({
   label,
   name,
   control,
   valor,
   rules,
   ...rest
-}: FormTextInputProps<FormType> & Props) {
+}) => {
   return (
     <BoxInput>
       <Label>{label}</Label>
@@ -39,4 +39,4 @@ export default function Input<FormType extends FieldValues>({
       />
     </BoxInput>
   );
-}
+};

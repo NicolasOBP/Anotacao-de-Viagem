@@ -1,10 +1,9 @@
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { useDadosStore } from "../../../context/dadosStore";
 import auth from "@react-native-firebase/auth";
-import useAnonymosSignIn from "../../../hooks/useAnonymosSignIn";
-import { useToastDispatch } from "../../../context/Toast/useToastDispatch";
+import { useAnonymosSignIn } from "@/hooks";
+import { useToastDispatch, useDadosStore } from "@/context";
 
-export default function useSignOut() {
+export const useSignOut = () => {
   const { setUser } = useDadosStore();
   const { anonymousSignin } = useAnonymosSignIn();
   const { showToast } = useToastDispatch();
@@ -24,4 +23,4 @@ export default function useSignOut() {
     }
   }
   return { signOut };
-}
+};

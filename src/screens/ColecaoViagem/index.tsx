@@ -1,13 +1,15 @@
 import React from "react";
-import { PropsNav } from "../../Router/types/screenProps";
+import { PropsNav } from "@/Router/types/screenProps";
 import { Container, FlatList, Title } from "../../globalStyles/style";
-import IniciaViagem from "./components/NovaColeção";
+import { IniciaViagem } from "./components/NovaColeção";
 import usePegaViagens from "./hooks/usePegaViagens";
-import { NovaViagem } from "../../types/colecaoViagem";
-import { ItemViagem } from "../../components/ColecaoViagem/ItemViagem";
+import { NovaViagem } from "@/types";
+import { ItemViagem } from "@/components";
 import useAtualizaColecao from "./hooks/useAtualizaColecao";
 
-export default function ColecaoViagem({ route }: PropsNav<"ColecaoViagem">) {
+export const ColecaoViagem: React.FC<PropsNav<"ColecaoViagem">> = ({
+  route,
+}) => {
   const colecao = route.params.item;
   const { viagens } = usePegaViagens(colecao);
   const { acontecendo } = useAtualizaColecao(colecao);
@@ -30,4 +32,4 @@ export default function ColecaoViagem({ route }: PropsNav<"ColecaoViagem">) {
       />
     </Container>
   );
-}
+};

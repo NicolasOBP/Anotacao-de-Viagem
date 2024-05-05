@@ -1,13 +1,13 @@
 import React from "react";
 import { BoxInfo, Container, Title } from "../../globalStyles/style";
-import { useDadosStore } from "../../context/dadosStore";
-import ItemRevisao from "../../utils/ItemRevisao";
+import { useDadosStore } from "@/context";
+import { ItemRevisao } from "@/utils";
 import { PropsNav } from "../../Router/types/screenProps";
-import Share from "./components/Share";
+import { Share } from "./components/Share";
 
-export default function RevisaoViagemCompleta({
+export const RevisaoViagemCompleta: React.FC<PropsNav<"RevisãoAnotação">> = ({
   route,
-}: PropsNav<"RevisãoAnotação">) {
+}) => {
   const item = route.params.item;
   const { viagemCompletaStore } = useDadosStore();
 
@@ -43,4 +43,4 @@ export default function RevisaoViagemCompleta({
       </BoxInfo>
     </Container>
   );
-}
+};

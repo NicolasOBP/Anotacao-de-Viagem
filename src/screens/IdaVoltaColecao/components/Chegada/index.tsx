@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Chegada from "../../../../components/ColecaoViagem/Chegada";
+import { Chegada } from "@/components";
 import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
 
 type Props = {
   tipoEstado?: "Ida" | "Volta";
 };
-export default function Finalizar({ tipoEstado }: Props) {
+export const Finalizar: React.FC<Props> = ({ tipoEstado }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -21,4 +21,4 @@ export default function Finalizar({ tipoEstado }: Props) {
       </ContainerBtn>
     </>
   );
-}
+};

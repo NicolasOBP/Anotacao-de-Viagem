@@ -1,7 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../../context/dadosStore";
-import useHoraData from "../../../../hooks/useHoraData";
-import useAtualizaDadosViagem from "../../../../screens/AnotacaoColecaoViagem/hooks/useAtualizaDadosViagem";
+import { useDadosStore } from "@/context";
+import { useHoraData } from "@/hooks";
+import { useAtualizaDadosViagem } from "@/hooks";
 
 type itemAnotacaoColecao = {
   PontoReferencia: string;
@@ -12,7 +12,7 @@ type itemAnotacaoColecao = {
   ar: string;
   descricao?: string;
 };
-export default function useAnotacaoIda() {
+export const useAnotacaoIda = () => {
   const { dadosColecaoViagemStore, user } = useDadosStore();
   const { Data, Hora } = useHoraData();
   const { atualizaDados } = useAtualizaDadosViagem(dadosColecaoViagemStore);
@@ -71,4 +71,4 @@ export default function useAnotacaoIda() {
     await atualizaDados();
   }
   return { anotacaoIda };
-}
+};

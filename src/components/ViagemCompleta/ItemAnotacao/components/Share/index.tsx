@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
-import { shareAnotacaoViagemCompelta } from "../../../../../utils/Share/shareAnotacaoViagemCompleta";
-import { useDadosStore } from "../../../../../context/dadosStore";
+import { shareAnotacaoViagemCompelta } from "@/utils";
+import { useDadosStore } from "@/context";
 
 type item = {
   PontoReferencia: string;
@@ -19,7 +19,7 @@ type Props = {
   itemAnotacaoCompleta: item;
 };
 
-export default function ShareComponent({ itemAnotacaoCompleta }: Props) {
+export const ShareComponent: React.FC<Props> = ({ itemAnotacaoCompleta }) => {
   const { viagemCompletaStore } = useDadosStore();
   return (
     <View
@@ -40,4 +40,4 @@ export default function ShareComponent({ itemAnotacaoCompleta }: Props) {
       />
     </View>
   );
-}
+};

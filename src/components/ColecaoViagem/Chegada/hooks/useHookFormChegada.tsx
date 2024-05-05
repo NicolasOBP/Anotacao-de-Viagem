@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { ChegadaSchema, chegadaSchemachema } from "./ChegadaSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ChegadaSchema, chegadaSchemachema } from "./";
 
-export default function useHookFormChegada() {
+export const useHookFormChegada = () => {
   const { control, handleSubmit, formState, reset } = useForm<ChegadaSchema>({
     defaultValues: {
       gastos: "",
@@ -12,4 +12,4 @@ export default function useHookFormChegada() {
     mode: "onChange",
   });
   return { control, handleSubmit, formState, reset };
-}
+};

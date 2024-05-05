@@ -1,6 +1,6 @@
-import { ViagemCompleta } from "../../types/viagemCompleta";
+import { ViagemCompleta } from "@/types";
 import { Share } from "react-native";
-import { useToastDispatch } from "../../context/Toast/useToastDispatch";
+import { useToastDispatch } from "@/context";
 
 export async function shareViagemCompleta(items: ViagemCompleta) {
   const { showToast } = useToastDispatch();

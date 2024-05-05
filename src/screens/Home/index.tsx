@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, FlatList, Title } from "../../globalStyles/style";
 import { usePegaColecaoViagem } from "./hooks/usePegaColecaoViagem";
-import NovaColecao from "./components/NovaColeção";
-import { ItemInicial } from "../../components/ColecaoViagem/ItemInicial";
-import { ColecaoViagem } from "../../types/colecaoViagem";
+import { NovaColecao } from "./components/NovaColeção";
+import { ItemInicial } from "@/components";
+import { ColecaoViagem } from "@/types";
 
-export default function Home() {
+export const Home: React.FC = () => {
   const { colecaoViagem } = usePegaColecaoViagem();
 
   return (
@@ -22,4 +22,4 @@ export default function Home() {
       />
     </Container>
   );
-}
+};

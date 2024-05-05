@@ -1,27 +1,26 @@
 import React from "react";
 import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
-import Input from "../../Input";
+import { Input } from "@/components";
 import {
   ContainerBtn,
   ContainerBtncancel,
   TextBtn,
-  Title,
 } from "../../../globalStyles/style";
 import { Box, Container } from "../../../globalStyles/modal";
 import { BoxBtns } from "./style";
-import useHookFormAnotacaoColecao from "./hooks/useHookFormAnotacaoColecao";
-import { useAddAnotacaoColecao } from "./hooks/useAddAnotacaoColecao";
+import { useHookFormAnotacaoColecao, useAddAnotacaoColecao } from "./hooks";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
   tipo: "Ida" | "Volta";
 };
-export default function AddAnotacaoColecao({
+
+export const AddAnotacaoColecao: React.FC<Props> = ({
   setShowModal,
   showModal,
   tipo,
-}: Props) {
+}) => {
   const { control, formState, handleSubmit, reset } =
     useHookFormAnotacaoColecao();
   const { addAnotacao } = useAddAnotacaoColecao(setShowModal, reset, tipo);
@@ -116,4 +115,4 @@ export default function AddAnotacaoColecao({
       </TouchableWithoutFeedback>
     </Modal>
   );
-}
+};

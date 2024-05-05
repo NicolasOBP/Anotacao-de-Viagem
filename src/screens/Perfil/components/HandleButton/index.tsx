@@ -1,14 +1,13 @@
 import React from "react";
 import { ContainerBtncancel, TextBtn } from "../../../../globalStyles/style";
 import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
-import useSignOut from "../../hooks/useSignOut";
-import useGoogleSignin from "../../hooks/useGoogleSignin";
+import { useGoogleSignin, useSignOut } from "../../hooks";
 
 type Props = {
   email: string;
 };
 
-export default function HandleButton({ email }: Props) {
+export const HandleButton: React.FC<Props> = ({ email }) => {
   const { signOut } = useSignOut();
   const { onGoogleButtonPress } = useGoogleSignin();
 
@@ -27,4 +26,4 @@ export default function HandleButton({ email }: Props) {
       )}
     </>
   );
-}
+};

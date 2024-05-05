@@ -6,7 +6,7 @@ type Props = {
   photo: string;
 };
 
-export default function HandleImage({ photo }: Props) {
+export const HandleImage: React.FC<Props> = ({ photo }) => {
   return (
     <>
       {photo ? (
@@ -16,4 +16,4 @@ export default function HandleImage({ photo }: Props) {
       )}
     </>
   );
-}
+};

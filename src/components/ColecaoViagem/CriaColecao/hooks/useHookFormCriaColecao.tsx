@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { CriaColecaoSchema, criaColecaoSchemamema } from "./criaColecaoSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { CriaColecaoSchema, criaColecaoSchemamema } from "./";
 
-export default function useHookFormCriaColecao() {
+export const useHookFormCriaColecao = () => {
   const { control, handleSubmit, reset, formState } =
     useForm<CriaColecaoSchema>({
       defaultValues: {
@@ -13,4 +13,4 @@ export default function useHookFormCriaColecao() {
       resolver: zodResolver(criaColecaoSchemamema),
     });
   return { control, handleSubmit, reset, formState };
-}
+};

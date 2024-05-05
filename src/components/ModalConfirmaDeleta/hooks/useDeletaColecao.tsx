@@ -1,8 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../../context/dadosStore";
-import { useToastDispatch } from "../../../../context/Toast/useToastDispatch";
+import { useDadosStore, useToastDispatch } from "@/context";
 
-export default function useDeletaColecao() {
+export const useDeletaColecao = () => {
   const { user } = useDadosStore();
   const { showToast } = useToastDispatch();
   function delColecao(id: string) {
@@ -17,4 +16,4 @@ export default function useDeletaColecao() {
   }
 
   return { delColecao };
-}
+};

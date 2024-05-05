@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import { BoxInfo, Container, Title } from "../../globalStyles/style";
-import { PropsNav } from "../../Router/types/screenProps";
-import IniciaViagem from "./components/IniciaViagem";
-import Ida from "./components/Ida";
-import IniciaVolta from "./components/IniciaVolta";
-import Volta from "./components/Volta";
-import { useDadosStore } from "../../context/dadosStore";
-import useAtualizaDadosViagem from "./hooks/useAtualizaDadosViagem";
+import { PropsNav } from "@/Router/types/screenProps";
+import { useDadosStore } from "@/context";
+import { useAtualizaDadosViagem } from "@/hooks";
 import { ItemTitle } from "../../globalStyles/item";
+import * as Comp from "./components";
 
-export default function AnotacaoColecaoViagem({
-  route,
-}: PropsNav<"AnotacaoColecaoViagem">) {
+export const AnotacaoColecaoViagem: React.FC<
+  PropsNav<"AnotacaoColecaoViagem">
+> = ({ route }) => {
   const item = route.params.item;
   const colecao = route.params.colecao;
   const { colecaoStatusStore, dadosColecaoViagemStore } = useDadosStore();
@@ -27,22 +24,24 @@ export default function AnotacaoColecaoViagem({
         {colecao.saindo} para {colecao.indo}
       </Title>
 
-      {colecaoStatusStore === "Não iniciado" && <IniciaViagem item={item} />}
+      {colecaoStatusStore === "Não iniciado" && (
+        <Comp.IniciaViagem item={item} />
+      )}
 
       {colecaoStatusStore !== "Não iniciado" && (
-        <Ida colecao={colecao} item={item} />
+        <Comp.Ida colecao={colecao} item={item} />
       )}
 
       {colecaoStatusStore === "Ida finalizado, volta não" && (
-        <IniciaVolta item={item} />
+        <Comp.IniciaVolta item={item} />
       )}
 
       {colecaoStatusStore === "Iniciado, volta" && (
-        <Volta item={item} colecao={colecao} />
+        <Comp.Volta item={item} colecao={colecao} />
       )}
       {colecaoStatusStore === "Finalizado" && (
         <>
-          <Volta item={item} colecao={colecao} />
+          <Comp.Volta item={item} colecao={colecao} />
           <BoxInfo>
             <ItemTitle>
               Gastos Totais: R$
@@ -54,4 +53,4 @@ export default function AnotacaoColecaoViagem({
       )}
     </Container>
   );
-}
+};

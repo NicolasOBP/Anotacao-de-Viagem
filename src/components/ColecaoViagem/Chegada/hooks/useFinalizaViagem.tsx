@@ -1,16 +1,15 @@
 import { UseFormReset } from "react-hook-form";
-import useFinalizaViagemIda from "./useFinalizaViagemIda";
-import useFinalizaViagemVolta from "./useFinalizaViagemVolta";
+import { useFinalizaViagemIda, useFinalizaViagemVolta } from "./";
 
 type item = {
   descricaoChegada: string;
   gastos: string;
 };
 
-export default function useFinalizaViagem(
+export const useFinalizaViagem = (
   tipo: "Ida" | "Volta",
   reset: UseFormReset<item>
-) {
+) => {
   const { finalizaViagemIda } = useFinalizaViagemIda(reset);
   const { finalizaViagemVolta } = useFinalizaViagemVolta(reset);
 
@@ -20,4 +19,4 @@ export default function useFinalizaViagem(
     reset({ descricaoChegada: "", gastos: "" });
   }
   return { finalizaViagem };
-}
+};

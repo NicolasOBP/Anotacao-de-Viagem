@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
-import AddViaAvulsa from "../../../../components/ViagemAvulsa/AddViagemAvulsa";
+import { AddViaAvulsa } from "@/components";
 
-export default function NovaAnotacao() {
+export const NovaAnotacao: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -16,4 +16,4 @@ export default function NovaAnotacao() {
       <AddViaAvulsa setShowModal={setShowModal} showModal={showModal} />
     </>
   );
-}
+};

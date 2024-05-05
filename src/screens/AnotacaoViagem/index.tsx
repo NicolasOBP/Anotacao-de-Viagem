@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Title } from "../../globalStyles/style";
 import { usePegaAnotacao } from "./hooks/usePegaAnotacao";
-import Partindo from "./components/Partindo";
-import Anotacao from "./components/Anotacao";
-import Chegando from "./components/Chegando";
 import { PropsNav } from "../../Router/types/screenProps";
+import * as Comp from "./components";
 
-export default function AnotacaoViagem({ route }: PropsNav<"AnotaçãoViagem">) {
+export const AnotacaoViagem: React.FC<PropsNav<"AnotaçãoViagem">> = ({
+  route,
+}) => {
   const viagemCompleta = route.params.item;
   const { dadosViagem } = usePegaAnotacao(viagemCompleta);
 
@@ -18,18 +18,18 @@ export default function AnotacaoViagem({ route }: PropsNav<"AnotaçãoViagem">) 
         Anotação da viagem: {viagemCompleta.saindo} ={">"} {viagemCompleta.indo}
       </Title>
 
-      <Partindo partindo={dadosViagem.partindo} />
+      <Comp.Partindo partindo={dadosViagem.partindo} />
 
-      <Anotacao
+      <Comp.Anotacao
         anotacao={dadosViagem.anotacao}
         chegando={dadosViagem.chegando}
         partindo={dadosViagem.partindo}
       />
 
-      <Chegando
+      <Comp.Chegando
         chegando={dadosViagem.chegando}
         partindo={dadosViagem.partindo}
       />
     </Container>
   );
-}
+};

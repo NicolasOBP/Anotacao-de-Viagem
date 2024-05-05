@@ -1,14 +1,14 @@
 import { View } from "react-native";
 import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
-import ModalConfirmaDeletar from "../../../../ModalConfirmaDeleta";
-import { ColecaoViagem } from "../../../../../types/colecaoViagem";
+import { ModalConfirmaDeletar } from "@/components";
+import { ColecaoViagem } from "@/types";
 
 type Props = {
   itemColecao: ColecaoViagem;
 };
 
-export default function DeletaColecao({ itemColecao }: Props) {
+export const DeletaColecao: React.FC<Props> = ({ itemColecao }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -41,4 +41,4 @@ export default function DeletaColecao({ itemColecao }: Props) {
       </View>
     </>
   );
-}
+};

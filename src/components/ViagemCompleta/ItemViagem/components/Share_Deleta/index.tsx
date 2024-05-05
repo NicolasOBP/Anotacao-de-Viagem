@@ -1,15 +1,15 @@
 import { View } from "react-native";
 import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
-import ModalConfirmaDeletar from "../../../../ModalConfirmaDeleta";
-import { shareViagemCompleta } from "../../../../../utils/Share/shareViagemCompleta";
-import { ViagemCompleta } from "../../../../../types/viagemCompleta";
+import { ModalConfirmaDeletar } from "@/components";
+import { shareViagemCompleta } from "@/utils";
+import { ViagemCompleta } from "@/types";
 
 type Props = {
   itemCompleta: ViagemCompleta;
 };
 
-export default function Share_Deleta({ itemCompleta }: Props) {
+export const Share_Deleta: React.FC<Props> = ({ itemCompleta }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -54,4 +54,4 @@ export default function Share_Deleta({ itemCompleta }: Props) {
       </View>
     </>
   );
-}
+};

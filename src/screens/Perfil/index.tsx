@@ -1,13 +1,11 @@
 import React from "react";
 import { Container, Title } from "../../globalStyles/style";
-import Input from "../../components/Input";
-import { useDadosStore } from "../../context/dadosStore";
-import HandleImage from "./components/HandleImage";
-import HandleButton from "./components/HandleButton";
-import ChangeTheme from "./components/ChangeTheme";
-import useHookFormPerfil from "./hooks/useHookFormPerfil";
+import { Input } from "@/components";
+import { useDadosStore } from "@/context";
+import { useHookFormPerfil } from "./hooks";
+import * as Comp from "./components";
 
-export default function Perfil() {
+export const Perfil: React.FC = () => {
   const { control } = useHookFormPerfil();
   const { user } = useDadosStore();
 
@@ -15,7 +13,7 @@ export default function Perfil() {
     <Container>
       <Title>Tela de Perfil</Title>
 
-      <HandleImage photo={user.photo} />
+      <Comp.HandleImage photo={user.photo} />
 
       <Input
         label="Nome"
@@ -33,9 +31,9 @@ export default function Perfil() {
         style={{ marginBottom: 10 }}
       />
 
-      <ChangeTheme />
+      <Comp.ChangeTheme />
 
-      <HandleButton email={user.email} />
+      <Comp.HandleButton email={user.email} />
     </Container>
   );
-}
+};

@@ -1,5 +1,5 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../../context/dadosStore";
+import { useDadosStore } from "@/context";
 import { UseFormReset } from "react-hook-form";
 
 type reset = {
@@ -10,10 +10,10 @@ type item = {
   saindo: string;
   indo: string;
 };
-export default function useCriaColecao(
+export const useCriaColecao = (
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   reset: UseFormReset<reset>
-) {
+) => {
   const { user } = useDadosStore();
 
   function criaColecao(item: item) {
@@ -31,4 +31,4 @@ export default function useCriaColecao(
     setShowModal(false);
   }
   return { criaColecao };
-}
+};

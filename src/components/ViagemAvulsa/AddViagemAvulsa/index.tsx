@@ -1,23 +1,22 @@
 import React from "react";
 import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
-import Input from "../../Input";
+import { Input } from "@/components";
 import {
   ContainerBtn,
   ContainerBtncancel,
   TextBtn,
   Title,
 } from "../../../globalStyles/style";
-import { useAddViagemAvulsa } from "./hooks/useAddAnotacaoAvulsa";
 import { Box, Container } from "../../../globalStyles/modal";
-import useHookFormAddViagemAvulsa from "./hooks/useHookFormAddViagemAvulsa";
 import { BoxBtns } from "./style";
+import { useAddViagemAvulsa, useHookFormAddViagemAvulsa } from "./hooks";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
 };
 
-export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
+export const AddViaAvulsa: React.FC<Props> = ({ setShowModal, showModal }) => {
   const { handleSubmit, control, reset, formState } =
     useHookFormAddViagemAvulsa();
 
@@ -121,4 +120,4 @@ export default function AddViaAvulsa({ setShowModal, showModal }: Props) {
       </TouchableWithoutFeedback>
     </Modal>
   );
-}
+};

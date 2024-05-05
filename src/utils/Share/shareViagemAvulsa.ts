@@ -1,6 +1,6 @@
-import { ViagemAvulsa } from "../../types/viagemAvulsa";
+import { ViagemAvulsa } from "@/types";
 import { Share } from "react-native";
-import { useToastDispatch } from "../../context/Toast/useToastDispatch";
+import { useToastDispatch } from "@/context";
 
 export async function share(items: ViagemAvulsa) {
   const { showToast } = useToastDispatch();

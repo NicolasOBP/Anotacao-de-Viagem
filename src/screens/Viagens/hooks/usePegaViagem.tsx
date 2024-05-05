@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import firestore from "@react-native-firebase/firestore";
-import { ViagemCompleta } from "../../../types/viagemCompleta";
-import { useDadosStore } from "../../../context/dadosStore";
+import { ViagemCompleta } from "@/types";
+import { useDadosStore } from "@/context";
 
 export function usePegaAnotacaoCompleta() {
   const [viagemCompleta, setViagemCompleta] = useState<ViagemCompleta[]>([]);

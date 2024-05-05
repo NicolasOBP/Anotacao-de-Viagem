@@ -1,18 +1,16 @@
 import { View, Pressable } from "react-native";
 import React from "react";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { ViagemAvulsa } from "../../../types/viagemAvulsa";
-import { RootStackParamListStack } from "../../../Router/types/stack";
+import { useNavigation } from "@react-navigation/native";
+import { ViagemAvulsa } from "@/types";
+import { Nav } from "@/Router";
 import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
-import Share_Trash from "./components/Share&Trash";
+import { Share_Trash } from "./components/Share&Trash";
 
 type Props = {
   itemAvulsa?: ViagemAvulsa;
 };
 
-type Nav = NavigationProp<RootStackParamListStack>;
-
-export function ItemAvulsa({ itemAvulsa }: Props) {
+export const ItemAvulsa: React.FC<Props> = ({ itemAvulsa }) => {
   const navigation = useNavigation<Nav>();
 
   return (
@@ -38,4 +36,4 @@ export function ItemAvulsa({ itemAvulsa }: Props) {
       </Pressable>
     </ItemBox>
   );
-}
+};

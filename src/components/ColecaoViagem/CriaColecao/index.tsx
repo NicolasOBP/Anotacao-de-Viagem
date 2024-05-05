@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
-import Input from "../../Input";
+import { Input } from "@/components";
 import {
   ContainerBtn,
   ContainerBtncancel,
@@ -9,15 +9,17 @@ import {
 } from "../../../globalStyles/style";
 import { Box, Container2 } from "../../../globalStyles/modal";
 import { BoxBtns } from "./style";
-import useHookFormCriaColecao from "./hooks/useHookFormCriaColecao";
-import useCriaColecao from "./hooks/useCriaColecao";
+import { useHookFormCriaColecao, useCriaColecao } from "./hooks";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
 };
 
-export default function CriaColecaoViagem({ setShowModal, showModal }: Props) {
+export const CriaColecaoViagem: React.FC<Props> = ({
+  setShowModal,
+  showModal,
+}) => {
   const { handleSubmit, control, reset, formState } = useHookFormCriaColecao();
   const { criaColecao } = useCriaColecao(setShowModal, reset);
 
@@ -62,4 +64,4 @@ export default function CriaColecaoViagem({ setShowModal, showModal }: Props) {
       </TouchableWithoutFeedback>
     </Modal>
   );
-}
+};

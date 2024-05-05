@@ -1,7 +1,6 @@
-import { useDadosStore } from "../../../context/dadosStore";
-import { storage, themeStorage } from "../../../context/mmkv";
+import { storage, themeStorage, useDadosStore } from "@/context";
 
-export default function useChangeTheme() {
+export const useChangeTheme = () => {
   const { theme, setTheme } = useDadosStore();
   function changeTheme() {
     if (theme == "light") {
@@ -13,4 +12,4 @@ export default function useChangeTheme() {
     }
   }
   return { changeTheme };
-}
+};

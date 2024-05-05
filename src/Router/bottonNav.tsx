@@ -1,16 +1,14 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import Home from "../screens/Home";
-import Viagem from "../screens/Viagens";
-import { Icon, RootStackParamListBootom } from "./types/booton";
-import Perfil from "../screens/Perfil";
+import { RootStackParamListBootom } from "./types/booton";
 import { mapIcons } from "./hooks/useMapIcons";
-import AnotacaoAvulsa from "../screens/AnotacaoAvulsa";
+import { Icon } from "./types/icon";
+import { Home, Viagem, AnotacaoAvulsa, Perfil } from "@/screens";
 
 const Tab = createBottomTabNavigator<RootStackParamListBootom>();
 
-export default function BottomNav() {
+export const BottomNav: React.FC = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -39,4 +37,4 @@ export default function BottomNav() {
       <Tab.Screen name="Perfil" component={Perfil} />
     </Tab.Navigator>
   );
-}
+};

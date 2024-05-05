@@ -1,6 +1,6 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../../context/dadosStore";
-import useHoraData from "../../../../hooks/useHoraData";
+import { useDadosStore } from "@/context";
+import { useHoraData } from "@/hooks";
 import { UseFormReset } from "react-hook-form";
 
 type item = {
@@ -8,7 +8,7 @@ type item = {
   gastos: string;
 };
 
-export default function useFinalizaViagemVolta(reset: UseFormReset<item>) {
+export const useFinalizaViagemVolta = (reset: UseFormReset<item>) => {
   const { user, dadosColecaoViagemStore, setColecoStatusStore } =
     useDadosStore();
   const { Hora } = useHoraData();
@@ -68,4 +68,4 @@ export default function useFinalizaViagemVolta(reset: UseFormReset<item>) {
     });
   }
   return { finalizaViagemVolta };
-}
+};

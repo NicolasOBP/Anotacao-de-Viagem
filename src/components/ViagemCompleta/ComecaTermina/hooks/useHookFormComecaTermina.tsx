@@ -1,11 +1,8 @@
 import { useForm } from "react-hook-form";
-import {
-  ComecaTerminaSchema,
-  comecaTerminaSchemachema,
-} from "./ComecaTerminaSchema";
+import { ComecaTerminaSchema, comecaTerminaSchemachema } from "./";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-export default function useHookFormComecaTermina() {
+export const useHookFormComecaTermina = () => {
   const { control, handleSubmit, formState, reset } =
     useForm<ComecaTerminaSchema>({
       defaultValues: {
@@ -16,4 +13,4 @@ export default function useHookFormComecaTermina() {
       mode: "onChange",
     });
   return { control, handleSubmit, formState, reset };
-}
+};

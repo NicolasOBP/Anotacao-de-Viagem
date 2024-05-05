@@ -4,9 +4,8 @@ import {
   FlatList,
   TextBtn,
 } from "../../../../globalStyles/style";
-import { ItemCompleta } from "../../../../components/ViagemCompleta/ItemAnotacao";
-import { AnotacaoCompleta, Check } from "../../../../types/viagemCompleta";
-import AddAnotacaoCompleta from "../../../../components/ViagemCompleta/AddAnotacao";
+import { AnotacaoCompleta, Check } from "@/types";
+import { AddAnotacaoCompleta, ItemCompleta } from "@/components";
 
 type Props = {
   partindo: Check;
@@ -14,7 +13,7 @@ type Props = {
   anotacao: [AnotacaoCompleta];
 };
 
-export default function Anotacao({ anotacao, chegando, partindo }: Props) {
+export const Anotacao: React.FC<Props> = ({ anotacao, chegando, partindo }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
@@ -37,4 +36,4 @@ export default function Anotacao({ anotacao, chegando, partindo }: Props) {
       <AddAnotacaoCompleta setShowModal={setShowModal} showModal={showModal} />
     </>
   );
-}
+};

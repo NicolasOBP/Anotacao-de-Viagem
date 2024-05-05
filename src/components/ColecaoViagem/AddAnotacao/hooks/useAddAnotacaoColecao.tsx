@@ -1,6 +1,5 @@
 import { UseFormReset } from "react-hook-form";
-import useAnotacaoIda from "./useAnotacaoIda";
-import useAnotacaoVolta from "./useAnotacaoVolta";
+import { useAnotacaoIda, useAnotacaoVolta } from "./";
 
 type reset = {
   pontoReferencia: string;
@@ -20,11 +19,11 @@ type itemAnotacaoColecao = {
   ar: string;
   descricao?: string;
 };
-export function useAddAnotacaoColecao(
+export const useAddAnotacaoColecao = (
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   reset: UseFormReset<reset>,
   tipo: "Ida" | "Volta"
-) {
+) => {
   const { anotacaoIda } = useAnotacaoIda();
   const { anotacaoVolta } = useAnotacaoVolta();
 
@@ -45,4 +44,4 @@ export function useAddAnotacaoColecao(
   }
 
   return { addAnotacao };
-}
+};

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import AddViaCompleta from "../../../../components/ViagemCompleta/AddViagemCompleta";
+import { AddViaCompleta } from "@/components";
 import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
 
-export default function NovaViagem() {
+export const NovaViagem: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -16,4 +16,4 @@ export default function NovaViagem() {
       <AddViaCompleta setShowModal={setShowModal} showModal={showModal} />
     </>
   );
-}
+};

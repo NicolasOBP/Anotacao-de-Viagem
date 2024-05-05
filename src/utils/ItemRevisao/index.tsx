@@ -6,10 +6,10 @@ type Props = {
   value: string;
 };
 
-export default function ItemRevisao({ value, label }: Props) {
+export const ItemRevisao: React.FC<Props> = ({ value, label }) => {
   return (
     <TextInfo>
       {label} <TextInfoNormal>{value}</TextInfoNormal>
     </TextInfo>
   );
-}
+};

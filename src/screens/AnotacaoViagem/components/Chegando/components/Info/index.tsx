@@ -1,13 +1,13 @@
 import React from "react";
 import { ItemText, ItemTitle } from "../../../../../../globalStyles/item";
-import { Check } from "../../../../../../types/viagemCompleta";
+import { Check } from "@/types";
 import { BoxInfo } from "../../../../../../globalStyles/style";
 
 type Props = {
   chegando: Check;
 };
 
-export default function Info({ chegando }: Props) {
+export const Info: React.FC<Props> = ({ chegando }) => {
   return (
     <BoxInfo>
       <ItemTitle>Chegada</ItemTitle>
@@ -23,4 +23,4 @@ export default function Info({ chegando }: Props) {
       )}
     </BoxInfo>
   );
-}
+};

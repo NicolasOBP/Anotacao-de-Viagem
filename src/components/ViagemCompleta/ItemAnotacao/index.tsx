@@ -1,9 +1,9 @@
 import { View, Pressable } from "react-native";
 import React from "react";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { RootStackParamListStack } from "../../../Router/types/stack";
+import { useNavigation } from "@react-navigation/native";
+import { Nav } from "@/Router";
 import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
-import ShareComponent from "./components/Share";
+import { ShareComponent } from "./components/Share";
 
 type item = {
   PontoReferencia: string;
@@ -20,9 +20,7 @@ type Props = {
   itemAnotacaoCompleta?: item;
 };
 
-type Nav = NavigationProp<RootStackParamListStack>;
-
-export function ItemCompleta({ itemAnotacaoCompleta }: Props) {
+export const ItemCompleta: React.FC<Props> = ({ itemAnotacaoCompleta }) => {
   const navigation = useNavigation<Nav>();
 
   return (
@@ -49,4 +47,4 @@ export function ItemCompleta({ itemAnotacaoCompleta }: Props) {
       </Pressable>
     </ItemBox>
   );
-}
+};

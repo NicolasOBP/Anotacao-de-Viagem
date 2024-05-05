@@ -1,14 +1,14 @@
 import React from "react";
 import { ShareContainer } from "../../../../globalStyles/style";
 import { FontAwesome } from "@expo/vector-icons";
-import { share } from "../../../../utils/Share/shareViagemAvulsa";
-import { ViagemAvulsa } from "../../../../types/viagemAvulsa";
+import { share } from "@/utils";
+import { ViagemAvulsa } from "@/types";
 
 type Props = {
   item: ViagemAvulsa;
 };
 
-export default function Share({ item }: Props) {
+export const Share: React.FC<Props> = ({ item }: Props) => {
   return (
     <ShareContainer>
       <FontAwesome
@@ -19,4 +19,4 @@ export default function Share({ item }: Props) {
       />
     </ShareContainer>
   );
-}
+};

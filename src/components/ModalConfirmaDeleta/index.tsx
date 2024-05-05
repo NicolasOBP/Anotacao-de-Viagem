@@ -6,12 +6,14 @@ import {
   TextBtn,
   Title,
 } from "../../globalStyles/style";
-import { useDeletaViagemCompleta } from "../ViagemCompleta/ItemViagem/hooks/useDeletaViagemCompleta";
-import { useDeletaViagem } from "../ViagemAvulsa/ItemViagem/hooks/useDeletaViagemAvulsa";
 import { Box, Container2, ContainerBtnModal } from "../../globalStyles/modal";
-import useDeletaColecao from "../ColecaoViagem/ItemInicial/hooks/useDeletaColecao";
-import useDeletaViagemColecao from "../ColecaoViagem/ItemViagem/hooks/useDeletaViagemColecao";
-import { Status } from "../../types/colecaoViagem";
+import { Status } from "@/types";
+import {
+  useDeletaColecao,
+  useDeletaViagemColecao,
+  useDeletaViagem,
+  useDeletaViagemCompleta,
+} from "./hooks";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,14 +24,14 @@ type Props = {
   statusViagem?: Status;
 };
 
-export default function ModalConfirmaDeletar({
+export const ModalConfirmaDeletar: React.FC<Props> = ({
   setShowModal,
   showModal,
   tipoDel,
   id,
   idPai,
   statusViagem,
-}: Props) {
+}) => {
   const { delAvulsa } = useDeletaViagem();
   const { delCompleta } = useDeletaViagemCompleta();
   const { delColecao } = useDeletaColecao();
@@ -68,4 +70,4 @@ export default function ModalConfirmaDeletar({
       </TouchableWithoutFeedback>
     </Modal>
   );
-}
+};

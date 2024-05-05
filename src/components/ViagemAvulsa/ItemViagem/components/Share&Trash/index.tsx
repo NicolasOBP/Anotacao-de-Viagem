@@ -1,15 +1,15 @@
 import { View } from "react-native";
 import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
-import { share } from "../../../../../utils/Share/shareViagemAvulsa";
-import { ViagemAvulsa } from "../../../../../types/viagemAvulsa";
-import ModalConfirmaDeletar from "../../../../ModalConfirmaDeleta";
+import { ViagemAvulsa } from "@/types";
+import { share } from "@/utils";
+import { ModalConfirmaDeletar } from "@/components";
 
 type Props = {
   itemAvulsa: ViagemAvulsa;
 };
 
-export default function Share_Trash({ itemAvulsa }: Props) {
+export const Share_Trash: React.FC<Props> = ({ itemAvulsa }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
@@ -54,4 +54,4 @@ export default function Share_Trash({ itemAvulsa }: Props) {
       />
     </>
   );
-}
+};

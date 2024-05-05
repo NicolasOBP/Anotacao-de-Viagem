@@ -1,8 +1,7 @@
 import firestore from "@react-native-firebase/firestore";
-import { useDadosStore } from "../../../../context/dadosStore";
-import { useToastDispatch } from "../../../../context/Toast/useToastDispatch";
+import { useDadosStore, useToastDispatch } from "@/context";
 
-export function useDeletaViagemCompleta() {
+export const useDeletaViagemCompleta = () => {
   const { user } = useDadosStore();
   const { showToast } = useToastDispatch();
   function delCompleta(id: string) {
@@ -11,4 +10,4 @@ export function useDeletaViagemCompleta() {
     showToast({ message: "Deletado com sucesso", type: "Success" });
   }
   return { delCompleta };
-}
+};

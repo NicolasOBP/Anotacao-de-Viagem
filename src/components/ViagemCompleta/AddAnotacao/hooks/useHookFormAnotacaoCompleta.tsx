@@ -1,11 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {
-  AnotacaoCompletaSchema,
-  anotacaoCompletaSchemachema,
-} from "./anotacaoCompletaSchema";
+import { AnotacaoCompletaSchema, anotacaoCompletaSchemachema } from "./";
 
-export default function useHookFormAnotacaoCompleta() {
+export const useHookFormAnotacaoCompleta = () => {
   const { control, formState, handleSubmit, reset } =
     useForm<AnotacaoCompletaSchema>({
       resolver: zodResolver(anotacaoCompletaSchemachema),
@@ -21,4 +18,4 @@ export default function useHookFormAnotacaoCompleta() {
       mode: "onChange",
     });
   return { control, formState, handleSubmit, reset };
-}
+};

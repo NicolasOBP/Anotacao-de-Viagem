@@ -1,4 +1,4 @@
-export default function useHoraData() {
+export const useHoraData = () => {
   let newDate = new Date();
   function Hora() {
     let hour = newDate.getHours();
@@ -24,4 +24,4 @@ export default function useHoraData() {
     return timestamp;
   }
   return { Data, Hora, Timestamp };
-}
+};

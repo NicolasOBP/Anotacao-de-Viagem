@@ -1,11 +1,8 @@
 import { useForm } from "react-hook-form";
-import {
-  ViagemAvulsaSchema,
-  viagemAvulsaSchemachema,
-} from "./viagemAvulsaSchema";
+import { ViagemAvulsaSchema, viagemAvulsaSchemachema } from "./";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-export default function useHookFormAddViagemAvulsa() {
+export const useHookFormAddViagemAvulsa = () => {
   const { control, formState, handleSubmit, reset } =
     useForm<ViagemAvulsaSchema>({
       resolver: zodResolver(viagemAvulsaSchemachema),
@@ -23,4 +20,4 @@ export default function useHookFormAddViagemAvulsa() {
       mode: "onChange",
     });
   return { control, formState, handleSubmit, reset };
-}
+};

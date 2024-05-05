@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components/native";
 import { light } from "./src/theme/light";
 import { dark } from "./src/theme/dark";
 import useInitializeTheme from "./src/hooks/useInitializeTheme";
-import { Toast } from "./src/components/Toast";
+import { Toast } from "@/components";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {

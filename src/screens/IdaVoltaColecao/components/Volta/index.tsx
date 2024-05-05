@@ -1,17 +1,15 @@
 import React from "react";
 import { FlatList, Title } from "../../../../globalStyles/style";
-import AddAnotacao from "../AddAnotacao";
-import { ColecaoViagem } from "../../../../types/colecaoViagem";
-import { useDadosStore } from "../../../../context/dadosStore";
-import ItemAnotacaoColecao from "../../../../components/ColecaoViagem/ItemAnotacao";
-import Finalizar from "../Chegada";
+import { ColecaoViagem } from "@/types";
+import { useDadosStore } from "@/context";
+import { ItemAnotacaoColecao } from "@/components";
 import useAtualizaDadosIdaVolta from "../../hooks/useAtualizaDadosIdaVolta";
-import ItemChegadaVolta from "../ItemChegadaVolta";
+import { AddAnotacao, Finalizar, ItemChegadaVolta } from "../";
 
 type Props = {
   colecao: ColecaoViagem;
 };
-export default function Volta({ colecao }: Props) {
+export const Volta: React.FC<Props> = ({ colecao }) => {
   const { colecaoStatusStore } = useDadosStore();
   const { dadosAtualizados } = useAtualizaDadosIdaVolta();
 
@@ -39,4 +37,4 @@ export default function Volta({ colecao }: Props) {
       {colecaoStatusStore === "Finalizado" && <ItemChegadaVolta />}
     </>
   );
-}
+};

@@ -3,16 +3,15 @@ import {
   statusCodes,
 } from "@react-native-google-signin/google-signin";
 import auth from "@react-native-firebase/auth";
-import { useDadosStore } from "../../../context/dadosStore";
-import useAddToGoogleAnota from "./useAddToGoogleAnota";
-import { useToastDispatch } from "../../../context/Toast/useToastDispatch";
+import { useDadosStore, useToastDispatch } from "@/context";
+import { useAddToGoogleAnota } from "./useAddToGoogleAnota";
 
 GoogleSignin.configure({
   webClientId:
     "825241591327-m1eo5jlk77tv1u8n63n0b5pna65biejq.apps.googleusercontent.com",
 });
 
-export default function useGoogleSignin() {
+export const useGoogleSignin = () => {
   const { setUser } = useDadosStore();
   const { addToGoogleAnotacao } = useAddToGoogleAnota();
   const { showToast } = useToastDispatch();
@@ -59,4 +58,4 @@ export default function useGoogleSignin() {
 
   addToGoogleAnotacao();
   return { onGoogleButtonPress };
-}
+};

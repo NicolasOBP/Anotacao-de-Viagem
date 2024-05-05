@@ -1,8 +1,8 @@
 import React from "react";
 import { ShareContainer } from "../../../../globalStyles/style";
 import { FontAwesome } from "@expo/vector-icons";
-import { shareAnotacaoViagemCompelta } from "../../../../utils/Share/shareAnotacaoViagemCompleta";
-import { AnotacaoCompleta } from "../../../../types/viagemCompleta";
+import { shareAnotacaoViagemCompelta } from "@/utils";
+import { AnotacaoCompleta } from "@/types";
 
 type Props = {
   item: AnotacaoCompleta;
@@ -10,7 +10,7 @@ type Props = {
   indo: string;
 };
 
-export default function Share({ indo, item, saindo }: Props) {
+export const Share: React.FC<Props> = ({ indo, item, saindo }) => {
   return (
     <ShareContainer
       style={{
@@ -27,4 +27,4 @@ export default function Share({ indo, item, saindo }: Props) {
       />
     </ShareContainer>
   );
-}
+};

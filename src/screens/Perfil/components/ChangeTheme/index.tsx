@@ -1,10 +1,10 @@
 import React from "react";
 import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
 import { Ionicons } from "@expo/vector-icons";
-import useChangeTheme from "../../hooks/useChangeTheme";
-import { useDadosStore } from "../../../../context/dadosStore";
+import { useChangeTheme } from "../../hooks";
+import { useDadosStore } from "@/context";
 
-export default function ChangeTheme() {
+export const ChangeTheme = () => {
   const { changeTheme } = useChangeTheme();
   const { theme } = useDadosStore();
 
@@ -18,4 +18,4 @@ export default function ChangeTheme() {
       <TextBtn>Trocar tema</TextBtn>
     </ContainerBtn>
   );
-}
+};

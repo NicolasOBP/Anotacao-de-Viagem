@@ -1,12 +1,12 @@
 import React from "react";
 import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
-import { ColecaoViagem } from "../../../../types/colecaoViagem";
+import { ColecaoViagem } from "@/types";
 import useCriaNovaViagem from "../../hooks/useCriaNovaViagem";
 
 type Props = {
   item: ColecaoViagem;
 };
-export default function IniciaViagem({ item }: Props) {
+export const IniciaViagem: React.FC<Props> = ({ item }) => {
   const { criaNovaaViagem } = useCriaNovaViagem();
 
   return (
@@ -19,4 +19,4 @@ export default function IniciaViagem({ item }: Props) {
       </ContainerBtn>
     </>
   );
-}
+};
