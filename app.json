@@ -32,6 +32,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "experiments": {
+      "tsconfigPaths": true
+    },
     "plugins": [
       "@react-native-firebase/app",
       "@react-native-google-signin/google-signin"

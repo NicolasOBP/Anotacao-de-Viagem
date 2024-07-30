@@ -1,12 +1,11 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import MyStack from "./src/Router/stackNav";
-import useAnonymosSignIn from "./src/hooks/useAnonymosSignIn";
+import { MyStack } from "@/Router";
 import { ThemeProvider } from "styled-components/native";
 import { light } from "./src/theme/light";
 import { dark } from "./src/theme/dark";
-import useInitializeTheme from "./src/hooks/useInitializeTheme";
+import { useInitializeTheme, useAnonymosSignIn } from "@/hooks";
 import { Toast } from "@/components";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
