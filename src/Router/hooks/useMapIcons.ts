@@ -14,7 +14,7 @@ export const mapIcons: Record<keyof RootStackParamListBootom, MapIcon> = {
     unfocus: "airplane-outline",
   },
   AnotacaoAvulsa: {
-    focus: "md-bookmark-sharp",
-    unfocus: "md-bookmark-outline",
+    focus: "bookmark-sharp",
+    unfocus: "bookmark-outline",
   },
 };

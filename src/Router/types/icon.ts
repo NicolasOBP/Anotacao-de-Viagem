@@ -5,5 +5,5 @@ export type Icon =
   | "airplane-outline"
   | "person-circle"
   | "person-circle-outline"
-  | "md-bookmark-outline"
-  | "md-bookmark-sharp";
+  | "bookmark-outline"
+  | "bookmark-sharp";
