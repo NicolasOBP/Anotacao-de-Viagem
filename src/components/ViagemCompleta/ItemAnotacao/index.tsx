@@ -2,7 +2,7 @@ import { View, Pressable } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Nav } from "@/Router";
-import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
+import { ItemBox, ItemText, ItemTitle } from "@/globalStyles/item";
 import { ShareComponent } from "./components/Share";
 
 type item = {
@@ -43,7 +43,7 @@ export const ItemCompleta: React.FC<Props> = ({ itemAnotacaoCompleta }) => {
           </ItemText>
         </View>
 
-        <ShareComponent itemAnotacaoCompleta={itemAnotacaoCompleta} />
+        <ShareComponent itemAnotacaoCompleta={itemAnotacaoCompleta!} />
       </Pressable>
     </ItemBox>
   );

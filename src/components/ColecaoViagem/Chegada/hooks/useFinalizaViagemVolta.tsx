@@ -2,11 +2,7 @@ import firestore from "@react-native-firebase/firestore";
 import { useDadosStore } from "@/context";
 import { useHoraData } from "@/hooks";
 import { UseFormReset } from "react-hook-form";
-
-type item = {
-  descricaoChegada: string;
-  gastos: string;
-};
+import { item } from "../types";
 
 export const useFinalizaViagemVolta = (reset: UseFormReset<item>) => {
   const { user, dadosColecaoViagemStore, setColecoStatusStore } =
@@ -18,7 +14,7 @@ export const useFinalizaViagemVolta = (reset: UseFormReset<item>) => {
 
     try {
       firestore()
-        .collection(user.id)
+        .collection(user!.id!)
         .doc("Coleção de Viagens")
         .collection("1")
         .doc(dadosColecaoViagemStore.idPai)
@@ -37,7 +33,7 @@ export const useFinalizaViagemVolta = (reset: UseFormReset<item>) => {
         });
     } catch (e) {
       firestore()
-        .collection(user.id)
+        .collection(user!.id!)
         .doc("Coleção de Viagens")
         .collection("1")
         .doc(dadosColecaoViagemStore.idPai)
@@ -56,7 +52,7 @@ export const useFinalizaViagemVolta = (reset: UseFormReset<item>) => {
     }
 
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(dadosColecaoViagemStore.idPai)

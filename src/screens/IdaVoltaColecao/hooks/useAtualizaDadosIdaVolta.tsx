@@ -15,7 +15,7 @@ export default function useAtualizaDadosIdaVolta() {
 
   function atualizaDadosIdaVolta() {
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(dadosColecaoViagemStore.idPai)

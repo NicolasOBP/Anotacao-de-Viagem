@@ -5,8 +5,8 @@ import {
   ContainerBtncancel,
   TextBtn,
   Title,
-} from "../../globalStyles/style";
-import { Box, Container2, ContainerBtnModal } from "../../globalStyles/modal";
+} from "@/globalStyles/style";
+import { Box, Container2, ContainerBtnModal } from "@/globalStyles/modal";
 import { Status } from "@/types";
 import {
   useDeletaColecao,
@@ -41,7 +41,8 @@ export const ModalConfirmaDeletar: React.FC<Props> = ({
     if (tipoDel === "Anotacao") delAvulsa(id);
     if (tipoDel === "Viagem") delCompleta(id);
     if (tipoDel === "Colecao") delColecao(id);
-    if (tipoDel === "ColecaoViagem") delViagemColecao(id, idPai, statusViagem);
+    if (tipoDel === "ColecaoViagem")
+      delViagemColecao(id, idPai!, statusViagem!);
   }
 
   return (

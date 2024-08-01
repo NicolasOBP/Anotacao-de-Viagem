@@ -6,7 +6,7 @@ export const useDeletaColecao = () => {
   const { showToast } = useToastDispatch();
   function delColecao(id: string) {
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(id)

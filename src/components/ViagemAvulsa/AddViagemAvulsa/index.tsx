@@ -6,10 +6,11 @@ import {
   ContainerBtncancel,
   TextBtn,
   Title,
-} from "../../../globalStyles/style";
-import { Box, Container } from "../../../globalStyles/modal";
-import { BoxBtns } from "./style";
+  BoxBtns,
+} from "@/globalStyles/style";
+import { Box, Container } from "@/globalStyles/modal";
 import { useAddViagemAvulsa, useHookFormAddViagemAvulsa } from "./hooks";
+import { itemAvulsa } from "./types";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,10 +22,6 @@ export const AddViaAvulsa: React.FC<Props> = ({ setShowModal, showModal }) => {
     useHookFormAddViagemAvulsa();
 
   const { addAnotacao } = useAddViagemAvulsa(setShowModal, reset);
-
-  function AddAnotacao(data) {
-    addAnotacao(data);
-  }
 
   function cancelar() {
     reset({
@@ -102,7 +99,7 @@ export const AddViaAvulsa: React.FC<Props> = ({ setShowModal, showModal }) => {
             <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={handleSubmit(AddAnotacao)}
+                onPress={handleSubmit((data: itemAvulsa) => addAnotacao(data))}
                 disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>

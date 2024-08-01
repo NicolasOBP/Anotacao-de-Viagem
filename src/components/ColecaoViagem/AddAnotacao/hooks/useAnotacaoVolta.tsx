@@ -1,16 +1,8 @@
 import firestore from "@react-native-firebase/firestore";
 import { useDadosStore } from "@/context";
 import { useHoraData } from "@/hooks";
+import { itemAnotacaoColecao } from "../types";
 
-type itemAnotacaoColecao = {
-  PontoReferencia: string;
-  KmPercorrido: string;
-  VeloFeita: string;
-  VeloVia: string;
-  consumo: string;
-  ar: string;
-  descricao?: string;
-};
 export const useAnotacaoVolta = () => {
   const { dadosColecaoViagemStore, user } = useDadosStore();
   const { Data, Hora } = useHoraData();
@@ -18,7 +10,7 @@ export const useAnotacaoVolta = () => {
   function anotacaoVolta(item: itemAnotacaoColecao) {
     try {
       firestore()
-        .collection(user.id)
+        .collection(user!.id!)
         .doc("Coleção de Viagens")
         .collection("1")
         .doc(dadosColecaoViagemStore.idPai)
@@ -43,7 +35,7 @@ export const useAnotacaoVolta = () => {
         .catch((err) => console.log(err));
     } catch (err) {
       firestore()
-        .collection(user.id)
+        .collection(user!.id!)
         .doc("Coleção de Viagens")
         .collection("1")
         .doc(dadosColecaoViagemStore.idPai)

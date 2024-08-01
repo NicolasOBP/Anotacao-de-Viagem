@@ -6,10 +6,11 @@ import {
   ContainerBtncancel,
   TextBtn,
   Title,
-} from "../../../globalStyles/style";
-import { Box, Container2 } from "../../../globalStyles/modal";
-import { BoxBtns } from "./style";
+  BoxBtns,
+} from "@/globalStyles/style";
+import { Box, Container2 } from "@/globalStyles/modal";
 import { useHookFormCriaColecao, useCriaColecao } from "./hooks";
+import { item } from "./types";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -46,7 +47,7 @@ export const CriaColecaoViagem: React.FC<Props> = ({
             <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={handleSubmit((data) => criaColecao(data))}
+                onPress={handleSubmit((data: item) => criaColecao(data))}
                 disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>

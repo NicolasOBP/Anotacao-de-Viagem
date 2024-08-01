@@ -1,18 +1,19 @@
 import { Modal, TouchableWithoutFeedback, Keyboard } from "react-native";
 import React from "react";
-import { Box, Container2 } from "../../../globalStyles/modal";
+import { Box, Container2 } from "@/globalStyles/modal";
 import {
   ContainerBtncancel,
   ContainerBtnconfirma,
   TextBtn,
   Title,
-} from "../../../globalStyles/style";
+} from "@/globalStyles/style";
 import { Input } from "@/components";
 import {
   ContainerBtn1,
   ContainerBtn2,
 } from "../../ViagemCompleta/ComecaTermina/style";
 import { useFinalizaViagem, useHookFormChegada } from "./hooks";
+import { item } from "./types";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,7 +29,7 @@ export const Chegada: React.FC<Props> = ({
   const { control, formState, handleSubmit, reset } = useHookFormChegada();
   const { finalizaViagem } = useFinalizaViagem(tipoEstado, reset);
 
-  function adicionar(data) {
+  function adicionar(data: item) {
     finalizaViagem(data);
   }
   function cancelar() {

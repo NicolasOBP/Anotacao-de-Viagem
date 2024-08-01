@@ -1,8 +1,8 @@
 import React from "react";
 import { Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { Input } from "@/components";
-import { Title } from "../../../globalStyles/style";
-import { Box, Container2 } from "../../../globalStyles/modal";
+import { Title } from "@/globalStyles/style";
+import { Box, Container2 } from "@/globalStyles/modal";
 import { useHookFormComecaTermina } from "./hooks/";
 import { AddAnotacaoExtra } from "./components/AdicionaAnotacaoExtra";
 

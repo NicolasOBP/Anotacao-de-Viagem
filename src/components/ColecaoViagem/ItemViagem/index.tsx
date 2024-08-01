@@ -2,7 +2,7 @@ import { Pressable } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Nav } from "@/Router";
-import { ItemBox, ItemTitle } from "../../../globalStyles/item";
+import { ItemBox, ItemTitle } from "@/globalStyles/item";
 import { ColecaoViagem, NovaViagem } from "@/types";
 import { DeletaViagemColecao } from "./components/DeletaViagemColecao";
 

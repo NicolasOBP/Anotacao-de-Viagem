@@ -2,29 +2,8 @@ import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
 import { useHoraData } from "@/hooks";
 import { useDadosStore } from "@/context";
+import { itemAvulsa, reset } from "../types";
 
-type reset = {
-  saindoDe?: string;
-  indoPara?: string;
-  kmPercorrido?: string;
-  veloVia?: string;
-  veloMedia?: string;
-  consumo?: string;
-  ar?: string;
-  gasto?: string;
-  descricaoExtra?: string;
-};
-type itemAvulsa = {
-  saindo: string;
-  indo: string;
-  KmPercorrido: string;
-  VeloFeita: string;
-  VeloVia: string;
-  consumo: string;
-  ar: string;
-  gastos?: string;
-  descricao?: string;
-};
 export const useAddViagemAvulsa = (
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
   reset: UseFormReset<reset>
@@ -34,7 +13,7 @@ export const useAddViagemAvulsa = (
     const { Data, Hora } = useHoraData();
 
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Viagem Avulsa")
       .collection("1")
       .add({

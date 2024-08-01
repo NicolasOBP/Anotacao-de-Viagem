@@ -1,6 +1,6 @@
 import { View, Pressable } from "react-native";
 import React from "react";
-import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
+import { ItemBox, ItemText, ItemTitle } from "@/globalStyles/item";
 import { useNavigation } from "@react-navigation/native";
 import { Nav } from "@/Router";
 

@@ -6,10 +6,11 @@ import {
   ContainerBtncancel,
   TextBtn,
   Title,
-} from "../../../globalStyles/style";
-import { Box, Container2 } from "../../../globalStyles/modal";
-import { BoxBtns } from "./style";
+  BoxBtns,
+} from "@/globalStyles/style";
+import { Box, Container2 } from "@/globalStyles/modal";
 import { useHookFormViagemCompleta, useCriaViagemCompleta } from "./hooks";
+import { itemCompleta } from "./types";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,10 +24,6 @@ export const AddViaCompleta: React.FC<Props> = ({
   const { handleSubmit, control, reset, formState } =
     useHookFormViagemCompleta();
   const { criaViagem } = useCriaViagemCompleta(setShowModal, reset);
-
-  function AddAnotacao(data) {
-    criaViagem(data);
-  }
 
   function cancelar() {
     reset({
@@ -49,7 +46,7 @@ export const AddViaCompleta: React.FC<Props> = ({
             <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={handleSubmit(AddAnotacao)}
+                onPress={handleSubmit((data: itemCompleta) => criaViagem(data))}
                 disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>

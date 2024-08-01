@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ViagemCompleta } from "@/types";
 import { Nav } from "@/Router";
-import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
+import { ItemBox, ItemText, ItemTitle } from "@/globalStyles/item";
 import { Share_Deleta } from "./components/Share_Deleta";
 
 type Props = {

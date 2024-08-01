@@ -4,8 +4,8 @@ import { useHoraData } from "@/hooks";
 import { useDadosStore } from "@/context";
 
 type reset = {
-  gastos: string;
-  descricaoExtra: string;
+  gastos?: string;
+  descricaoExtra?: string;
 };
 export const useUpdateAnotacaoCompleta = (
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
@@ -22,7 +22,7 @@ export const useUpdateAnotacaoCompleta = (
 
     if (tipoTermina) {
       firestore()
-        .collection(user.id)
+        .collection(user!.id!)
         .doc(viagemCompletaStore.id)
         .update({
           chegando: { data: Data(), hora: Hora(), descricaoExtra, gastos },
@@ -32,7 +32,7 @@ export const useUpdateAnotacaoCompleta = (
         .catch((err) => console.log(err));
     } else {
       firestore()
-        .collection(user.id)
+        .collection(user!.id!)
         .doc(viagemCompletaStore.id)
         .update({ partindo: { data: Data(), hora: Hora(), descricaoExtra } })
         .then()

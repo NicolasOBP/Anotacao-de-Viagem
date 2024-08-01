@@ -65,3 +65,10 @@ export const BoxInfo = styled.View`
 export const FlatList = styled.FlatList`
   width: 80%;
 ` as typeof RNFlatList;
+
+export const BoxBtns = styled.View`
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 4px;
+`;

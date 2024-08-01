@@ -6,7 +6,7 @@ export function useDeletaViagem() {
   const { showToast } = useToastDispatch();
   function delAvulsa(id: string) {
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Viagem Avulsa")
       .collection("1")
       .doc(id)

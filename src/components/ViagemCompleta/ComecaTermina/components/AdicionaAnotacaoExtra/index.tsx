@@ -5,7 +5,7 @@ import {
   ContainerBtncancel,
   ContainerBtnconfirma,
   TextBtn,
-} from "../../../../../globalStyles/style";
+} from "@/globalStyles/style";
 import {
   Control,
   FormState,
@@ -45,9 +45,6 @@ export const AddAnotacaoExtra: React.FC<Props> = ({
 }) => {
   const { addAnotacao } = useUpdateAnotacaoCompleta(setShowModal, reset);
 
-  function adicionar(data) {
-    addAnotacao(data.descricaoExtra, tipoTermina, data.gastos);
-  }
   function cancelar() {
     reset({
       descricaoExtra: "",
@@ -67,7 +64,9 @@ export const AddAnotacaoExtra: React.FC<Props> = ({
         <ContainerBtn2>
           <ContainerBtnconfirma
             android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-            onPress={handleSubmit(adicionar)}
+            onPress={handleSubmit((data) =>
+              addAnotacao(data.descricaoExtra!, tipoTermina, data.gastos!)
+            )}
             disabled={!formState.isValid}
           >
             <TextBtn>Confirmar</TextBtn>

@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ViagemAvulsa } from "@/types";
 import { Nav } from "@/Router";
-import { ItemBox, ItemText, ItemTitle } from "../../../globalStyles/item";
+import { ItemBox, ItemText, ItemTitle } from "@/globalStyles/item";
 import { Share_Trash } from "./components/Share&Trash";
 
 type Props = {
@@ -32,7 +32,7 @@ export const ItemAvulsa: React.FC<Props> = ({ itemAvulsa }) => {
           </ItemText>
         </View>
 
-        <Share_Trash itemAvulsa={itemAvulsa} />
+        <Share_Trash itemAvulsa={itemAvulsa!} />
       </Pressable>
     </ItemBox>
   );

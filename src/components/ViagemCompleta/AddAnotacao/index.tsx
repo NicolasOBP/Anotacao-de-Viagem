@@ -6,11 +6,12 @@ import {
   ContainerBtncancel,
   TextBtn,
   Title,
-} from "../../../globalStyles/style";
-import { Box, Container } from "../../../globalStyles/modal";
-import { BoxBtns } from "./style";
+  BoxBtns,
+} from "@/globalStyles/style";
+import { Box, Container } from "@/globalStyles/modal";
 import { useAddAnotacaoCompleta, useHookFormAnotacaoCompleta } from "./hooks";
 import { useDadosStore } from "@/context";
+import { itemAnotacaoCompleta } from "./types";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,10 +26,6 @@ export const AddAnotacaoCompleta: React.FC<Props> = ({
   const { handleSubmit, control, reset, formState } =
     useHookFormAnotacaoCompleta();
   const { addAnotacao } = useAddAnotacaoCompleta(setShowModal, reset);
-
-  function AddAnotacao(data) {
-    addAnotacao(data);
-  }
 
   function cancelar() {
     reset({
@@ -103,7 +100,9 @@ export const AddAnotacaoCompleta: React.FC<Props> = ({
             <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={handleSubmit(AddAnotacao)}
+                onPress={handleSubmit((data: itemAnotacaoCompleta) =>
+                  addAnotacao(data)
+                )}
                 disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>

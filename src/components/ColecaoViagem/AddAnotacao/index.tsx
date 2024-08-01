@@ -5,10 +5,11 @@ import {
   ContainerBtn,
   ContainerBtncancel,
   TextBtn,
-} from "../../../globalStyles/style";
-import { Box, Container } from "../../../globalStyles/modal";
-import { BoxBtns } from "./style";
+  BoxBtns,
+} from "@/globalStyles/style";
+import { Box, Container } from "@/globalStyles/modal";
 import { useHookFormAnotacaoColecao, useAddAnotacaoColecao } from "./hooks";
+import { itemAnotacaoColecao } from "./types";
 
 type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,7 +26,7 @@ export const AddAnotacaoColecao: React.FC<Props> = ({
     useHookFormAnotacaoColecao();
   const { addAnotacao } = useAddAnotacaoColecao(setShowModal, reset, tipo);
 
-  function AddAnotacao(data) {
+  function AddAnotacao(data: itemAnotacaoColecao) {
     addAnotacao(data);
   }
 
