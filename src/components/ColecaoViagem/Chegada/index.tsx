@@ -29,9 +29,6 @@ export const Chegada: React.FC<Props> = ({
   const { control, formState, handleSubmit, reset } = useHookFormChegada();
   const { finalizaViagem } = useFinalizaViagem(tipoEstado, reset);
 
-  function adicionar(data: item) {
-    finalizaViagem(data);
-  }
   function cancelar() {
     reset({
       descricaoChegada: "",
@@ -67,7 +64,7 @@ export const Chegada: React.FC<Props> = ({
               <ContainerBtn2>
                 <ContainerBtnconfirma
                   android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                  onPress={handleSubmit(adicionar)}
+                  onPress={handleSubmit((data: item) => finalizaViagem(data))}
                   disabled={!formState.isValid}
                 >
                   <TextBtn>Confirmar</TextBtn>

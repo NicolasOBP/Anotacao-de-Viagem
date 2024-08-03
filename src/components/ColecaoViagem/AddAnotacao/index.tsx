@@ -26,10 +26,6 @@ export const AddAnotacaoColecao: React.FC<Props> = ({
     useHookFormAnotacaoColecao();
   const { addAnotacao } = useAddAnotacaoColecao(setShowModal, reset, tipo);
 
-  function AddAnotacao(data: itemAnotacaoColecao) {
-    addAnotacao(data);
-  }
-
   function cancelar() {
     reset({
       KmPercorrido: "",
@@ -98,7 +94,9 @@ export const AddAnotacaoColecao: React.FC<Props> = ({
             <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={handleSubmit(AddAnotacao)}
+                onPress={handleSubmit((data: itemAnotacaoColecao) =>
+                  addAnotacao(data)
+                )}
                 disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>
