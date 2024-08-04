@@ -16,6 +16,7 @@ export const TextInput = styled.TextInput`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.COLORS.PRIMARY_300};
   color: ${({ theme }) => theme.COLORS.TEXT_COLOR};
+  padding-left: 5px;
 ` as typeof RNTextInput;
 
 export const ErrorMessage = styled.Text`
