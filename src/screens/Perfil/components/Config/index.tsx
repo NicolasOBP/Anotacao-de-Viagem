@@ -28,25 +28,25 @@ export const Config: React.FC = () => {
 
       <View style={{ marginTop: 5 }}>
         <ConfigBox $display={showCofig}>
-          <TouchableOpacity
-            onPress={() =>
-              setShowConfig((prevShow) =>
-                prevShow === "none" ? "flex" : "none"
-              )
-            }
+          <View
             style={{
-              position: "absolute",
-              left: "92%",
-              top: "2%",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              width: "100%",
             }}
           >
+            <TextBtn>Definir preços</TextBtn>
             <FontAwesome
+              onPress={() =>
+                setShowConfig((prevShow) =>
+                  prevShow === "none" ? "flex" : "none"
+                )
+              }
               name="close"
               size={24}
               color={theme.COLORS.TEXT_COLOR}
             />
-          </TouchableOpacity>
-          <TextBtn>Definir preços</TextBtn>
+          </View>
           <Input
             label="Gasolina"
             control={control}
