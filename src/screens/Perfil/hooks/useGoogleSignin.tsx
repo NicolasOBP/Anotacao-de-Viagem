@@ -38,7 +38,7 @@ export const useGoogleSignin = () => {
 
       showToast({ message: "Logado com sucesso!", type: "Success" });
       return auth().signInWithCredential(googleCredential);
-    } catch (error) {
+    } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
         console.log(error);
