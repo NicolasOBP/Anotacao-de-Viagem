@@ -1,7 +1,7 @@
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 
 export const useHookFormPerfil = () => {
-  const { control } = useForm({
+  const { control }: FieldValues = useForm({
     defaultValues: {
       email: "",
       username: "",
