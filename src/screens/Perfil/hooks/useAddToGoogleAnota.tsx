@@ -25,7 +25,7 @@ export const useAddToGoogleAnota = () => {
             const noteId = doc.id;
 
             // Adicionar as anotações ao usuário autenticado
-            const userNotesRef = firestore().collection(user.id);
+            const userNotesRef = firestore().collection(user!.id!);
 
             userNotesRef
               .doc(noteId)
@@ -55,7 +55,7 @@ export const useAddToGoogleAnota = () => {
           const tripId = doc.id;
 
           const userAvulsaRef = firestore()
-            .collection(user.id)
+            .collection(user!.id!)
             .doc("Viagem Avulsa")
             .collection("1");
 
