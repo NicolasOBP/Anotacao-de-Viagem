@@ -7,12 +7,12 @@ export function usePegaAnotacaoCompleta() {
   const [viagemCompleta, setViagemCompleta] = useState<ViagemCompleta[]>([]);
   const { user } = useDadosStore();
 
-  useEffect(() => ViagemCompleta(), [user.id]);
+  useEffect(() => ViagemCompleta(), [user!.id]);
 
   function ViagemCompleta() {
     try {
       firestore()
-        .collection(user.id)
+        .collection(user!.id!)
         .orderBy("timestamp", "desc")
         .onSnapshot((docSnap) => {
           try {
