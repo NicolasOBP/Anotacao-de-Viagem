@@ -1,5 +1,5 @@
 import React from "react";
-import { ShareContainer } from "../../../../globalStyles/style";
+import { ShareContainer } from "@/globalStyles/style";
 import { FontAwesome } from "@expo/vector-icons";
 import { share } from "@/utils";
 import { ViagemAvulsa } from "@/types";

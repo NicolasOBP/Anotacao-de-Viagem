@@ -1,8 +1,8 @@
 import React from "react";
-import { BoxInfo, Container, Title } from "../../globalStyles/style";
+import { BoxInfo, Container, Title } from "@/globalStyles/style";
 import { useDadosStore } from "@/context";
 import { ItemRevisao } from "@/utils";
-import { PropsNav } from "../../Router/types/screenProps";
+import { PropsNav } from "@/Router/types/screenProps";
 import { Share } from "./components/Share";
 
 export const RevisaoViagemCompleta: React.FC<PropsNav<"RevisãoAnotação">> = ({
