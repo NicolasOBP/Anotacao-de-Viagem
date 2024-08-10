@@ -1,7 +1,7 @@
 import React from "react";
-import { Container, Title } from "../../globalStyles/style";
+import { Container, Title } from "@/globalStyles/style";
 import { usePegaAnotacao } from "./hooks/usePegaAnotacao";
-import { PropsNav } from "../../Router/types/screenProps";
+import { PropsNav } from "@/Router/types/screenProps";
 import * as Comp from "./components";
 
 export const AnotacaoViagem: React.FC<PropsNav<"AnotaçãoViagem">> = ({

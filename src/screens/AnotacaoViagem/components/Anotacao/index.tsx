@@ -8,8 +8,8 @@ import { AnotacaoCompleta, Check } from "@/types";
 import { AddAnotacaoCompleta, ItemCompleta } from "@/components";
 
 type Props = {
-  partindo: Check;
-  chegando: Check;
+  partindo: Check | null;
+  chegando: Check | null;
   anotacao: [AnotacaoCompleta];
 };
 

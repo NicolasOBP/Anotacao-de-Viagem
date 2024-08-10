@@ -5,8 +5,8 @@ import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
 import { ComecaTermina } from "@/components";
 
 type Props = {
-  chegando: Check;
-  partindo: Check;
+  chegando: Check | null;
+  partindo: Check | null;
 };
 
 export const Chegando: React.FC<Props> = ({ chegando, partindo }) => {

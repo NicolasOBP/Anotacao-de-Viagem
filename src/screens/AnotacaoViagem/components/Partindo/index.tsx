@@ -5,7 +5,7 @@ import { Info } from "./components/Info";
 import { ComecaTermina } from "@/components";
 
 type Props = {
-  partindo: Check;
+  partindo: Check | null;
 };
 
 export const Partindo: React.FC<Props> = ({ partindo }) => {
