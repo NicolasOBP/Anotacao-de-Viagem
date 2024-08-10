@@ -11,7 +11,7 @@ export const useIniciaViagem = (item: NovaViagem) => {
     setColecoStatusStore("Iniciado, ida");
 
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(item.idPai)
