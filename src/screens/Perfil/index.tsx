@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Title } from "../../globalStyles/style";
+import { Container, Title } from "@/globalStyles/style";
 import { Input } from "@/components";
 import { useDadosStore } from "@/context";
 import { useHookFormPerfil } from "./hooks";

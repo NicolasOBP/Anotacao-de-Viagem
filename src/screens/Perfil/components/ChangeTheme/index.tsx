@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
+import { ContainerBtn, TextBtn } from "@/globalStyles/style";
 import { Ionicons } from "@expo/vector-icons";
 import { useChangeTheme } from "../../hooks";
 import { useDadosStore } from "@/context";

@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerBtncancel, TextBtn } from "../../../../globalStyles/style";
+import { ContainerBtncancel, TextBtn } from "@/globalStyles/style";
 import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
 import { useGoogleSignin, useSignOut } from "../../hooks";
 
