@@ -7,12 +7,12 @@ export function usePegaColecaoViagem() {
   const [colecaoViagem, setColecao] = useState<ColecaoViagem[]>([]);
   const { user } = useDadosStore();
 
-  useEffect(() => ColecaoViagem(), [user.id]);
+  useEffect(() => ColecaoViagem(), [user!.id]);
 
   function ColecaoViagem() {
     try {
       firestore()
-        .collection(user!.id)
+        .collection(user!.id!)
         .doc("Coleção de Viagens")
         .collection("1")
         .onSnapshot((docSnap) => {
