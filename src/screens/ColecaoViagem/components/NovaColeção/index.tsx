@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
+import { ContainerBtn, TextBtn } from "@/globalStyles/style";
 import { ColecaoViagem } from "@/types";
 import useCriaNovaViagem from "../../hooks/useCriaNovaViagem";
 
