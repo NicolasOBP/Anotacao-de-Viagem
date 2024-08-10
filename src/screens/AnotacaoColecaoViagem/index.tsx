@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { BoxInfo, Container, Title } from "../../globalStyles/style";
+import { BoxInfo, Container, Title } from "@/globalStyles/style";
 import { PropsNav } from "@/Router/types/screenProps";
 import { useDadosStore } from "@/context";
 import { useAtualizaDadosViagem } from "@/hooks";
-import { ItemTitle } from "../../globalStyles/item";
+import { ItemTitle } from "@/globalStyles/item";
 import * as Comp from "./components";
 
 export const AnotacaoColecaoViagem: React.FC<
