@@ -11,14 +11,14 @@ export default function useCriaNovaViagem() {
     setColecoStatusStore("Não iniciado");
 
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(colecao.id)
       .update({ acontecendo: true });
 
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(colecao.id)

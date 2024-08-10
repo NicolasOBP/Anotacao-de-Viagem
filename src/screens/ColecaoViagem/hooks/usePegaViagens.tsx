@@ -7,11 +7,11 @@ export default function usePegaViagens(item: ColecaoViagem) {
   const [viagens, setViagens] = useState<NovaViagem[]>([]);
   const { user } = useDadosStore();
 
-  useEffect(() => pegaViagem(), [user.id]);
+  useEffect(() => pegaViagem(), [user!.id]);
 
   function pegaViagem() {
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(item.id)
