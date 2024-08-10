@@ -1,6 +1,6 @@
 import React from "react";
-import { BoxInfo } from "../../../../globalStyles/style";
-import { ItemText, ItemTitle } from "../../../../globalStyles/item";
+import { BoxInfo } from "@/globalStyles/style";
+import { ItemText, ItemTitle } from "@/globalStyles/item";
 import { useDadosStore } from "@/context";
 
 export const ItemChegadaVolta: React.FC = () => {
