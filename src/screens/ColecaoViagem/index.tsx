@@ -1,6 +1,6 @@
 import React from "react";
 import { PropsNav } from "@/Router/types/screenProps";
-import { Container, FlatList, Title } from "../../globalStyles/style";
+import { Container, FlatList, Title } from "@/globalStyles/style";
 import { IniciaViagem } from "./components/NovaColeção";
 import usePegaViagens from "./hooks/usePegaViagens";
 import { NovaViagem } from "@/types";
