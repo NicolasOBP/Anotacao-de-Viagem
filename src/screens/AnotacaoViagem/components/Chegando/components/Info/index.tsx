@@ -1,7 +1,7 @@
 import React from "react";
-import { ItemText, ItemTitle } from "../../../../../../globalStyles/item";
+import { ItemText, ItemTitle } from "@/globalStyles/item";
 import { Check } from "@/types";
-import { BoxInfo } from "../../../../../../globalStyles/style";
+import { BoxInfo } from "@/globalStyles/style";
 
 type Props = {
   chegando: Check;
