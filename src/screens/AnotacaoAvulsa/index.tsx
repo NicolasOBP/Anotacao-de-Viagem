@@ -1,6 +1,6 @@
 import React from "react";
 import { NovaAnotacao } from "./components/NovaAnotacao";
-import { Container, Title } from "../../globalStyles/style";
+import { Container, Title } from "@/globalStyles/style";
 import { FlatList } from "react-native-gesture-handler";
 import { ItemAvulsa } from "@/components";
 import { ViagemAvulsa } from "@/types";
