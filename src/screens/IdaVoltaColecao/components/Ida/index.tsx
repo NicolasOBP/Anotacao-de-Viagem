@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, Title } from "../../../../globalStyles/style";
+import { FlatList, Title } from "@/globalStyles/style";
 import { ColecaoViagem } from "@/types";
 import { useDadosStore } from "@/context";
 import { ItemAnotacaoColecao } from "@/components";
