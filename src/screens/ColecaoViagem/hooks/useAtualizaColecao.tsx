@@ -11,13 +11,13 @@ export default function useAtualizaColecao(item: ColecaoViagem) {
 
   function atualizaColecao() {
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(item.id)
       .onSnapshot((docSnap) => {
         try {
-          setAcontecendo(docSnap.data().acontecendo);
+          setAcontecendo(docSnap.data()!.acontecendo);
         } catch (err) {}
       });
   }
