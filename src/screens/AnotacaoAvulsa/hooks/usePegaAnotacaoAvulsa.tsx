@@ -7,12 +7,12 @@ export const usePegaAnotacaoAvulsa = () => {
   const [viagemAvulsa, setViagemAvulsa] = useState<ViagemAvulsa[]>([]);
   const { user } = useDadosStore();
 
-  useEffect(() => ViagemAvulsa(), [user.id]);
+  useEffect(() => ViagemAvulsa(), [user!.id!]);
 
   function ViagemAvulsa() {
     try {
       firestore()
-        .collection(user!.id)
+        .collection(user!.id!)
         .doc("Viagem Avulsa")
         .collection("1")
         .orderBy("timestamp", "desc")
