@@ -11,7 +11,7 @@ export const usePegaAnotacao = (viagem: ViagemCompleta) => {
 
   function ViagemCompleta() {
     firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc(viagem.id)
       .onSnapshot((docSnap) => {
         const viagem = docSnap.data() as ViagemCompleta;
