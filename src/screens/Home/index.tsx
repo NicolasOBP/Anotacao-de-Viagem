@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, FlatList, Title } from "../../globalStyles/style";
+import { Container, FlatList, Title } from "@/globalStyles/style";
 import { usePegaColecaoViagem } from "./hooks/usePegaColecaoViagem";
 import { NovaColecao } from "./components/NovaColeção";
 import { ItemInicial } from "@/components";

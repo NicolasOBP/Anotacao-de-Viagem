@@ -1,6 +1,6 @@
 import React from "react";
-import { Container } from "../../globalStyles/style";
-import { PropsNav } from "../../Router/types/screenProps";
+import { Container } from "@/globalStyles/style";
+import { PropsNav } from "@/Router/types/screenProps";
 import { Ida, Volta } from "./components/index";
 
 export const IdaVoltaColecao: React.FC<PropsNav<"IdaVoltaColecao">> = ({
