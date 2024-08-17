@@ -13,23 +13,23 @@ import { useHookFormCriaColecao, useCriaColecao } from "./hooks";
 import { item } from "./types";
 
 type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   showModal: boolean;
 };
 
 export const CriaColecaoViagem: React.FC<Props> = ({
-  setShowModal,
   showModal,
+  closeModal,
 }) => {
   const { handleSubmit, control, reset, formState } = useHookFormCriaColecao();
-  const { criaColecao } = useCriaColecao(setShowModal, reset);
+  const { criaColecao } = useCriaColecao(closeModal, reset);
 
   function cancelar() {
     reset({
       saindo: "",
       indo: "",
     });
-    setShowModal(false);
+    closeModal();
   }
 
   return (

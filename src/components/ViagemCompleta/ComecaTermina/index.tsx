@@ -7,17 +7,17 @@ import { useHookFormComecaTermina } from "./hooks/";
 import { AddAnotacaoExtra } from "./components/AdicionaAnotacaoExtra";
 
 type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   showModal: boolean;
-  tipoTermina: boolean;
-  gastos?: boolean;
+  finishType: boolean;
+  expenses?: boolean;
 };
 
 export const ComecaTermina: React.FC<Props> = ({
-  setShowModal,
+  closeModal,
   showModal,
-  tipoTermina,
-  gastos,
+  expenses,
+  finishType,
 }) => {
   const { handleSubmit, control, reset, formState } =
     useHookFormComecaTermina();
@@ -29,7 +29,7 @@ export const ComecaTermina: React.FC<Props> = ({
           <Box>
             <Title>Depois que finalizar não poderá voltar.</Title>
 
-            {gastos && (
+            {expenses && (
               <Input
                 label="Gastos (R$):"
                 control={control}
@@ -45,8 +45,8 @@ export const ComecaTermina: React.FC<Props> = ({
               control={control}
               handleSubmit={handleSubmit}
               reset={reset}
-              setShowModal={setShowModal}
-              tipoTermina={tipoTermina}
+              closeModal={closeModal}
+              tipoTermina={finishType}
               formState={formState}
             />
           </Box>

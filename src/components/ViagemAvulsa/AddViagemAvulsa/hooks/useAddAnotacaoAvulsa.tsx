@@ -5,7 +5,7 @@ import { useDadosStore } from "@/context";
 import { itemAvulsa, reset } from "../types";
 
 export const useAddViagemAvulsa = (
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
+  closeModal: () => void,
   reset: UseFormReset<reset>
 ) => {
   const { user } = useDadosStore();
@@ -36,7 +36,7 @@ export const useAddViagemAvulsa = (
       gasto: "",
       descricaoExtra: "",
     });
-    setShowModal(false);
+    closeModal();
   }
   return { addAnotacao };
 };

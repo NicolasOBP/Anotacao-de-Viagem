@@ -13,15 +13,15 @@ import { useAddViagemAvulsa, useHookFormAddViagemAvulsa } from "./hooks";
 import { itemAvulsa } from "./types";
 
 type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   showModal: boolean;
 };
 
-export const AddViaAvulsa: React.FC<Props> = ({ setShowModal, showModal }) => {
+export const AddViaAvulsa: React.FC<Props> = ({ closeModal, showModal }) => {
   const { handleSubmit, control, reset, formState } =
     useHookFormAddViagemAvulsa();
 
-  const { addAnotacao } = useAddViagemAvulsa(setShowModal, reset);
+  const { addAnotacao } = useAddViagemAvulsa(closeModal, reset);
 
   function cancelar() {
     reset({
@@ -35,7 +35,7 @@ export const AddViaAvulsa: React.FC<Props> = ({ setShowModal, showModal }) => {
       descricao: "",
       gastos: "",
     });
-    setShowModal(false);
+    closeModal();
   }
 
   return (

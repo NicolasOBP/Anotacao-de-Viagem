@@ -4,18 +4,19 @@ import { FontAwesome } from "@expo/vector-icons";
 import { ModalConfirmaDeletar } from "@/components";
 import { shareViagemCompleta } from "@/utils";
 import { ViagemCompleta } from "@/types";
+import { useShowModal } from "@/hooks";
 
 type Props = {
   itemCompleta: ViagemCompleta;
 };
 
 export const Share_Deleta: React.FC<Props> = ({ itemCompleta }) => {
-  const [showModal, setShowModal] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
 
   return (
     <>
       <ModalConfirmaDeletar
-        setShowModal={setShowModal}
+        closeModal={closeModal}
         showModal={showModal}
         tipoDel="Viagem"
         id={itemCompleta.id}
@@ -45,7 +46,7 @@ export const Share_Deleta: React.FC<Props> = ({ itemCompleta }) => {
           }}
         >
           <FontAwesome
-            onPress={() => setShowModal(true)}
+            onPress={() => openModal()}
             name="trash"
             size={30}
             color="red"

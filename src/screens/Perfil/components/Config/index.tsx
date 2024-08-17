@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { ConfigBox, Container } from "./style";
 import { useTheme } from "styled-components/native";
@@ -7,22 +7,18 @@ import { View } from "react-native";
 import { Input } from "@/components";
 import { useHookFormPreco } from "./hooks/useHookFormPrecos";
 import { BoxBtns, ContainerBtnconfirma, TextBtn } from "@/globalStyles/style";
-import { etanolPreco, gasolinaPreco, storage } from "@/context";
 import { useSetPrecoMMKV } from "./hooks/useSetPrecoMMKV";
+import { handleConfig } from "./hooks/useHandleConfig";
 
 export const Config: React.FC = () => {
   const theme = useTheme();
   const { control, formState, handleSubmit } = useHookFormPreco();
-  const [showCofig, setShowConfig] = useState<"none" | "flex">("none");
+  const { changeConfigVisibility, showCofig } = handleConfig();
   const { setPreco } = useSetPrecoMMKV();
 
   return (
     <Container>
-      <TouchableOpacity
-        onPress={() =>
-          setShowConfig((prevShow) => (prevShow === "none" ? "flex" : "none"))
-        }
-      >
+      <TouchableOpacity onPress={() => changeConfigVisibility()}>
         <FontAwesome name="gears" size={25} color={theme.COLORS.TEXT_COLOR} />
       </TouchableOpacity>
 
@@ -37,11 +33,7 @@ export const Config: React.FC = () => {
           >
             <TextBtn>Definir preços</TextBtn>
             <FontAwesome
-              onPress={() =>
-                setShowConfig((prevShow) =>
-                  prevShow === "none" ? "flex" : "none"
-                )
-              }
+              onPress={() => changeConfigVisibility()}
               name="close"
               size={24}
               color={theme.COLORS.TEXT_COLOR}

@@ -8,7 +8,7 @@ type reset = {
   descricaoExtra?: string;
 };
 export const useUpdateAnotacaoCompleta = (
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
+  closeModal: () => void,
   reset: UseFormReset<reset>
 ) => {
   const { viagemCompletaStore, user } = useDadosStore();
@@ -42,7 +42,7 @@ export const useUpdateAnotacaoCompleta = (
       descricaoExtra: "",
       gastos: "",
     });
-    setShowModal(false);
+    closeModal();
   }
   return { addAnotacao };
 };

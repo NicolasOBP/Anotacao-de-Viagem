@@ -16,25 +16,25 @@ import { useFinalizaViagem, useHookFormChegada } from "./hooks";
 import { item } from "./types";
 
 type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   showModal: boolean;
-  tipoEstado: "Ida" | "Volta";
+  tipoEstado?: "Ida" | "Volta";
 };
 
 export const Chegada: React.FC<Props> = ({
-  setShowModal,
+  closeModal,
   showModal,
   tipoEstado,
 }) => {
   const { control, formState, handleSubmit, reset } = useHookFormChegada();
-  const { finalizaViagem } = useFinalizaViagem(tipoEstado, reset);
+  const { finalizaViagem } = useFinalizaViagem(tipoEstado!, reset);
 
   function cancelar() {
     reset({
       descricaoChegada: "",
       gastos: "",
     });
-    setShowModal(false);
+    closeModal();
   }
 
   return (

@@ -3,18 +3,19 @@ import React, { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { ModalConfirmaDeletar } from "@/components";
 import { ColecaoViagem } from "@/types";
+import { useShowModal } from "@/hooks";
 
 type Props = {
   itemColecao: ColecaoViagem;
 };
 
 export const DeletaColecao: React.FC<Props> = ({ itemColecao }) => {
-  const [showModal, setShowModal] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
 
   return (
     <>
       <ModalConfirmaDeletar
-        setShowModal={setShowModal}
+        closeModal={closeModal}
         showModal={showModal}
         tipoDel="Colecao"
         id={itemColecao.id}
@@ -32,7 +33,7 @@ export const DeletaColecao: React.FC<Props> = ({ itemColecao }) => {
           }}
         >
           <FontAwesome
-            onPress={() => setShowModal(true)}
+            onPress={() => openModal()}
             name="trash"
             size={30}
             color="red"

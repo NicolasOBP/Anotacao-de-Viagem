@@ -3,7 +3,7 @@ import { useAnotacaoIda, useAnotacaoVolta } from "./";
 import { itemAnotacaoColecao, reset } from "../types";
 
 export const useAddAnotacaoColecao = (
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
+  closeModal: () => void,
   reset: UseFormReset<reset>,
   tipo: "Ida" | "Volta"
 ) => {
@@ -23,7 +23,7 @@ export const useAddAnotacaoColecao = (
       ar: "",
       descricaoExtra: "",
     });
-    setShowModal(false);
+    closeModal();
   }
 
   return { addAnotacao };

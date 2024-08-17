@@ -5,7 +5,7 @@ import { useDadosStore } from "@/context";
 import { itemAnotacaoCompleta, reset } from "../types";
 
 export const useAddAnotacaoCompleta = (
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
+  closeModal: () => void,
   reset: UseFormReset<reset>
 ) => {
   const { viagemCompletaStore, user } = useDadosStore();
@@ -57,7 +57,7 @@ export const useAddAnotacaoCompleta = (
       ar: "",
       descricaoExtra: "",
     });
-    setShowModal(false);
+    closeModal();
   }
 
   return { addAnotacao };

@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import {
-  ContainerBtn,
-  FlatList,
-  TextBtn,
-} from "../../../../globalStyles/style";
+import React from "react";
+import { ContainerBtn, FlatList, TextBtn } from "@/globalStyles/style";
 import { AnotacaoCompleta, Check } from "@/types";
 import { AddAnotacaoCompleta, ItemCompleta } from "@/components";
+import { useShowModal } from "@/hooks";
 
 type Props = {
   partindo: Check | null;
@@ -14,11 +11,12 @@ type Props = {
 };
 
 export const Anotacao: React.FC<Props> = ({ anotacao, chegando, partindo }) => {
-  const [showModal, setShowModal] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
+
   return (
     <>
       {partindo && !chegando && (
-        <ContainerBtn onPress={() => setShowModal(true)}>
+        <ContainerBtn onPress={() => openModal()}>
           <TextBtn>Adicionar uma anotação</TextBtn>
         </ContainerBtn>
       )}
@@ -33,7 +31,7 @@ export const Anotacao: React.FC<Props> = ({ anotacao, chegando, partindo }) => {
         />
       )}
 
-      <AddAnotacaoCompleta setShowModal={setShowModal} showModal={showModal} />
+      <AddAnotacaoCompleta closeModal={closeModal} showModal={showModal} />
     </>
   );
 };

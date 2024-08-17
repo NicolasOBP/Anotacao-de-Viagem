@@ -12,19 +12,19 @@ import { useHookFormAnotacaoColecao, useAddAnotacaoColecao } from "./hooks";
 import { itemAnotacaoColecao } from "./types";
 
 type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   showModal: boolean;
   tipo: "Ida" | "Volta";
 };
 
 export const AddAnotacaoColecao: React.FC<Props> = ({
-  setShowModal,
+  closeModal,
   showModal,
   tipo,
 }) => {
   const { control, formState, handleSubmit, reset } =
     useHookFormAnotacaoColecao();
-  const { addAnotacao } = useAddAnotacaoColecao(setShowModal, reset, tipo);
+  const { addAnotacao } = useAddAnotacaoColecao(closeModal, reset, tipo);
 
   function cancelar() {
     reset({
@@ -36,7 +36,7 @@ export const AddAnotacaoColecao: React.FC<Props> = ({
       descricao: "",
       PontoReferencia: "",
     });
-    setShowModal(false);
+    closeModal();
   }
 
   return (

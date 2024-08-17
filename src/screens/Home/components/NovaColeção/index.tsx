@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
+import React from "react";
+import { ContainerBtn, TextBtn } from "@/globalStyles/style";
 import { CriaColecaoViagem } from "@/components";
+import { useShowModal } from "@/hooks";
 
 export const NovaColecao: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
 
   return (
     <>
       <ContainerBtn
         android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-        onPress={() => setShowModal(true)}
+        onPress={() => openModal()}
       >
         <TextBtn>Criar uma nova Coleção</TextBtn>
       </ContainerBtn>
-      <CriaColecaoViagem setShowModal={setShowModal} showModal={showModal} />
+      <CriaColecaoViagem closeModal={closeModal} showModal={showModal} />
     </>
   );
 };

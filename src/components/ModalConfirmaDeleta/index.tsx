@@ -16,7 +16,7 @@ import {
 } from "./hooks";
 
 type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   showModal: boolean;
   tipoDel: "Colecao" | "Viagem" | "Anotacao" | "ColecaoViagem";
   id: string;
@@ -25,7 +25,7 @@ type Props = {
 };
 
 export const ModalConfirmaDeletar: React.FC<Props> = ({
-  setShowModal,
+  closeModal,
   showModal,
   tipoDel,
   id,
@@ -54,7 +54,7 @@ export const ModalConfirmaDeletar: React.FC<Props> = ({
             <ContainerBtnModal>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={() => setShowModal(false)}
+                onPress={() => closeModal()}
               >
                 <TextBtn>Cancelar</TextBtn>
               </ContainerBtn>

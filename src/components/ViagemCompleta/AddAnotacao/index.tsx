@@ -14,18 +14,18 @@ import { useDadosStore } from "@/context";
 import { itemAnotacaoCompleta } from "./types";
 
 type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   showModal: boolean;
 };
 export const AddAnotacaoCompleta: React.FC<Props> = ({
-  setShowModal,
   showModal,
+  closeModal,
 }) => {
   const { viagemCompletaStore } = useDadosStore();
 
   const { handleSubmit, control, reset, formState } =
     useHookFormAnotacaoCompleta();
-  const { addAnotacao } = useAddAnotacaoCompleta(setShowModal, reset);
+  const { addAnotacao } = useAddAnotacaoCompleta(closeModal, reset);
 
   function cancelar() {
     reset({
@@ -37,7 +37,7 @@ export const AddAnotacaoCompleta: React.FC<Props> = ({
       descricao: "",
       PontoReferencia: "",
     });
-    setShowModal(false);
+    closeModal();
   }
 
   return (

@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { Check } from "@/types";
-import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
+import { ContainerBtn, TextBtn } from "@/globalStyles/style";
 import { Info } from "./components/Info";
 import { ComecaTermina } from "@/components";
+import { useShowModal } from "@/hooks";
+import { handleState } from "../hooks/useHandleState";
 
 type Props = {
   partindo: Check | null;
 };
 
 export const Partindo: React.FC<Props> = ({ partindo }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [tipoTermina, setTipoTermina] = useState(false);
-  const [gastos, setGastos] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
+  const { deactiveExpenses, expenses, deactiveFinish, finishType } =
+    handleState();
 
   return (
     <>
@@ -20,17 +22,17 @@ export const Partindo: React.FC<Props> = ({ partindo }) => {
       ) : (
         <ContainerBtn
           onPress={() => {
-            setShowModal(true), setTipoTermina(false), setGastos(false);
+            openModal(), deactiveFinish(), deactiveExpenses();
           }}
         >
           <TextBtn>Começar viagem</TextBtn>
         </ContainerBtn>
       )}
       <ComecaTermina
-        setShowModal={setShowModal}
+        closeModal={closeModal}
         showModal={showModal}
-        tipoTermina={tipoTermina}
-        gastos={gastos}
+        finishType={finishType}
+        expenses={expenses}
       />
     </>
   );

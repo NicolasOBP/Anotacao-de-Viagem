@@ -13,24 +13,21 @@ import { useHookFormViagemCompleta, useCriaViagemCompleta } from "./hooks";
 import { itemCompleta } from "./types";
 
 type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   showModal: boolean;
 };
 
-export const AddViaCompleta: React.FC<Props> = ({
-  setShowModal,
-  showModal,
-}) => {
+export const AddViaCompleta: React.FC<Props> = ({ closeModal, showModal }) => {
   const { handleSubmit, control, reset, formState } =
     useHookFormViagemCompleta();
-  const { criaViagem } = useCriaViagemCompleta(setShowModal, reset);
+  const { criaViagem } = useCriaViagemCompleta(closeModal, reset);
 
   function cancelar() {
     reset({
       saindo: "",
       indo: "",
     });
-    setShowModal(false);
+    closeModal();
   }
 
   return (

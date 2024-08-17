@@ -1,16 +1,18 @@
 import { View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { ViagemAvulsa } from "@/types";
 import { share } from "@/utils";
 import { ModalConfirmaDeletar } from "@/components";
+import { useShowModal } from "@/hooks";
 
 type Props = {
   itemAvulsa: ViagemAvulsa;
 };
 
 export const Share_Trash: React.FC<Props> = ({ itemAvulsa }) => {
-  const [showModal, setShowModal] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
+
   return (
     <>
       <View
@@ -38,7 +40,7 @@ export const Share_Trash: React.FC<Props> = ({ itemAvulsa }) => {
           }}
         >
           <FontAwesome
-            onPress={() => setShowModal(true)}
+            onPress={() => openModal()}
             name="trash"
             size={24}
             color="red"
@@ -47,7 +49,7 @@ export const Share_Trash: React.FC<Props> = ({ itemAvulsa }) => {
       </View>
 
       <ModalConfirmaDeletar
-        setShowModal={setShowModal}
+        closeModal={closeModal}
         showModal={showModal}
         id={itemAvulsa!.id}
         tipoDel="Anotacao"

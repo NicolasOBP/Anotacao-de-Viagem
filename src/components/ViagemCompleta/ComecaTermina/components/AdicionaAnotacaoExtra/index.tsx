@@ -31,7 +31,7 @@ type Props = {
     gastos?: string;
     descricaoExtra?: string;
   }>;
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
   tipoTermina: boolean;
 };
 
@@ -39,18 +39,18 @@ export const AddAnotacaoExtra: React.FC<Props> = ({
   control,
   handleSubmit,
   reset,
-  setShowModal,
+  closeModal,
   tipoTermina,
   formState,
 }) => {
-  const { addAnotacao } = useUpdateAnotacaoCompleta(setShowModal, reset);
+  const { addAnotacao } = useUpdateAnotacaoCompleta(closeModal, reset);
 
   function cancelar() {
     reset({
       descricaoExtra: "",
       gastos: "",
     });
-    setShowModal(false);
+    closeModal();
   }
   return (
     <>

@@ -9,7 +9,7 @@ type reset = {
 };
 
 export const useCriaColecao = (
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
+  closeModal: () => void,
   reset: UseFormReset<reset>
 ) => {
   const { user } = useDadosStore();
@@ -26,7 +26,7 @@ export const useCriaColecao = (
       indo: "",
       saindo: "",
     });
-    setShowModal(false);
+    closeModal();
   }
   return { criaColecao };
 };

@@ -1,21 +1,23 @@
-import React, { useState } from "react";
-import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
+import React from "react";
+import { ContainerBtn, TextBtn } from "@/globalStyles/style";
 import { AddAnotacaoColecao } from "@/components";
+import { useShowModal } from "@/hooks";
 
 type Props = {
   tipo: "Ida" | "Volta";
 };
 
 export const AddAnotacao: React.FC<Props> = ({ tipo }) => {
-  const [showModal, setShowModal] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
+
   return (
     <>
-      <ContainerBtn onPress={() => setShowModal(true)}>
+      <ContainerBtn onPress={() => openModal()}>
         <TextBtn>Adicionar uma anotação</TextBtn>
       </ContainerBtn>
 
       <AddAnotacaoColecao
-        setShowModal={setShowModal}
+        closeModal={closeModal}
         showModal={showModal}
         tipo={tipo}
       />

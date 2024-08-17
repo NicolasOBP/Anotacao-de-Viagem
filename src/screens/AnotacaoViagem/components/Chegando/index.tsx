@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Info } from "./components/Info";
 import { Check } from "@/types";
-import { ContainerBtn, TextBtn } from "../../../../globalStyles/style";
+import { ContainerBtn, TextBtn } from "@/globalStyles/style";
 import { ComecaTermina } from "@/components";
+import { useShowModal } from "@/hooks";
+import { handleState } from "../hooks/useHandleState";
 
 type Props = {
   chegando: Check | null;
@@ -10,9 +12,8 @@ type Props = {
 };
 
 export const Chegando: React.FC<Props> = ({ chegando, partindo }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [tipoTermina, setTipoTermina] = useState(false);
-  const [gastos, setGastos] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
+  const { activeExpenses, expenses, activeFinish, finishType } = handleState();
 
   return (
     <>
@@ -22,7 +23,7 @@ export const Chegando: React.FC<Props> = ({ chegando, partindo }) => {
         partindo && (
           <ContainerBtn
             onPress={() => {
-              setShowModal(true), setTipoTermina(true), setGastos(true);
+              openModal(), activeFinish(), activeExpenses();
             }}
           >
             <TextBtn>Terminar Viagem</TextBtn>
@@ -31,10 +32,10 @@ export const Chegando: React.FC<Props> = ({ chegando, partindo }) => {
       )}
 
       <ComecaTermina
-        setShowModal={setShowModal}
+        closeModal={closeModal}
         showModal={showModal}
-        tipoTermina={tipoTermina}
-        gastos={gastos}
+        finishType={finishType}
+        expenses={expenses}
       />
     </>
   );

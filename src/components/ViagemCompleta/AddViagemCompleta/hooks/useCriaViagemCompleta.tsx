@@ -5,7 +5,7 @@ import { useDadosStore } from "@/context";
 import { itemCompleta } from "../types";
 
 export const useCriaViagemCompleta = (
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
+  closeModal: () => void,
   reset: UseFormReset<itemCompleta>
 ) => {
   const { user } = useDadosStore();
@@ -24,7 +24,7 @@ export const useCriaViagemCompleta = (
       saindo: "",
       indo: "",
     });
-    setShowModal(false);
+    closeModal();
   }
   return { criaViagem };
 };
