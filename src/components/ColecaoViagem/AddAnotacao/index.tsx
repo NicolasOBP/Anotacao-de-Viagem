@@ -9,7 +9,6 @@ import {
 } from "@/globalStyles/style";
 import { Box, Container } from "@/globalStyles/modal";
 import { useHookFormAnotacaoColecao, useAddAnotacaoColecao } from "./hooks";
-import { itemAnotacaoColecao } from "./types";
 
 type Props = {
   closeModal: () => void;
@@ -27,15 +26,7 @@ export const AddAnotacaoColecao: React.FC<Props> = ({
   const { addAnotacao } = useAddAnotacaoColecao(closeModal, reset, tipo);
 
   function cancelar() {
-    reset({
-      KmPercorrido: "",
-      VeloVia: "",
-      VeloFeita: "",
-      consumo: "",
-      ar: "",
-      descricao: "",
-      PontoReferencia: "",
-    });
+    reset();
     closeModal();
   }
 
@@ -94,9 +85,7 @@ export const AddAnotacaoColecao: React.FC<Props> = ({
             <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={handleSubmit((data: itemAnotacaoColecao) =>
-                  addAnotacao(data)
-                )}
+                onPress={handleSubmit((data) => addAnotacao(data))}
                 disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>

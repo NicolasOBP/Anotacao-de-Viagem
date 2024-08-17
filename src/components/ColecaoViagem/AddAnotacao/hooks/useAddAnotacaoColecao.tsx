@@ -1,10 +1,10 @@
 import { UseFormReset } from "react-hook-form";
 import { useAnotacaoIda, useAnotacaoVolta } from "./";
-import { itemAnotacaoColecao, reset } from "../types";
+import { itemAnotacaoColecao } from "../types";
 
 export const useAddAnotacaoColecao = (
   closeModal: () => void,
-  reset: UseFormReset<reset>,
+  reset: UseFormReset<itemAnotacaoColecao>,
   tipo: "Ida" | "Volta"
 ) => {
   const { anotacaoIda } = useAnotacaoIda();
@@ -14,15 +14,7 @@ export const useAddAnotacaoColecao = (
     if (tipo === "Ida") anotacaoIda(item);
     if (tipo === "Volta") anotacaoVolta(item);
 
-    reset({
-      pontoReferencia: "",
-      kmPercorrido: "",
-      veloVia: "",
-      veloMedia: "",
-      consumo: "",
-      ar: "",
-      descricaoExtra: "",
-    });
+    reset();
     closeModal();
   }
 
