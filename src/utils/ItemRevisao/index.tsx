@@ -1,5 +1,6 @@
 import React from "react";
 import { TextInfo, TextInfoNormal } from "./style";
+import { Input } from "@/components";
 
 type Props = {
   label: string;
