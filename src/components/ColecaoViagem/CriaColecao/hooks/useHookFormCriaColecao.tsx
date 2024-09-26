@@ -1,9 +1,9 @@
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CriaColecaoSchema, criaColecaoSchemamema } from "./";
 
 export const useHookFormCriaColecao = () => {
-  const { control, handleSubmit, reset, formState }: FieldValues =
+  const { control, handleSubmit, reset, formState } =
     useForm<CriaColecaoSchema>({
       defaultValues: {
         saindo: "",

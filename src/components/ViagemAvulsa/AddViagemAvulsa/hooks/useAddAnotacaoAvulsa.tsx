@@ -2,11 +2,11 @@ import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
 import { useHoraData } from "@/hooks";
 import { useDadosStore } from "@/context";
-import { itemAvulsa, reset } from "../types";
+import { itemAvulsa } from "../types";
 
 export const useAddViagemAvulsa = (
   closeModal: () => void,
-  reset: UseFormReset<reset>
+  reset: UseFormReset<itemAvulsa>
 ) => {
   const { user } = useDadosStore();
   function addAnotacao(item: itemAvulsa) {
@@ -25,17 +25,7 @@ export const useAddViagemAvulsa = (
       .then()
       .catch((err) => console.log(err));
 
-    reset({
-      saindoDe: "",
-      indoPara: "",
-      kmPercorrido: "",
-      veloVia: "",
-      veloMedia: "",
-      consumo: "",
-      ar: "",
-      gasto: "",
-      descricaoExtra: "",
-    });
+    reset();
     closeModal();
   }
   return { addAnotacao };

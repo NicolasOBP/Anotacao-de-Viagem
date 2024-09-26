@@ -2,11 +2,11 @@ import firestore from "@react-native-firebase/firestore";
 import { UseFormReset } from "react-hook-form";
 import { useHoraData } from "@/hooks";
 import { useDadosStore } from "@/context";
-import { itemAnotacaoCompleta, reset } from "../types";
+import { itemAnotacaoCompleta } from "../types";
 
 export const useAddAnotacaoCompleta = (
   closeModal: () => void,
-  reset: UseFormReset<reset>
+  reset: UseFormReset<itemAnotacaoCompleta>
 ) => {
   const { viagemCompletaStore, user } = useDadosStore();
 
@@ -48,15 +48,7 @@ export const useAddAnotacaoCompleta = (
         .catch((err) => console.log(err));
     }
 
-    reset({
-      pontoReferencia: "",
-      kmPercorrido: "",
-      veloVia: "",
-      veloMedia: "",
-      consumo: "",
-      ar: "",
-      descricaoExtra: "",
-    });
+    reset();
     closeModal();
   }
 

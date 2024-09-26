@@ -58,10 +58,7 @@ export const useFinalizaViagemVolta = (reset: UseFormReset<item>) => {
       .doc(dadosColecaoViagemStore.idPai)
       .update({ acontecendo: false });
 
-    reset({
-      descricaoChegada: "",
-      gastos: "",
-    });
+    reset();
   }
   return { finalizaViagemVolta };
 };

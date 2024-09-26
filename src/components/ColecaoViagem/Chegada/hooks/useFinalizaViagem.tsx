@@ -1,10 +1,6 @@
 import { UseFormReset } from "react-hook-form";
 import { useFinalizaViagemIda, useFinalizaViagemVolta } from "./";
-
-type item = {
-  descricaoChegada: string;
-  gastos: string;
-};
+import { item } from "../types";
 
 export const useFinalizaViagem = (
   tipo: "Ida" | "Volta",
@@ -16,7 +12,7 @@ export const useFinalizaViagem = (
   function finalizaViagem(item: item) {
     if (tipo === "Ida") finalizaViagemIda(item);
     if (tipo === "Volta") finalizaViagemVolta(item);
-    reset({ descricaoChegada: "", gastos: "" });
+    reset();
   }
   return { finalizaViagem };
 };

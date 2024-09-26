@@ -1,4 +1,4 @@
 export type item = {
-  descricaoChegada: string;
-  gastos: string;
+  descricaoChegada?: string;
+  gastos?: string;
 };

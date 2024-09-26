@@ -1,4 +1,4 @@
 export type itemCompleta = {
-  saindo: string;
-  indo: string;
+  saindo?: string;
+  indo?: string;
 };

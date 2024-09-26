@@ -7,12 +7,3 @@ export type itemAnotacaoColecao = {
   ar?: string;
   descricao?: string;
 };
-export type reset = {
-  pontoReferencia: string;
-  kmPercorrido: string;
-  veloMedia: string;
-  veloVia: string;
-  consumo: string;
-  ar: string;
-  descricaoExtra: string;
-};

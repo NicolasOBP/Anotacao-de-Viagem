@@ -20,10 +20,7 @@ export const useCriaViagemCompleta = (
       .then()
       .catch((err) => console.log(err));
 
-    reset({
-      saindo: "",
-      indo: "",
-    });
+    reset();
     closeModal();
   }
   return { criaViagem };

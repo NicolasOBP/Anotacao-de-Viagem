@@ -3,14 +3,9 @@ import { useDadosStore } from "@/context";
 import { UseFormReset } from "react-hook-form";
 import { item } from "../types";
 
-type reset = {
-  saindo: string;
-  indo: string;
-};
-
 export const useCriaColecao = (
   closeModal: () => void,
-  reset: UseFormReset<reset>
+  reset: UseFormReset<item>
 ) => {
   const { user } = useDadosStore();
 
@@ -22,10 +17,7 @@ export const useCriaColecao = (
       .doc(item.saindo + "_" + item.indo + "_" + Math.random())
       .set({ saindo: item.saindo, indo: item.indo });
 
-    reset({
-      indo: "",
-      saindo: "",
-    });
+    reset();
     closeModal();
   }
   return { criaColecao };

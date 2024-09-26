@@ -50,10 +50,7 @@ export const useFinalizaViagemIda = (reset: UseFormReset<item>) => {
           },
         });
     }
-    reset({
-      descricaoChegada: "",
-      gastos: "",
-    });
+    reset();
   }
   return { finalizaViagemIda };
 };

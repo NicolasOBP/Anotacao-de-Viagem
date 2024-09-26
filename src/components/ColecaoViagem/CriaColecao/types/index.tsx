@@ -1,4 +1,4 @@
 export type item = {
-  saindo: string;
-  indo: string;
+  saindo?: string;
+  indo?: string;
 };

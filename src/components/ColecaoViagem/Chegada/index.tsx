@@ -13,7 +13,6 @@ import {
   ContainerBtn2,
 } from "../../ViagemCompleta/ComecaTermina/style";
 import { useFinalizaViagem, useHookFormChegada } from "./hooks";
-import { item } from "./types";
 
 type Props = {
   closeModal: () => void;
@@ -30,10 +29,7 @@ export const Chegada: React.FC<Props> = ({
   const { finalizaViagem } = useFinalizaViagem(tipoEstado!, reset);
 
   function cancelar() {
-    reset({
-      descricaoChegada: "",
-      gastos: "",
-    });
+    reset();
     closeModal();
   }
 
@@ -64,7 +60,7 @@ export const Chegada: React.FC<Props> = ({
               <ContainerBtn2>
                 <ContainerBtnconfirma
                   android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                  onPress={handleSubmit((data: item) => finalizaViagem(data))}
+                  onPress={handleSubmit((data) => finalizaViagem(data))}
                   disabled={!formState.isValid}
                 >
                   <TextBtn>Confirmar</TextBtn>

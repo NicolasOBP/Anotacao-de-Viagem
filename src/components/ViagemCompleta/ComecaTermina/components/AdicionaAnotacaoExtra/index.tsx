@@ -46,10 +46,7 @@ export const AddAnotacaoExtra: React.FC<Props> = ({
   const { addAnotacao } = useUpdateAnotacaoCompleta(closeModal, reset);
 
   function cancelar() {
-    reset({
-      descricaoExtra: "",
-      gastos: "",
-    });
+    reset();
     closeModal();
   }
   return (

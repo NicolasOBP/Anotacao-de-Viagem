@@ -25,10 +25,7 @@ export const CriaColecaoViagem: React.FC<Props> = ({
   const { criaColecao } = useCriaColecao(closeModal, reset);
 
   function cancelar() {
-    reset({
-      saindo: "",
-      indo: "",
-    });
+    reset();
     closeModal();
   }
 
@@ -47,7 +44,7 @@ export const CriaColecaoViagem: React.FC<Props> = ({
             <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={handleSubmit((data: item) => criaColecao(data))}
+                onPress={handleSubmit((data) => criaColecao(data))}
                 disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>

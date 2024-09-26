@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { AnotacaoCompletaSchema, anotacaoCompletaSchemachema } from "./";
 
 export const useHookFormAnotacaoCompleta = () => {
-  const { control, formState, handleSubmit, reset }: FieldValues =
+  const { control, formState, handleSubmit, reset } =
     useForm<AnotacaoCompletaSchema>({
       resolver: zodResolver(anotacaoCompletaSchemachema),
       defaultValues: {

@@ -23,10 +23,7 @@ export const AddViaCompleta: React.FC<Props> = ({ closeModal, showModal }) => {
   const { criaViagem } = useCriaViagemCompleta(closeModal, reset);
 
   function cancelar() {
-    reset({
-      saindo: "",
-      indo: "",
-    });
+    reset();
     closeModal();
   }
 

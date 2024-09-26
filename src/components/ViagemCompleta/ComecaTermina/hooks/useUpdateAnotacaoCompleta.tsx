@@ -38,10 +38,7 @@ export const useUpdateAnotacaoCompleta = (
         .then()
         .catch((err) => console.log(err));
     }
-    reset({
-      descricaoExtra: "",
-      gastos: "",
-    });
+    reset();
     closeModal();
   }
   return { addAnotacao };

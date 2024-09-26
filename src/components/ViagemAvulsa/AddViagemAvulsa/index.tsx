@@ -10,7 +10,6 @@ import {
 } from "@/globalStyles/style";
 import { Box, Container } from "@/globalStyles/modal";
 import { useAddViagemAvulsa, useHookFormAddViagemAvulsa } from "./hooks";
-import { itemAvulsa } from "./types";
 
 type Props = {
   closeModal: () => void;
@@ -24,17 +23,7 @@ export const AddViaAvulsa: React.FC<Props> = ({ closeModal, showModal }) => {
   const { addAnotacao } = useAddViagemAvulsa(closeModal, reset);
 
   function cancelar() {
-    reset({
-      saindo: "",
-      indo: "",
-      KmPercorrido: "",
-      VeloVia: "",
-      VeloFeita: "",
-      consumo: "",
-      ar: "",
-      descricao: "",
-      gastos: "",
-    });
+    reset();
     closeModal();
   }
 
@@ -99,7 +88,7 @@ export const AddViaAvulsa: React.FC<Props> = ({ closeModal, showModal }) => {
             <BoxBtns>
               <ContainerBtn
                 android_ripple={{ color: "rgb(11, 56, 152)", radius: 68 }}
-                onPress={handleSubmit((data: itemAvulsa) => addAnotacao(data))}
+                onPress={handleSubmit((data) => addAnotacao(data))}
                 disabled={!formState.isValid}
               >
                 <TextBtn>Adicionar</TextBtn>

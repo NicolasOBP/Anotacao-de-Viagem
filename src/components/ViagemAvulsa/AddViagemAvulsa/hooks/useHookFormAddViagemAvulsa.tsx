@@ -1,9 +1,9 @@
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { ViagemAvulsaSchema, viagemAvulsaSchemachema } from "./";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export const useHookFormAddViagemAvulsa = () => {
-  const { control, formState, handleSubmit, reset }: FieldValues =
+  const { control, formState, handleSubmit, reset } =
     useForm<ViagemAvulsaSchema>({
       resolver: zodResolver(viagemAvulsaSchemachema),
       defaultValues: {
