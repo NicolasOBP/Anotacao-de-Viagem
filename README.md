@@ -321,28 +321,6 @@ const animatedStyle = useAnimatedStyle(() => ({
 
 ## 🎨 Sistema de Temas
 
-### Estrutura de Cores
-
-#### Tema Claro (light.ts)
-
-```typescript
-{
-  BACKGROUND: "#19b2e1",      // Azul turquesa
-  BTN: "#7ec3fc",             // Azul claro
-  BTN_CONFIRMA: "#19e158",    // Verde
-  BTN_CANCELA: "#ff7575",     // Vermelho
-  TEXT_COLOR: "#000000",      // Preto
-  PRIMARY_900: "#5087f7",     // Azul escuro
-  // ... mais cores
-}
-```
-
-#### Tema Escuro (dark.ts)
-
-```typescript
-// Versão invertida com cores mais escuras
-```
-
 ### Persistência de Tema
 
 O tema é armazenado no MMKV e recuperado ao iniciar:
@@ -451,16 +429,6 @@ npm run ios
 
 # Para Web
 npm run web
-```
-
-### Build para Produção
-
-```bash
-# Build para Android usando EAS
-npm run build
-
-# Ou manualmente
-eas build -p android --profile preview
 ```
 
 ---
@@ -612,31 +580,6 @@ Component Re-render (subscribers)
     ↓
 Firebase Sync (em paralelo)
 ```
-
----
-
-## 🚧 Possíveis Melhorias Futuras
-
-- Testes unitários e de integração
-- Sincronização offline-first
-- Exportação de viagens (PDF, CSV)
-- Estatísticas de consumo
-- Integração com mapas
-- Dark mode aprimorado
-- Notificações push
-- Compartilhamento de viagens
-
----
-
-## 📄 Licença
-
-Este projeto é privado e foi desenvolvido para uso pessoal.
-
----
-
-## 📞 Contato
-
-Para dúvidas ou sugestões sobre o projeto, entre em contato com o desenvolvedor.
 
 ---
 
