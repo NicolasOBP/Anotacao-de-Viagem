@@ -1,14 +1,12 @@
 import React from "react";
 import { BoxInput, ErrorMessage, Label, TextInput } from "./style";
-import { Controller, FieldValues, UseControllerProps } from "react-hook-form";
-import { TextInputProps } from "react-native";
+import { Controller, FieldValues } from "react-hook-form";
+import { FormTextInputProps } from "@/types/textInput";
 
 type Props = {
   label: string;
   valor?: string;
 };
-export type FormTextInputProps<T extends FieldValues> = TextInputProps &
-  UseControllerProps<T>;
 
 export const Input: React.FC<FormTextInputProps<FieldValues> & Props> = ({
   label,
@@ -24,7 +22,7 @@ export const Input: React.FC<FormTextInputProps<FieldValues> & Props> = ({
       <Controller
         control={control}
         name={name}
-        render={({ field, fieldState, formState }) => (
+        render={({ field, fieldState }) => (
           <>
             <TextInput
               onChangeText={(value: string) => field.onChange(value)}

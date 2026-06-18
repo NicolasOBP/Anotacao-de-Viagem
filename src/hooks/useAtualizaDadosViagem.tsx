@@ -13,7 +13,7 @@ export const useAtualizaDadosViagem = (item: NovaViagem) => {
 
   async function atualizaDados() {
     const dados = await firestore()
-      .collection(user.id)
+      .collection(user!.id!)
       .doc("Coleção de Viagens")
       .collection("1")
       .doc(item.idPai)
@@ -23,7 +23,7 @@ export const useAtualizaDadosViagem = (item: NovaViagem) => {
 
     setDadosAtualizados(dados.data() as NovaViagem);
     setDadosColecaoViagem(dados.data() as NovaViagem);
-    setColecoStatusStore(dados.data().status);
+    setColecoStatusStore(dados.data()!.status);
   }
   return { dadosAtualizados, atualizaDados };
 };

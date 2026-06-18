@@ -1,20 +1,21 @@
 import { View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { ModalConfirmaDeletar } from "@/components";
 import { NovaViagem } from "@/types";
 import { FontAwesome } from "@expo/vector-icons";
+import { useShowModal } from "@/hooks";
 
 type Props = {
   itemColecao: NovaViagem;
 };
 
 export const DeletaViagemColecao: React.FC<Props> = ({ itemColecao }) => {
-  const [showModal, setShowModal] = useState(false);
+  const { closeModal, openModal, showModal } = useShowModal();
 
   return (
     <>
       <ModalConfirmaDeletar
-        setShowModal={setShowModal}
+        closeModal={closeModal}
         showModal={showModal}
         tipoDel="ColecaoViagem"
         id={itemColecao.id}
@@ -33,12 +34,7 @@ export const DeletaViagemColecao: React.FC<Props> = ({ itemColecao }) => {
             alignItems: "flex-end",
           }}
         >
-          <FontAwesome
-            onPress={() => setShowModal(true)}
-            name="trash"
-            size={30}
-            color="red"
-          />
+          <FontAwesome onPress={openModal} name="trash" size={30} color="red" />
         </View>
       </View>
     </>

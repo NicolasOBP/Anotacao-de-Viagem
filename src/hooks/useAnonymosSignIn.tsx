@@ -9,12 +9,12 @@ export const useAnonymosSignIn = () => {
   useEffect(() => {
     try {
       setUser({
-        displayName: auth().currentUser.displayName,
-        email: auth().currentUser.email,
-        id: auth().currentUser.uid,
-        photo: auth().currentUser.photoURL,
+        displayName: auth().currentUser!.displayName,
+        email: auth().currentUser!.email,
+        id: auth().currentUser!.uid,
+        photo: auth().currentUser!.photoURL,
       });
-      setAnonymousId(auth().currentUser.uid);
+      setAnonymousId(auth().currentUser!.uid);
       setInitializing(false);
     } catch (e) {
       anonymousSignin();
@@ -26,12 +26,12 @@ export const useAnonymosSignIn = () => {
       .signInAnonymously()
       .then(() => {
         setUser({
-          displayName: auth().currentUser.displayName,
-          email: auth().currentUser.email,
-          id: auth().currentUser.uid,
-          photo: auth().currentUser.photoURL,
+          displayName: auth().currentUser!.displayName,
+          email: auth().currentUser!.email,
+          id: auth().currentUser!.uid,
+          photo: auth().currentUser!.photoURL,
         });
-        setAnonymousId(auth().currentUser.uid);
+        setAnonymousId(auth().currentUser!.uid);
         setInitializing(false);
       })
       .catch((error) => {

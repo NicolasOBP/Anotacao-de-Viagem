@@ -22,6 +22,7 @@ export default function App() {
           <StatusBar translucent={true} style="dark" />
           <MyStack />
         </NavigationContainer>
+
         <Toast />
       </ThemeProvider>
     </GestureHandlerRootView>
